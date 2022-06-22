@@ -6,15 +6,16 @@ import styled from "styled-components";
 import {Link} from 'react-router-dom'
 import {GiRunningShoe} from 'react-icons/gi'
 
+
  
 function App() {
   return (
     <div className="App">
       <BrowserRouter>  
       <Nav><GiRunningShoe/>
-        <Logo to={'/'}>Footware</Logo>
+        <Logo to={'/'}>Footware</Logo>        <Search/>
+
       </Nav>
-        <Search/>
      <Category/>
      <Pages />
       </BrowserRouter>
@@ -31,9 +32,7 @@ const Logo = styled(Link)` {
   font-style: italic;
 }`
 const Nav = styled.div`
-padding: 4rem;
-display:flex;
-justify-content: flex-start;
+padding: 3rem;
 align-items:center;
 svg{
 font-size: 2rem;

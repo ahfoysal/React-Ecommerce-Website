@@ -2,13 +2,15 @@ import {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import {useParams} from 'react-router-dom';
 import React from 'react'
-
+import * as ReactBootstrap from 'react-bootstrap'
 
 function Recipe() {
 
   let params = useParams();
   const [details , setDetails] = useState({});
   const [image , setImage] = useState({});
+  const [loading , setLoading] = useState(false);
+
 
   const [activeTab , setActiveTab] = useState("instructions");
 
@@ -18,8 +20,8 @@ const fetchDetails = async () =>{
   const data = await fetch(`https://expressbuybd.com/wp-json/wc/v3/products/${params.name}?${key}`);
   const detailData = await data.json();
 setDetails(detailData);
+setLoading(true)
 setImage(detailData.images[0].src);
-
 console.log(detailData)
 };
 
@@ -29,37 +31,52 @@ useEffect(() => {
 
   return (
     
-    <DetailsWrapper>
-      
-      <div>
-        <h2>{details.name}</h2>
-        <div className="product-image">
-        <img src={image} alt={details.name} />
-      </div></div>
-      <Info>
-        <Button className={activeTab === 'instructions' ? 'active' : ''} onClick={() => setActiveTab('instructions')}>
-          Instruction
-          </Button>
-        <Button className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab('ingredients')}>
-          Ingredients</Button>
-          {activeTab === 'instructions' && (
-            <div>    
-      <h3 dangerouslySetInnerHTML={{ __html: details.short_description }} ></h3>
-      <h3 dangerouslySetInnerHTML={{ __html: details.description }} ></h3>
-
-        </div>
-          )}
-                  {activeTab === 'ingredients' && (
-                    
-                    <h3 dangerouslySetInnerHTML={{ __html: details.name }} ></h3>
-
-                )  }
-
     
- 
+    <DetailsWrapper>
+{
+  loading ? 
 
-      </Info>
-    </DetailsWrapper>
+  
+  <div className='container'>
+  <div className="product-image">
+  <img src={image} alt={details.name} />
+</div>
+<Info> 
+<h2>{details.name}</h2>
+  <Button className={activeTab === 'instructions' ? 'active' : ''} onClick={() => setActiveTab('instructions')}>
+    Instruction
+    </Button>
+  <Button className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab('ingredients')}>
+    Ingredients</Button>
+    {activeTab === 'instructions' && (
+      <div>    
+<h3 dangerouslySetInnerHTML={{ __html: details.short_description }} ></h3>
+<h3 dangerouslySetInnerHTML={{ __html: details.description }} ></h3>
+
+  </div>
+    )}
+            {activeTab === 'ingredients' && (
+              
+              <h3 dangerouslySetInnerHTML={{ __html: details.name }} ></h3>
+
+          )  }
+
+
+
+
+</Info></div>
+
+:
+
+<div className="spinnerdiv">      <ReactBootstrap.Spinner animation="border" /> </div>
+
+  
+
+
+}
+    
+       </DetailsWrapper>
+       
   )
 }
 
@@ -75,8 +92,13 @@ color: white;
 }
 h2{
 margin-bottom: 2rem;
-
+margin-top: 1rem;
 }
+h2{
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  }
 li{
 font-size: 1.2rem;
 line-height: 2.5rem;

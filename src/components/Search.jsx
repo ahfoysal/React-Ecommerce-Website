@@ -26,7 +26,6 @@ const submitHandler = (e) => {
 const FormStyle = styled.form`
 margin: 0rem 20rem;
 div{
-    width: 100%;
     position: relative;
 }
 input{
@@ -38,7 +37,7 @@ input{
    border: none;
    border-radius: 1rem;
    outline: none;
-   width: 100%;
+   width: 300px;
 
 
 }
@@ -48,7 +47,7 @@ svg{
    left: 0%;
    transform: translate(100%, -50%);
    color: white;
-   font-size: 1rem;
+   font-size: 1rem !important;
 
 }
 `
