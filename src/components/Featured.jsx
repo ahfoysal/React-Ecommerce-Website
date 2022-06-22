@@ -35,7 +35,7 @@ localStorage.setItem('popular',JSON.stringify(data))
       
 
         <Wrapper>
-        <h3>Trending Picks</h3>
+        <h3>Featured Items</h3>
 
       <Splide options={{
         perPage: 3,
@@ -47,7 +47,7 @@ localStorage.setItem('popular',JSON.stringify(data))
         {Popular.map((recipe) => {
     return(
           <SplideSlide key={recipe.id}>
-          <Card><Link to={'/products/'+recipe.id}>
+          <Card><Link to={'/product/'+recipe.id}>
             <p>{recipe.name}</p>
                <img src={recipe.images[0].src} alt={recipe.name}/>
             <Gradient /></Link>

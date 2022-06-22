@@ -1,4 +1,4 @@
-import Popular from "../components/Popular";
+import Popular from "../components/Featured";
 import Common from "../components/Common";
 import {motion} from 'framer-motion';
 
