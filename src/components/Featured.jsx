@@ -31,7 +31,7 @@ localStorage.setItem('popular',JSON.stringify(data))
 
 
   return (
-    <div>
+    <div className="container">
       
 
         <Wrapper>
@@ -42,7 +42,7 @@ localStorage.setItem('popular',JSON.stringify(data))
         pagination: false,
         drag: 'free',
         gap: '3rem',
-        perPage: 4,
+        perPage: 3,
         breakpoints: {
           640: {
             perPage: 1,

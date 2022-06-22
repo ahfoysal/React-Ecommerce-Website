@@ -37,7 +37,7 @@ useEffect(() => {
   loading ? 
 
   
-  <div className='container'>
+  <div className='container productpage'>
   <div className="product-image">
   <img src={image} alt={details.name} />
 </div>

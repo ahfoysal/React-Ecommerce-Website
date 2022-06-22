@@ -26,7 +26,7 @@ localStorage.setItem('common',JSON.stringify(data))
     }
   };
     return (
-      <div>
+      <div className="container">
       
 
       <Wrapper>
