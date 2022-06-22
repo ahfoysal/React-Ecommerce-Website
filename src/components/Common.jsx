@@ -33,11 +33,17 @@ localStorage.setItem('common',JSON.stringify(data))
       <h3>Asian Picks</h3>
 
     <Splide options={{
-      perPage: 4,
+      
       arrows: false,
       pagination: false,
       drag: 'free',
-      gap: '3rem'
+      gap: '3rem',
+      perPage: 4,
+      breakpoints: {
+        640: {
+          perPage: 1,
+        }
+      }
     }}>
       {Common.map((recipe) => {
   return(

@@ -1,4 +1,4 @@
-import Popular from "../components/Featured";
+import Featured from "../components/Featured";
 import Common from "../components/Common";
 import {motion} from 'framer-motion';
 
@@ -16,7 +16,7 @@ import React from 'react'
     transition={{duration: 0.5}}
     
     >
-        <Popular />
+        <Featured />
         <Common />
     </motion.div>
   )

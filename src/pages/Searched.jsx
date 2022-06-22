@@ -2,11 +2,15 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
-import {Link} from  'react-router-dom'
+import {Link} from  'react-router-dom';
+import * as ReactBootstrap from 'react-bootstrap'
+
 
 
 function Searched() {
     const [searchedRecipes, setSearchedRecipes] = useState([]);
+    const [loading , setLoading] = useState(false);
+
     let params = useParams();
     const key = 'consumer_key=ck_29618b80e61c705dace0c49ceb724a3959df5b50&consumer_secret=cs_80cd666549222f2d3efb376bade63960ab3ce3d2';
 
@@ -14,6 +18,8 @@ function Searched() {
     const data = await fetch(`https://expressbuybd.com/wp-json/wc/v3/products?search=${name}&${key}`);
     const recipes = await data.json();
     console.log(recipes)
+    setLoading(true)
+
     setSearchedRecipes(recipes)
   };
   useEffect(() => {

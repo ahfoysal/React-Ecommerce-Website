@@ -38,11 +38,16 @@ localStorage.setItem('popular',JSON.stringify(data))
         <h3>Featured Items</h3>
 
       <Splide options={{
-        perPage: 3,
         arrows: false,
         pagination: false,
         drag: 'free',
-        gap: '3rem'
+        gap: '3rem',
+        perPage: 4,
+        breakpoints: {
+          640: {
+            perPage: 1,
+          }
+        }
       }}>
         {Popular.map((recipe) => {
     return(

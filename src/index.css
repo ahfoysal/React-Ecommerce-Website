@@ -47,7 +47,7 @@ a{
   object-fit: contain;
 }
 .spinnerdiv {
-  position: fixed;
+  position: absolute;
   right: 50%;
   top: 50%;
 }

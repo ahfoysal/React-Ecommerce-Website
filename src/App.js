@@ -11,12 +11,13 @@ import {GiRunningShoe} from 'react-icons/gi'
 function App() {
   return (
     <div className="App">
+      
       <BrowserRouter>  
       <Nav><GiRunningShoe/>
         <Logo to={'/'}>Footware</Logo>        <Search/>
 
       </Nav>
-     <Category/>
+     {/* <Category/> */}
      <Pages />
       </BrowserRouter>
  
@@ -33,7 +34,10 @@ const Logo = styled(Link)` {
 }`
 const Nav = styled.div`
 padding: 3rem;
-align-items:center;
+width: 100%;
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
 svg{
 font-size: 2rem;
 }
