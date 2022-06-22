@@ -4,15 +4,15 @@ import {BrowserRouter} from 'react-router-dom'
 import Search from "./components/Search";
 import styled from "styled-components";
 import {Link} from 'react-router-dom'
-import {GiCook} from 'react-icons/gi'
+import {GiRunningShoe} from 'react-icons/gi'
 
  
 function App() {
   return (
     <div className="App">
       <BrowserRouter>  
-      <Nav><GiCook/>
-        <Logo to={'/'}>Recipe Pro</Logo>
+      <Nav><GiRunningShoe/>
+        <Logo to={'/'}>Footware</Logo>
       </Nav>
         <Search/>
      <Category/>

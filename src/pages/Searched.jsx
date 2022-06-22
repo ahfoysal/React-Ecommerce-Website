@@ -24,7 +24,7 @@ getSearched(params.search);
     <Grid>
         {searchedRecipes.map((item) => {
             return(
-                <Card key={item.id}><Link to={'/recipe/'+item.id}>
+                <Card key={item.id}><Link to={'/products/'+item.id}>
                         <img src={item.images[0].src} alt={item.name} />
                         <h4>{item.name}</h4></Link>
                 </Card>

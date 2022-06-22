@@ -42,7 +42,7 @@ localStorage.setItem('common',JSON.stringify(data))
       {Common.map((recipe) => {
   return(
         <SplideSlide key={recipe.id}>
-        <Card><Link to={'/recipe/'+recipe.id}>
+        <Card><Link to={'/products/'+recipe.id}>
           <p>{recipe.name}</p>
           <img src={recipe.images[0].src} alt={recipe.name}/>
           <Gradient /></Link>
