@@ -4,7 +4,8 @@ import {useParams} from 'react-router-dom';
 import React from 'react'
 import * as ReactBootstrap from 'react-bootstrap'
 
-function Recipe() {
+function Recipe(props) {
+  const addToCart = props.addToCart;
 
   let params = useParams();
   const [details , setDetails] = useState({});
@@ -53,7 +54,7 @@ useEffect(() => {
 <h3 dangerouslySetInnerHTML={{ __html: details.short_description }} ></h3>
 <h3 dangerouslySetInnerHTML={{ __html: details.description }} ></h3>
 <div className="btn">
-       <button className="buy-btn">Buy Now</button>
+       <button className="buy-btn" onClick={() => addToCart(details)}>Add To Cart</button>
         </div>
 
   </div>

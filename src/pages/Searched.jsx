@@ -7,7 +7,9 @@ import * as ReactBootstrap from 'react-bootstrap'
 
 
 
-function Searched() {
+function Searched(props) {
+  const addToCart = props.addToCart;
+
     const [searchedRecipes, setSearchedRecipes] = useState([]);
     const [loading , setLoading] = useState(true);
 
@@ -39,7 +41,7 @@ getSearched(params.search);
                         <img src={item.images[0].src} alt={item.name} />
                         <h4>{item.name}</h4></Link>
                         <div className="btn">
-       <button className="buy-btn" >Buy Now</button>
+       <button className="buy-btn" onClick={() => addToCart(item)}>Add To Cart</button>
         </div>
                 </Card>   
                

@@ -5,7 +5,9 @@ import '@splidejs/react-splide/css';
 import {Link} from  'react-router-dom'
 
 
-function Common() {
+function Common(props) {
+  const addToCart = props.addToCart;
+
   const [Common, setCommon] = useState([]);
   useEffect(() => {
     getCommon();
@@ -37,23 +39,32 @@ localStorage.setItem('common',JSON.stringify(data))
       arrows: false,
       pagination: false,
       drag: 'free',
-      gap: '3rem',
-      perPage: 4,
+      gap: '1rem',
+      perPage: 3,
       breakpoints: {
         640: {
           perPage: 1,
-        }
+        },
+        1000: {        perPage: 2,    gap: '10px'      }
+
       }
     }}>
-      {Common.map((recipe) => {
+      {Common.map((product) => {
   return(
-        <SplideSlide key={recipe.id}>
-        <Card><Link to={'/product/'+recipe.id}>
-          <p>{recipe.name}</p>
-          <img src={recipe.images[0].src} alt={recipe.name}/>
-          <Gradient /></Link>
-        </Card>
-        </SplideSlide>
+    <SplideSlide className="cards" key={product.id}>
+    <Link to={'/product/'+product.id}>
+<div className="product-image">
+<img src={product.images[0].src} alt={product.name}/>
+</div>
+<div className="product-info">
+<h2>{product.name}</h2>
+<p dangerouslySetInnerHTML={{ __html: product.short_description }}></p>
+<div className="price">৳{product.price}</div>
+</div> </Link>
+<div className="btn">
+<button className="buy-btn" onClick={() => addToCart(product)}>Add to Cart</button>
+</div>
+</SplideSlide>
   );
 
 })};

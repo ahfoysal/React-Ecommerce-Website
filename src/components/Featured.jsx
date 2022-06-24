@@ -3,21 +3,16 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import '@splidejs/react-splide/css';
 import {Link} from  'react-router-dom'
 import './Featured.css';
-import Cart from "./Cart";
 
 
 
-function Popular() {
+function Popular(props) {
+  // console.log(props);
+  const addToCart = props.addToCart;
   const [Popular, setPopular] = useState([]);
-  const [cart , setCart] = useState([]);
 
 
-  const addToCart = (id) =>{
-    console.log(id)
-    const newCart = [...cart, id];
-    setCart(newCart);
-
-  }
+  
   useEffect(() => {
     getPopular();
   }, []);
@@ -45,7 +40,6 @@ localStorage.setItem('popular',JSON.stringify(data))
   return (
   
     <div className="container">
-      <Cart cart={cart}></Cart>
 
         <h3 className="head">Featured Items</h3>
         
@@ -54,7 +48,10 @@ localStorage.setItem('popular',JSON.stringify(data))
       <Splide  options={{
         arrows: false,      pagination: false,        gap: '3rem',   perPage: 3,
         breakpoints: {
-          700: {        perPage: 1,    gap: '10px'      }
+          700: {        perPage: 1,    gap: '10px'      },
+          
+          1000: {        perPage: 2,    gap: '10px'      }
+
         }
       }}>
         {Popular.map((product) => {
@@ -70,7 +67,7 @@ localStorage.setItem('popular',JSON.stringify(data))
             <div className="price">৳{product.price}</div>
            </div> </Link>
            <div className="btn">
-       <button className="buy-btn" onClick={() => addToCart(product)}>Buy Now</button>
+       <button className="buy-btn" onClick={() => addToCart(product)}> Add To Cart</button>
         </div>
           </SplideSlide>
     );
