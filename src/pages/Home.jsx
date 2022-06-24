@@ -1,5 +1,5 @@
 import Featured from "../components/Featured";
-import Common from "../components/Common";
+import Common from "../components/BestSelling";
 import {motion} from 'framer-motion';
 
   function Home() {

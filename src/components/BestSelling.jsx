@@ -18,7 +18,7 @@ function Common() {
       setCommon(JSON.parse(check))
     }else{
 
-      const api = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${key}&category=17`);
+      const api = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${key}&category=239&per_page=100`);
       const data = await api.json();
 localStorage.setItem('common',JSON.stringify(data))
       setCommon(data);
@@ -30,7 +30,7 @@ localStorage.setItem('common',JSON.stringify(data))
       
 
       <Wrapper>
-      <h3>Asian Picks </h3>
+      <h3>Best Selling </h3>
 
     <Splide options={{
       

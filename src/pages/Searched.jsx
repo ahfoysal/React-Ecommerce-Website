@@ -28,9 +28,10 @@ getSearched(params.search);
 },[params.search]);
   return (
     <div> { loading  ?  <div className="spinnerdiv">      <ReactBootstrap.Spinner animation="border" /> </div> :
-    
+    <div className='container'>
+           <p>found items: {searchedRecipes.length}</p>
+
     <Grid>  
-     <p>found items: {searchedRecipes.length}</p>
         {searchedRecipes.map((item) => {
             return(
               
@@ -46,7 +47,7 @@ getSearched(params.search);
         }
         )}
   
-    </Grid> } </div>
+    </Grid> </div>} </div>
   )
 }
 const Grid = styled.div`
