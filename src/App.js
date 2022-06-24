@@ -1,5 +1,5 @@
 import Pages from "./pages/Pages";
-import Category from "./components/Category";
+// import Category from "./components/Category";
 import {BrowserRouter} from 'react-router-dom'
 import Search from "./components/Search";
 import styled from "styled-components";
@@ -14,8 +14,7 @@ function App() {
       
       <BrowserRouter>  
       <Nav><GiRunningShoe/>
-        <Logo to={'/'}>Footware</Logo>        <Search/>
-
+        <Logo to={'/'}>Footware</Logo>        <Search/>  
       </Nav>
      {/* <Category/> */}
      <Pages />

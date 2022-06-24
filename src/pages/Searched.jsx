@@ -9,16 +9,16 @@ import * as ReactBootstrap from 'react-bootstrap'
 
 function Searched() {
     const [searchedRecipes, setSearchedRecipes] = useState([]);
-    const [loading , setLoading] = useState(false);
+    const [loading , setLoading] = useState(true);
 
     let params = useParams();
-    const key = 'consumer_key=ck_29618b80e61c705dace0c49ceb724a3959df5b50&consumer_secret=cs_80cd666549222f2d3efb376bade63960ab3ce3d2';
+    const key = 'consumer_key=ck_f4414d18802ae452b45cd05a41cec38705a3ba5a&consumer_secret=cs_427628913e1aae762409b64e2a2e57e126fe7225';
 
     const getSearched = async (name) => {
-    const data = await fetch(`https://expressbuybd.com/wp-json/wc/v3/products?search=${name}&${key}`);
+    const data = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?search=${name}&${key}&per_page=20`);
     const recipes = await data.json();
     console.log(recipes)
-    setLoading(true)
+    setLoading(false)
 
     setSearchedRecipes(recipes)
   };
@@ -27,23 +27,32 @@ getSearched(params.search);
   
 },[params.search]);
   return (
-    <Grid>
+    <div> { loading  ?  <div className="spinnerdiv">      <ReactBootstrap.Spinner animation="border" /> </div> :
+    
+    <Grid>  
+     <p>found items: {searchedRecipes.length}</p>
         {searchedRecipes.map((item) => {
             return(
+              
                 <Card key={item.id}><Link to={'/product/'+item.id}>
                         <img src={item.images[0].src} alt={item.name} />
                         <h4>{item.name}</h4></Link>
-                </Card>
+                        <div className="btn">
+       <button className="buy-btn" >Buy Now</button>
+        </div>
+                </Card>   
+               
             )
         }
         )}
-    </Grid>
+  
+    </Grid> } </div>
   )
 }
 const Grid = styled.div`
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-grid-gap: 3rem;
+grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+grid-gap: 10px;
 `
 const Card = styled.div`
 

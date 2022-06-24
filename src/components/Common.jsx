@@ -10,7 +10,7 @@ function Common() {
   useEffect(() => {
     getCommon();
   }, []);
-  const key =  'consumer_key=ck_29618b80e61c705dace0c49ceb724a3959df5b50&consumer_secret=cs_80cd666549222f2d3efb376bade63960ab3ce3d2';
+  const key =  'consumer_key=ck_f4414d18802ae452b45cd05a41cec38705a3ba5a&consumer_secret=cs_427628913e1aae762409b64e2a2e57e126fe7225';
 
   const getCommon = async () => {
     const check = localStorage.getItem('common')
@@ -18,7 +18,7 @@ function Common() {
       setCommon(JSON.parse(check))
     }else{
 
-      const api = await fetch(`https://expressbuybd.com/wp-json/wc/v3/products?${key}&category=250`);
+      const api = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${key}&category=17`);
       const data = await api.json();
 localStorage.setItem('common',JSON.stringify(data))
       setCommon(data);
@@ -30,7 +30,7 @@ localStorage.setItem('common',JSON.stringify(data))
       
 
       <Wrapper>
-      <h3>Asian Picks</h3>
+      <h3>Asian Picks </h3>
 
     <Splide options={{
       

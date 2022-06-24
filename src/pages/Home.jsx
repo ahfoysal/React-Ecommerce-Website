@@ -2,11 +2,6 @@ import Featured from "../components/Featured";
 import Common from "../components/Common";
 import {motion} from 'framer-motion';
 
-
-
-
-import React from 'react'
-
   function Home() {
   return (
     <motion.div

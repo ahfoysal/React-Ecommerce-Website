@@ -35,19 +35,29 @@ a{
 .productpage{
   display: flex;
 }
-.product-image {
+.productpage-image {
   height: 600px;
   width: 500px;
   object-fit: contain;
-}
+} 
 
-.product-image img{
+ .productpage-image img{
   height: 100%;
   width: 100%;
   object-fit: contain;
-}
+} 
 .spinnerdiv {
   position: absolute;
   right: 50%;
   top: 50%;
+}
+@media screen and (max-width: 800px) {
+  body {
+      height: auto;
+  }
+  .productpage{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
 }

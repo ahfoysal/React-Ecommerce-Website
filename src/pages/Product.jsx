@@ -15,9 +15,9 @@ function Recipe() {
   const [activeTab , setActiveTab] = useState("instructions");
 
 
-const key = 'consumer_key=ck_29618b80e61c705dace0c49ceb724a3959df5b50&consumer_secret=cs_80cd666549222f2d3efb376bade63960ab3ce3d2';
+const key = 'consumer_key=ck_f4414d18802ae452b45cd05a41cec38705a3ba5a&consumer_secret=cs_427628913e1aae762409b64e2a2e57e126fe7225';
 const fetchDetails = async () =>{
-  const data = await fetch(`https://expressbuybd.com/wp-json/wc/v3/products/${params.name}?${key}`);
+  const data = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products/${params.name}?${key}`);
   const detailData = await data.json();
 setDetails(detailData);
 setLoading(true)
@@ -27,7 +27,7 @@ console.log(detailData)
 
 useEffect(() => {
  fetchDetails();
-},[params.name]);
+ },[params.name]);
 
   return (
     
@@ -38,7 +38,7 @@ useEffect(() => {
 
   
   <div className='container productpage'>
-  <div className="product-image">
+  <div className='productpage-image'>
   <img src={image} alt={details.name} />
 </div>
 <Info> 
@@ -52,13 +52,17 @@ useEffect(() => {
       <div>    
 <h3 dangerouslySetInnerHTML={{ __html: details.short_description }} ></h3>
 <h3 dangerouslySetInnerHTML={{ __html: details.description }} ></h3>
+<div className="btn">
+       <button className="buy-btn">Buy Now</button>
+        </div>
 
   </div>
     )}
             {activeTab === 'ingredients' && (
               
-              <h3 dangerouslySetInnerHTML={{ __html: details.name }} ></h3>
-
+              <div className="btn">
+              <button className="buy-btn">Buy Now</button>
+               </div>
           )  }
 
 
