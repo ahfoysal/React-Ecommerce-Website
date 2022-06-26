@@ -59,9 +59,24 @@ a{
     display: flex;
     flex-direction: column-reverse;
   }
+  .header{
+    margin-bottom: 150px;
   
+  }
 }
 .header{
-  margin-bottom: 150px;
+  margin-bottom: 50px;
 
+}
+.cart-container{
+margin-top: 150px;
+}
+.logo{
+  text-decoration: none;
+  font-family: 'Lobster Two', cursive;
+  font-style: italic;
+
+}
+.cartIcon{
+  padding: 0px 80px;
 }

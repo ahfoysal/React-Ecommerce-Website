@@ -22,7 +22,7 @@ function Popular(props) {
     const check = localStorage.getItem('popular')
     if(check){
       setPopular(JSON.parse(check))
-    }else{
+    }else{  
 
       const api = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${key}&tag=67`);
       const data = await api.json();

@@ -13,7 +13,6 @@ function Recipe(props) {
   const [loading , setLoading] = useState(false);
 
 
-  const [activeTab , setActiveTab] = useState("instructions");
 
 
 const key = 'consumer_key=ck_f4414d18802ae452b45cd05a41cec38705a3ba5a&consumer_secret=cs_427628913e1aae762409b64e2a2e57e126fe7225';
@@ -44,12 +43,7 @@ useEffect(() => {
 </div>
 <Info> 
 <h2>{details.name}</h2>
-  <Button className={activeTab === 'instructions' ? 'active' : ''} onClick={() => setActiveTab('instructions')}>
-    Instruction
-    </Button>
-  <Button className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab('ingredients')}>
-    Ingredients</Button>
-    {activeTab === 'instructions' && (
+  
       <div>    
 <h3 dangerouslySetInnerHTML={{ __html: details.short_description }} ></h3>
 <h3 dangerouslySetInnerHTML={{ __html: details.description }} ></h3>
@@ -58,13 +52,7 @@ useEffect(() => {
         </div>
 
   </div>
-    )}
-            {activeTab === 'ingredients' && (
-              
-              <div className="btn">
-              <button className="buy-btn">Buy Now</button>
-               </div>
-          )  }
+ 
 
 
 
