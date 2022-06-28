@@ -3,6 +3,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import '@splidejs/react-splide/css';
 import {Link} from  'react-router-dom'
 import './Featured.css';
+import axios from "axios";
 
 
 
@@ -11,28 +12,54 @@ function Popular(props) {
   const addToCart = props.addToCart;
   const [Popular, setPopular] = useState([]);
 
+  useEffect(() => { 
+    const key =  'consumer_key=ck_f4414d18802ae452b45cd05a41cec38705a3ba5a&consumer_secret=cs_427628913e1aae762409b64e2a2e57e126fe7225';
 
+    
+        
+
+    const check = sessionStorage.getItem('popular')
+        if(check){
+          setPopular(JSON.parse(check))
+        }else{  
+    
+          axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${key}&tag=67`)
+          .then(data2 => { const data = data2
+            sessionStorage.setItem('popular',JSON.stringify(data.data))
+
+            setPopular(data.data)
+            console.log(data);
+
+          })
+        }
+
+        //   };
+          
+    
+  },[])
   
-  useEffect(() => {
-    getPopular();
-  }, []);
-  const key =  'consumer_key=ck_f4414d18802ae452b45cd05a41cec38705a3ba5a&consumer_secret=cs_427628913e1aae762409b64e2a2e57e126fe7225';
+//   useEffect(() => {
+//     getPopular();
+//   }, []);
+//   const key =  'consumer_key=ck_f4414d18802ae452b45cd05a41cec38705a3ba5a&consumer_secret=cs_427628913e1aae762409b64e2a2e57e126fe7225';
 
-  const getPopular = async () => {
-    const check = localStorage.getItem('popular')
-    if(check){
-      setPopular(JSON.parse(check))
-    }else{  
+//   const getPopular = async () => {
+//     const check = localStorage.getItem('popular')
+//     if(check){
+//       setPopular(JSON.parse(check))
+//     }else{  
 
-      const api = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${key}&tag=67`);
-      const data = await api.json();
-localStorage.setItem('popular',JSON.stringify(data))
-      setPopular(data);
-      console.log(data);
-    }
+//       const api = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${key}&tag=67`);
+//       const data = await api.json();
+// localStorage.setItem('popular',JSON.stringify(data))
+//       setPopular(data);
+//       console.log(data);
 
-  };
+//     }
 
+//   };
+  
+  
 
 
 
@@ -41,7 +68,7 @@ localStorage.setItem('popular',JSON.stringify(data))
   
     <div className="container">
 
-        <h3 className="head">Featured Items</h3>
+        <h3 className="head mt-50">Featured Items</h3>
         
 
 

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {useParams} from 'react-router-dom';
 import React from 'react'
 import * as ReactBootstrap from 'react-bootstrap'
+import axios from 'axios'
 
 function Recipe(props) {
   const addToCart = props.addToCart;
@@ -16,17 +17,73 @@ function Recipe(props) {
 
 
 const key = 'consumer_key=ck_f4414d18802ae452b45cd05a41cec38705a3ba5a&consumer_secret=cs_427628913e1aae762409b64e2a2e57e126fe7225';
-const fetchDetails = async () =>{
-  const data = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products/${params.name}?${key}`);
-  const detailData = await data.json();
-setDetails(detailData);
-setLoading(true)
-setImage(detailData.images[0].src);
-console.log(detailData)
+const fetchDetails = () =>{
+  // const data = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products/${params.name}?${key}`);
+  // const detailData = await data.json();
+
+
+
+
+//  const id = Math.random()
+  const check = sessionStorage.getItem(`${params.name}`)
+  if(check){
+    setDetails(JSON.parse(check))
+    setLoading(true)
+
+  }else{  
+
+    axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products/${params.name}?${key}`)
+    .then(data2 => { const data = data2
+      sessionStorage.setItem(`${params.name}`,JSON.stringify(data.data))
+
+      setDetails(data.data);
+      setImage(data.data.images[0].src);
+
+      console.log(data.data);
+      setLoading(true)
+
+
+    })
+  }
+
+
+
+
+  // axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products/${params.name}?${key}`)
+  // .then(data2 => {
+  //  const rslt = data2;
+  //  console.log(rslt.data)
+ 
+
+  //  setDetails(rslt.data);
+  //  setLoading(true)
+  //  setImage(rslt.data.images[0].src);
+
+  //  })
+
+
 };
 
 useEffect(() => {
- fetchDetails();
+
+//  const key =  'consumer_key=ck_f4414d18802ae452b45cd05a41cec38705a3ba5a&consumer_secret=cs_427628913e1aae762409b64e2a2e57e126fe7225';
+
+//  axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products/${params.name}?${key}`)
+//  .then(data2 => {
+//   const rslt = data2;
+//   console.log(rslt)
+
+//   })
+//  setImage(data2.data.images[0].src);
+// .then(data3 => setImage(data3.data.images[0].src))
+// .then(data4 => console.log(data4.data))
+//  setLoading(true)
+
+ 
+  
+
+fetchDetails();
+ 
  },[params.name]);
 
   return (
@@ -39,7 +96,7 @@ useEffect(() => {
   
   <div className='container productpage'>
   <div className='productpage-image'>
-  <img src={image} alt={details.name} />
+  <img src={details.images[0].src} alt={details.name} />
 </div>
 <Info> 
 <h2>{details.name}</h2>

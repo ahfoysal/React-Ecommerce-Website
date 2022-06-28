@@ -32,7 +32,7 @@ localStorage.setItem('common',JSON.stringify(data))
       
 
       <Wrapper>
-      <h3>Best Selling </h3>
+      <h3 className="head">Best Selling </h3>
 
     <Splide options={{
       

@@ -49,10 +49,12 @@
 
 .head {
     font-size: 40px;
+    font-family: 'Lobster Two', cursive;;
     font-style: italic;
-    font-weight: 600;
+    font-weight: 500;
     color: black;
     text-align: center;
+    padding: 50px;
 }
 
 
@@ -124,4 +126,9 @@
         flex-direction: column;
         gap: 3rem;
     }
+}
+
+.mt-50{
+    margin-top: 80px;
+    
 }
