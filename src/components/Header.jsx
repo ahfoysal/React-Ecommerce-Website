@@ -40,7 +40,7 @@ console.log(cart);
           </Offcanvas.Header>
           <Offcanvas.Body>           
             <Nav className="justify-content-center flex-grow-1 pe-3">
-              <Nav.Link href="/">          <Search />
+              <Nav.Link>          <Search />
               </Nav.Link>
             </Nav>
           

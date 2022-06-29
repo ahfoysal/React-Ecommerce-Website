@@ -1,5 +1,7 @@
 import Featured from "../components/Featured";
 import Common from "../components/BestSelling";
+import Shop from "../components/Shop";
+
 import {motion} from 'framer-motion';
 import { useState } from "react";
 import Cart from "./Cart";
@@ -17,6 +19,8 @@ import Cart from "./Cart";
 
         <Featured addToCart={addToCart}/>
         <Common addToCart={addToCart}/>
+        <Shop addToCart={addToCart}/>
+
     </motion.div>
   )
 }

@@ -29,10 +29,9 @@ function Common(props) {
   };
     return (
       <div className="container">
-      
+      <h3 className="head">Best Selling </h3>
 
       <Wrapper>
-      <h3 className="head">Best Selling </h3>
 
     <Splide options={{
       

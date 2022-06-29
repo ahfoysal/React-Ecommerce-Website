@@ -9,7 +9,7 @@ const Cart = (props) => {
 
   const cart = props.cart;
   const setCart = props.setCart;
-  const [image , setImage] = useState({});
+  const [qunatityCart , setQunatityCart] = useState([]);
 // setImage(cart.images[0].src)
 const cartQuantity = "1";
   const cartItems = cart.map((cart) => `{'product_id': ${cart.id},'quantity': ${cartQuantity}}` );
@@ -18,7 +18,13 @@ const StringCart= JSON.stringify(cartItemss);
 const newItms = StringCart.replace (/"/g,'');
 const newCart = newItms.replace (/'/g,'"');
 // console.log()
-// console.log(`${cart[0].images[0].src}`)
+// console.log(`${cart[0].images[0].src}`
+useEffect(() => {
+  setQunatityCart({quantity: '1'})
+  console.log(qunatityCart);
+
+}, []);
+
 
 
 
