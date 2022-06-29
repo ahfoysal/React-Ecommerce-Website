@@ -1,63 +1,35 @@
-import React, { useEffect, useState } from 'react'
-import {Link} from  'react-router-dom'
+import React, {  useState } from 'react'
 import { Container, ProductTable, Total } from './styles';
 import { MdRemoveCircleOutline, MdAddCircleOutline, MdDelete } from 'react-icons/md';
+import * as ReactBootstrap from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Cart = (props) => {
 
+  const [loading , setLoading] = useState(true);
+  const navigate = useNavigate();
   const cart = props.cart;
   const setCart = props.setCart;
-  const [qunatityCart , setQunatityCart] = useState([]);
-// setImage(cart.images[0].src)
 const cartQuantity = "1";
   const cartItems = cart.map((cart) => `{'product_id': ${cart.id},'quantity': ${cartQuantity}}` );
 const cartItemss = cartItems;
 const StringCart= JSON.stringify(cartItemss);  
 const newItms = StringCart.replace (/"/g,'');
 const newCart = newItms.replace (/'/g,'"');
-// console.log()
-// console.log(`${cart[0].images[0].src}`
-useEffect(() => {
-  setQunatityCart({quantity: '1'})
-  console.log(qunatityCart);
-
-}, []);
 
 
 
 
-var raw2 = JSON.stringify({
-  "'payment_method'": "'cod'",
-  "'payment_method_title'": "'Cash On Delivery'",
-  "'billing'": {
-    "'first_name'": "'react'",
-    "'address_1'": "'react'",
-    "'phone'": "'123'"
-  },
-  "'line_items'":  newItms
-
-});
-// const testItms = newCart.replace (/l/g,'"');
 
 
 // console.log( testItms);
 const createOrder = () => {
+  setLoading(false);
   var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     
-    const raw =  JSON.stringify({
-      "payment_method": "cod",
-      "payment_method_title": "Cash On Delivery",
-      "billing": {
-        "first_name": "name",
-        "address_1": "address",
-        "phone": "123"
-      },
-      "line_items":  newCart
-
-    });
  const body1 = `{"payment_method":"cod","payment_method_title":"Cash On Delivery","billing":{"first_name":"name","address_1":"address","phone":"123"},"line_items":`
 const body2= `${newCart}}`
     const body3 = body1.concat(' ', body2);
@@ -73,6 +45,8 @@ const body2= `${newCart}}`
       .then(result => {
         const rslt = result;
         console.log(rslt)
+        setLoading(true);
+        navigate(`/order/${rslt.number}`)      
 
         })
       .catch(error => console.log('error', error));
@@ -130,11 +104,11 @@ const total = cart.reduce((total, prd) => total + JSON.parse(prd.price), 0)
               <td>
                 <img
                 src={cart.images[0].src}
-                alt={cart.title}
+                alt={cart.name}
               />
               </td>
               <td>
-                <strong>{cart.title}</strong>
+                <strong>{cart.name}</strong>
                 <span>{cart.price}</span>
               </td>
               <td>
@@ -162,6 +136,9 @@ const total = cart.reduce((total, prd) => total + JSON.parse(prd.price), 0)
       </ProductTable>
 
       <footer>
+      {
+  loading  ? <p>done</p> :<div className="spinnerdiv"><ReactBootstrap.Spinner animation="border" /> </div>}
+
         <button type="button" onClick={() => createOrder()}>Proceed to Checkout</button>
 
         <Total>

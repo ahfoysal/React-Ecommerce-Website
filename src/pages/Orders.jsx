@@ -5,7 +5,7 @@ import React from 'react'
 import * as ReactBootstrap from 'react-bootstrap'
 import axios from 'axios'
 
-function Recipe(props) {
+function Orders(props) {
   const addToCart = props.addToCart;
 
   let params = useParams();
@@ -24,7 +24,7 @@ const fetchDetails = () =>{
 
   }else{  
 
-    axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products/${params.name}?${key}`)
+    axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/orders/${params.name}?${key}`)
     .then(data2 => { const data = data2
       sessionStorage.setItem(`${params.name}`,JSON.stringify(data.data))
       setDetails(data.data);
@@ -66,17 +66,19 @@ fetchDetails();
 
   
   <div className='container productpage'>
-  <div className='productpage-image'>
-  <img src={details.images[0].src} alt={details.name} />
-</div>
+  
 <Info> 
-<h2>{details.name}</h2>
+<h2>Order Number :{details.number}</h2>
+<h2>Current Status: {details.status}</h2>
+<h2>Name:{details.billing.first_name}</h2>
+<h2>Phone: {details.billing.phone}</h2>
+<h2>Total Amount:{details.total}</h2>
+
+
   
       <div>    
-<h3 dangerouslySetInnerHTML={{ __html: details.short_description }} ></h3>
-<h3 dangerouslySetInnerHTML={{ __html: details.description }} ></h3>
 <div className="btn">
-       <button className="buy-btn" onClick={() => addToCart(details)}>Add To Cart</button>
+       <button className="buy-btn" href={'/'}>Back to home</button>
         </div>
 
   </div>
@@ -139,4 +141,4 @@ margin-left: 5rem;
 
 `;
 
-export default Recipe
+export default Orders
