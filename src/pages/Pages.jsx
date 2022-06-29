@@ -9,23 +9,25 @@ import Cart from './Cart';
 
 function Pages(props) {
   const location = useLocation();
-  
+  const setCart = props.setCart
+
   const addToCart = props.addToCart;
   const cart = props.cart;
 
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    // <AnimatePresence exitBeforeEnter>
         <Routes location={location} key={location.pathname}>
        <Route path="/" element={<Home addToCart={addToCart}/>}/>
        <Route path="/cuisine/:type" element={<Cuisine />} />
        <Route path="/searched/:search" element={<Searched addToCart={addToCart}/>} />
        <Route path="/product/:name" element={<Product addToCart={addToCart}/>} />
-       <Route path="/cart" element={<Cart cart={cart}/>} />
+       <Route path="/cart" element={<Cart cart={cart} setCart={setCart}/>} />
 
 
 
-        </Routes></AnimatePresence>
+        </Routes>
+        // </AnimatePresence>
   );
 };
 

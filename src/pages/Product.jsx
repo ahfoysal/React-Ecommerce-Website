@@ -10,7 +10,6 @@ function Recipe(props) {
 
   let params = useParams();
   const [details , setDetails] = useState({});
-  const [image , setImage] = useState({});
   const [loading , setLoading] = useState(false);
 
 
@@ -18,13 +17,6 @@ function Recipe(props) {
 
 const key = 'consumer_key=ck_f4414d18802ae452b45cd05a41cec38705a3ba5a&consumer_secret=cs_427628913e1aae762409b64e2a2e57e126fe7225';
 const fetchDetails = () =>{
-  // const data = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products/${params.name}?${key}`);
-  // const detailData = await data.json();
-
-
-
-
-//  const id = Math.random()
   const check = sessionStorage.getItem(`${params.name}`)
   if(check){
     setDetails(JSON.parse(check))
@@ -35,32 +27,11 @@ const fetchDetails = () =>{
     axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products/${params.name}?${key}`)
     .then(data2 => { const data = data2
       sessionStorage.setItem(`${params.name}`,JSON.stringify(data.data))
-
       setDetails(data.data);
-      setImage(data.data.images[0].src);
-
       console.log(data.data);
       setLoading(true)
-
-
     })
   }
-
-
-
-
-  // axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products/${params.name}?${key}`)
-  // .then(data2 => {
-  //  const rslt = data2;
-  //  console.log(rslt.data)
- 
-
-  //  setDetails(rslt.data);
-  //  setLoading(true)
-  //  setImage(rslt.data.images[0].src);
-
-  //  })
-
 
 };
 
