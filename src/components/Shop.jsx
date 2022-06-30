@@ -14,6 +14,12 @@ function Shop(props) {
   
   
   useEffect(() => { 
+    products()
+        //   };
+          
+    
+  },[]);
+  const products = () =>{
     const key =  'consumer_key=ck_f4414d18802ae452b45cd05a41cec38705a3ba5a&consumer_secret=cs_427628913e1aae762409b64e2a2e57e126fe7225';
 
     
@@ -34,10 +40,7 @@ function Shop(props) {
           })
         }
 
-        //   };
-          
-    
-  },[]);
+  }
     return (
 <div className="container">
  

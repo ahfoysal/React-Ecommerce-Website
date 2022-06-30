@@ -23,7 +23,6 @@ footer {
     transition: background 0.2s;
 
     &:hover {
-      background: white;
     }
   }
 }

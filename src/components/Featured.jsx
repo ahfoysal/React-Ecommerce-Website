@@ -99,7 +99,7 @@ function Popular(props) {
           </SplideSlide>
     );
 
-})};
+})}
           </Splide>
 
 

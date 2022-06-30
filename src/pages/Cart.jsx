@@ -1,32 +1,66 @@
-import React, {  useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { Container, ProductTable, Total } from './styles';
 import { MdRemoveCircleOutline, MdAddCircleOutline, MdDelete } from 'react-icons/md';
-import * as ReactBootstrap from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
+import './Cart.css'
 
 
 
-const Cart = (props) => {
+const Cart = ({cart, setCart, clearTheCart, setCart2, cart2, getStoredCart, removeFromDb}) => {
 
-  const [loading , setLoading] = useState(true);
+  const [isContainerActive, setIsContainerActive] = React.useState(false);
+  const [isCartEmpty, setIsCartEmpty] = '';
+
   const navigate = useNavigate();
-  const cart = props.cart;
-  const setCart = props.setCart;
-const cartQuantity = "1";
+  // const cart = props.cart;
+  // const setCart = props.setCart;
+
+
+const styyle = {
+ 
+  width:"24px",
+  height:"24px"
+};
+
+useEffect(() => {
+
+
+  getCart()
+
+
+}, [])
+
+const getCart = () => {
+  
+  const newCart = localStorage.getItem("cartItems" ) 
+setCart(JSON.parse(newCart))
+const nnnn = JSON.parse(newCart)
+const savedCart = getStoredCart();
+const savedId = Object.keys(savedCart);
+
+const cartPd = savedId.map( slug => {
+  const product = nnnn.find( pd => pd.slug === slug)
+  product.abc = savedCart[slug];
+  return product
+} );
+
+console.log(cartPd);
+setCart(cartPd)
+
+
+}
+
+
+// console.log( testItms);
+const createOrder = () => {
+  const cartQuantity = "1";
   const cartItems = cart.map((cart) => `{'product_id': ${cart.id},'quantity': ${cartQuantity}}` );
 const cartItemss = cartItems;
 const StringCart= JSON.stringify(cartItemss);  
 const newItms = StringCart.replace (/"/g,'');
 const newCart = newItms.replace (/'/g,'"');
 
-
-
-
-
-
-// console.log( testItms);
-const createOrder = () => {
-  setLoading(false);
+  setIsContainerActive(true);
   var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     
@@ -45,50 +79,22 @@ const body2= `${newCart}}`
       .then(result => {
         const rslt = result;
         console.log(rslt)
-        setLoading(true);
         navigate(`/order/${rslt.number}`)      
+        setCart([]) 
+        localStorage.removeItem('shopping_cart');
+
 
         })
       .catch(error => console.log('error', error));
-      setCart([])
+      
     console.log(body3)
 }
 const total = cart.reduce((total, prd) => total + JSON.parse(prd.price), 0)
 
 
 
-
-// const total = useSelector(state =>
-//   formatPrice(state.cart.reduce((totalSum, product) => {
-//     return totalSum + product.price * product.amount;
-//   }, 0)
-//   ));
-
-// const cart = useSelector(state => state.cart.map(product => ({
-//     ...product,
-//     subtotal: formatPrice(product.price * product.amount),
-//   })));
-
-// const dispatch = useDispatch();
-
-// function increment(product) {
-//   dispatch(CartActions.updateAmountRequest(product.id, product.amount + 1));
-// }
-
-// function decrement(product) {
-//   dispatch(CartActions.updateAmountRequest(product.id, product.amount - 1));
-// }
-
-
   return (
     <Container className='mt-50'>
-    {/* {cart.map((cart) => ( */}
-          {/* <div > */}
-        {/* <p>{cart.name}</p> */}
-        {/* <p>{cart.price}</p> */}
-
-
-
       <ProductTable>
         <thead>
           <tr>
@@ -116,7 +122,7 @@ const total = cart.reduce((total, prd) => total + JSON.parse(prd.price), 0)
                   <button type="button" >
                     <MdRemoveCircleOutline size={20} color="#7159c1"/>
                   </button>
-                  <input type="number" readOnly value="{cart.amount}" />
+                  <input type="number" readOnly value={`${cart.abc}`} />
                   <button type="button"  >
                     <MdAddCircleOutline size={20} color="#7159c1"/>
                   </button>
@@ -126,7 +132,7 @@ const total = cart.reduce((total, prd) => total + JSON.parse(prd.price), 0)
                 <strong>cart.subtotal</strong>
               </td>
               <td>
-                <button type="button" >
+                <button type="button"  onClick={() => removeFromDb(cart.slug)} >
                   <MdDelete size={20} color="#7159c1" />
                 </button>
               </td>
@@ -136,10 +142,17 @@ const total = cart.reduce((total, prd) => total + JSON.parse(prd.price), 0)
       </ProductTable>
 
       <footer>
-      {
-  loading  ? <p>done</p> :<div className="spinnerdiv"><ReactBootstrap.Spinner animation="border" /> </div>}
+      <button  onClick={clearTheCart}  >clear</button>
 
-        <button type="button" onClick={() => createOrder()}>Proceed to Checkout</button>
+        <button  className={`checkbtn ${isContainerActive ? " checked-out" : ""}`} onClick={() => createOrder() }  >
+  <svg  viewBox="0 0 24 24" style={styyle} id="cart">
+    <path fill="#000000" d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7C5.89,17 5,16.1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z" />
+</svg>
+  <span>Checkout</span>
+  <svg id="check"  viewBox="0 0 24 24" style={styyle}> 
+    <path strokeWidth="2" fill="none" stroke="#ffffff" d="M 3,12 l 6,6 l 12, -12"/>
+  </svg>
+</button>
 
         <Total>
           <span>TOTAL</span>

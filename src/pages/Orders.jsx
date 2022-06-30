@@ -6,7 +6,6 @@ import * as ReactBootstrap from 'react-bootstrap'
 import axios from 'axios'
 
 function Orders(props) {
-  const addToCart = props.addToCart;
 
   let params = useParams();
   const [details , setDetails] = useState({});
@@ -126,14 +125,6 @@ margin-top: 2rem;
 
 `;
 
-const Button = styled.button`
-padding: 1rem 2rem;
-color: #313131;
-background: white;
-border: 2px solid black;
-margin-right: 2rem;
-font-weight: 600;
-`;
 const Info = styled.div`
 margin-top: 4rem;
 

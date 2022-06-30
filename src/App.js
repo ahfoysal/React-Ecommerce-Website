@@ -12,7 +12,9 @@ import 'react-toastify/dist/ReactToastify.css';
  
 function App() {
    const [cart , setCart] = useState([]);
+
    const addToCart = (id) =>{
+
     const newCart = [...cart, id];
     setCart(newCart);
     toast.success('🛒 Added to cart', {
@@ -24,7 +26,68 @@ function App() {
       theme: "colored"
       });
 
+      // sessionStorage.setItem('cartItems', JSON.stringify(cart));
+      //     const newItem = sessionStorage.getItem('cartItems');
+      //     console.log(JSON.parse(newItem));
+      addToDb(id.slug)
+      localStorage.setItem("cartItems", JSON.stringify(newCart))
+      console.log(newCart);
+
   }
+  const addToDb = id => {
+    const exists = getDb();
+    let shopping_cart = {};
+    if (!exists) {
+      shopping_cart[id] = 1;
+    }
+    else {
+      shopping_cart = JSON.parse(exists);
+      if (shopping_cart[id]) {
+        const newCount = shopping_cart[id] + 1;
+        shopping_cart[id] = newCount;
+      }
+      else {
+        shopping_cart[id] = 1;
+      }
+    }
+    updateDb(shopping_cart);
+    console.log(shopping_cart);
+  }
+  const getDb = () => localStorage.getItem('shopping_cart');
+  const updateDb = cart => {
+    localStorage.setItem('shopping_cart', JSON.stringify(cart));
+  }
+  
+  
+  
+  const removeFromDb = id => {
+    const exists = getDb();
+    if (!exists) {
+  
+    }
+    else {
+      const shopping_cart = JSON.parse(exists);
+      delete shopping_cart[id];
+      updateDb(shopping_cart);
+    }
+    
+  }
+  
+  const getStoredCart = () => {
+    const exists = getDb();
+    return exists ? JSON.parse(exists) : {};
+  }
+  
+  const clearTheCart = () => {
+    // localStorage.setItem('shopping_cart', []);
+    // localStorage.setItem('cartItems', []);
+    setCart([]) 
+    localStorage.removeItem('shopping_cart');
+
+
+    console.log(localStorage.getItem('shopping_cart'));
+  }
+  
 
   return (
     <div className="App">
@@ -32,7 +95,7 @@ function App() {
       <BrowserRouter>  
     <Header cart={cart}/>
      {/* <Category/> */}
-     <Pages addToCart={addToCart} cart={cart} setCart={setCart}/>
+     <Pages addToCart={addToCart} cart={cart} setCart={setCart} clearTheCart={clearTheCart} getStoredCart={getStoredCart} removeFromDb={removeFromDb} />
      <ToastContainer />
       </BrowserRouter>
  

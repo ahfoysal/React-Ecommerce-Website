@@ -17,7 +17,7 @@ const Header = (props) => {
       }, []);
       
 
-console.log(cart);
+// console.log(cart);
   
   return (
     <div>
