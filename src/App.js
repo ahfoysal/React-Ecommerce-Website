@@ -34,6 +34,7 @@ function App() {
       console.log(newCart);
 
   }
+  
   const addToDb = id => {
     const exists = getDb();
     let shopping_cart = {};

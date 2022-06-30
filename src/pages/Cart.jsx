@@ -35,6 +35,7 @@ const getCart = () => {
   const newCart = localStorage.getItem("cartItems" ) 
 setCart(JSON.parse(newCart))
 const nnnn = JSON.parse(newCart)
+
 const savedCart = getStoredCart();
 const savedId = Object.keys(savedCart);
 
@@ -53,8 +54,11 @@ setCart(cartPd)
 
 // console.log( testItms);
 const createOrder = () => {
-  const cartQuantity = "1";
-  const cartItems = cart.map((cart) => `{'product_id': ${cart.id},'quantity': ${cartQuantity}}` );
+  // const cartQuantity = "1";
+  const cartItems = cart.map((cart) => `{'product_id': ${cart.id},'quantity': ${cart.abc}}` );
+  // const cartQuantity = cart.map((cart) => `{'product_id': ${cart.id},'quantity': ${cartQuantity}}` );
+console.log( cartItems);
+
 const cartItemss = cartItems;
 const StringCart= JSON.stringify(cartItemss);  
 const newItms = StringCart.replace (/"/g,'');
@@ -89,8 +93,9 @@ const body2= `${newCart}}`
       
     console.log(body3)
 }
-const total = cart.reduce((total, prd) => total + JSON.parse(prd.price), 0)
+const total = cart.reduce((total, prd) => total + parseInt(prd.price) * prd.abc , 0)
 
+// const subTotal = cart.reduce(( prd) =>   parseInt(prd.price) * prd.abc )
 
 
   return (
@@ -105,8 +110,8 @@ const total = cart.reduce((total, prd) => total + JSON.parse(prd.price), 0)
           </tr>
         </thead>
         <tbody>
-        {cart.map((cart) => (
-              <tr key={cart.id}>
+        {cart.map((cart, index) => (
+              <tr key={`${index+1}`}>
               <td>
                 <img
                 src={cart.images[0].src}
@@ -129,7 +134,7 @@ const total = cart.reduce((total, prd) => total + JSON.parse(prd.price), 0)
                 </div>
               </td>
               <td>
-                <strong>cart.subtotal</strong>
+                <strong>subTotal</strong>
               </td>
               <td>
                 <button type="button"  onClick={() => removeFromDb(cart.slug)} >
