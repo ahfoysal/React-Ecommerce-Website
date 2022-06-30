@@ -22,34 +22,6 @@ const styyle = {
   height:"24px"
 };
 
-useEffect(() => {
-
-
-  getCart()
-
-
-}, [])
-
-const getCart = () => {
-  
-  const newCart = localStorage.getItem("cartItems" ) 
-setCart(JSON.parse(newCart))
-const nnnn = JSON.parse(newCart)
-
-const savedCart = getStoredCart();
-const savedId = Object.keys(savedCart);
-
-const cartPd = savedId.map( slug => {
-  const product = nnnn.find( pd => pd.slug === slug)
-  product.abc = savedCart[slug];
-  return product
-} );
-
-console.log(cartPd);
-setCart(cartPd)
-
-
-}
 
 
 // console.log( testItms);
@@ -93,7 +65,7 @@ const body2= `${newCart}}`
       
     console.log(body3)
 }
-const total = cart.reduce((total, prd) => total + parseInt(prd.price) * prd.abc , 0)
+const total = cart.reduce((total, prd) => total + prd.price * prd.abc , 0)
 
 // const subTotal = cart.reduce(( prd) =>   parseInt(prd.price) * prd.abc )
 
@@ -134,7 +106,7 @@ const total = cart.reduce((total, prd) => total + parseInt(prd.price) * prd.abc 
                 </div>
               </td>
               <td>
-                <strong>subTotal</strong>
+                <strong>{cart.price * cart.abc}</strong>
               </td>
               <td>
                 <button type="button"  onClick={() => removeFromDb(cart.slug)} >

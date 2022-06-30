@@ -2,7 +2,7 @@ import Pages from "./pages/Pages";
 // import Category from "./components/Category";
 import {BrowserRouter} from 'react-router-dom'
 import Header from "./components/Header";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -32,9 +32,34 @@ function App() {
       addToDb(id.slug)
       localStorage.setItem("cartItems", JSON.stringify(newCart))
       console.log(newCart);
+      getCart();
 
   }
   
+useEffect(() => {
+getCart();
+}, [])
+
+const getCart = () => {
+  
+  const newCart = localStorage.getItem("cartItems" ) 
+setCart(JSON.parse(newCart))
+const nnnn = JSON.parse(newCart)
+
+const savedCart = getStoredCart();
+const savedId = Object.keys(savedCart);
+
+const cartPd = savedId.map( slug => {
+  const product = nnnn.find( pd => pd.slug === slug)
+  product.abc = savedCart[slug];
+  return product
+} );
+
+console.log(cartPd);
+setCart(cartPd)
+
+
+}
   const addToDb = id => {
     const exists = getDb();
     let shopping_cart = {};

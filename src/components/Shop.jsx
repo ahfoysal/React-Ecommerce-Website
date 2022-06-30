@@ -30,7 +30,7 @@ function Shop(props) {
           setCommon(JSON.parse(check))
         }else{  
     
-          axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${key}`)
+          axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${key}&per_page=20`)
           .then(data2 => { const data = data2
             sessionStorage.setItem('shop',JSON.stringify(data.data))
 
