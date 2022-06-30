@@ -8,7 +8,7 @@ import {AnimatePresence} from 'framer-motion';
 import Cart from './Cart';
 import Orders from './Orders';
 
-function Pages({getStoredCart, setCart, setCart2,  addToCart,cart, cart2, clearTheCart, removeFromDb }) {
+function Pages({getStoredCart, setCart, setCart2,  addToCart,cart, getCart, clearTheCart, removeFromDb }) {
   const location = useLocation();
   // const setCart = props.setCart
 
@@ -25,7 +25,7 @@ function Pages({getStoredCart, setCart, setCart2,  addToCart,cart, cart2, clearT
        <Route path="/product/:name" element={<Product addToCart={addToCart}/>} />
        <Route path="/order/:name" element={<Orders addToCart={addToCart}/>} />
 
-       <Route path="/cart" element={<Cart getStoredCart={getStoredCart} cart={cart} setCart={setCart} clearTheCart={clearTheCart} cart2={cart2} setCart2={setCart2} removeFromDb={removeFromDb}/>} />
+       <Route path="/cart" element={<Cart getStoredCart={getStoredCart} cart={cart} setCart={setCart} clearTheCart={clearTheCart} getCart={getCart} setCart2={setCart2} removeFromDb={removeFromDb}/>} />
 
 
 

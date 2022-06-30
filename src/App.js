@@ -96,6 +96,7 @@ setCart(cartPd)
       delete shopping_cart[id];
       updateDb(shopping_cart);
     }
+    getCart()
     
   }
   
@@ -121,7 +122,7 @@ setCart(cartPd)
       <BrowserRouter>  
     <Header cart={cart}/>
      {/* <Category/> */}
-     <Pages addToCart={addToCart} cart={cart} setCart={setCart} clearTheCart={clearTheCart} getStoredCart={getStoredCart} removeFromDb={removeFromDb} />
+     <Pages addToCart={addToCart} cart={cart} setCart={setCart} getCart={getCart} clearTheCart={clearTheCart} getStoredCart={getStoredCart} removeFromDb={removeFromDb} />
      <ToastContainer />
       </BrowserRouter>
  

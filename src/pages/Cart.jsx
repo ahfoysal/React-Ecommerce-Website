@@ -6,7 +6,7 @@ import './Cart.css'
 
 
 
-const Cart = ({cart, setCart, clearTheCart, setCart2, cart2, getStoredCart, removeFromDb}) => {
+const Cart = ({cart, setCart, clearTheCart, getCart, cart2, getStoredCart, removeFromDb}) => {
 
   const [isContainerActive, setIsContainerActive] = React.useState(false);
   const [isCartEmpty, setIsCartEmpty] = '';
