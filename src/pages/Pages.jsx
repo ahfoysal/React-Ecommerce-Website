@@ -10,7 +10,7 @@ import Orders from './Orders';
 import Checkout from './Checkout';
 import Shop from '../components/Shop';
 
-function Pages({getStoredCart, setCart,   addToCart,cart, getCart, clearTheCart, removeFromDb, allProducts, products }) {
+function Pages({test2,setTest2, getStoredCart, setCart,   addToCart,cart, getCart, clearTheCart, removeFromDb, allProducts, setAllProducts, products }) {
   const location = useLocation();
   // const setCart = props.setCart
 
@@ -24,7 +24,7 @@ function Pages({getStoredCart, setCart,   addToCart,cart, getCart, clearTheCart,
        <Route path="/" element={<Home addToCart={addToCart} allProducts={allProducts}/>}/>
        <Route path="/cuisine/:type" element={<Cuisine />} />
        <Route path="/searched/:search" element={<Searched addToCart={addToCart}/>} />
-       <Route path="/product/:name" element={<Product addToCart={addToCart} allProducts={allProducts} products={products}/>} />
+       <Route path="/product/:name" element={<Product setTest2={setTest2} test2={test2} addToCart={addToCart} allProducts={allProducts} setAllProducts={setAllProducts} products={products}/>} />
        <Route path="/shop/" element={<Shop allProducts={allProducts} addToCart={addToCart}/> } />
        <Route path="/order/:name" element={<Orders addToCart={addToCart}/>} />
        <Route path="/cart" element={<Cart getStoredCart={getStoredCart} cart={cart} setCart={setCart} clearTheCart={clearTheCart} getCart={getCart} removeFromDb={removeFromDb}/>} />

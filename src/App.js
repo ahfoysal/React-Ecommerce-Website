@@ -15,9 +15,13 @@ import axios from 'axios';
 function App() {
    const [cart , setCart] = useState([]);
    const [allProducts, setAllProducts] = useState([]);
+   const [test2 , setTest2] = useState(false);
+
    useEffect(() => {
     products();
     getCart();
+    setTest2(true)
+
     }, [])
    const addToCart = (id) =>{
     const newCart = [...cart, id];
@@ -140,7 +144,7 @@ setCart(cartPd)
       <BrowserRouter>  
     <Header cart={cart}/>
      {/* <Category/> */}
-     <Pages      products={products} allProducts={allProducts} addToCart={addToCart} cart={cart} setCart={setCart} getCart={getCart} clearTheCart={clearTheCart} getStoredCart={getStoredCart} removeFromDb={removeFromDb} />
+     <Pages   setTest2={setTest2} test2={test2}   products={products} allProducts={allProducts} setAllProducts={setAllProducts} addToCart={addToCart} cart={cart} setCart={setCart} getCart={getCart} clearTheCart={clearTheCart} getStoredCart={getStoredCart} removeFromDb={removeFromDb} />
      <ToastContainer />
       </BrowserRouter>
  

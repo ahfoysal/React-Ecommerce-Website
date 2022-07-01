@@ -5,7 +5,7 @@ import React from 'react'
 import * as ReactBootstrap from 'react-bootstrap'
 import axios from 'axios'
 
-function Recipe({addToCart, allProducts}) {
+function Recipe({test2, addToCart, allProducts, setAllProducts, setTest2}) {
 
 
 
@@ -15,44 +15,50 @@ function Recipe({addToCart, allProducts}) {
   const [loading , setLoading] = useState(false);
 
 
+useEffect(() => { 
+  fetchDetails()
+
+},[])
+
 
 
 const fetchDetails = () =>{
-//   const check = sessionStorage.getItem(`${params.name}`)
-//   if(check){
-//     setDetails(JSON.parse(check))
-//     setLoading(true)
+ 
+  if(test2 === true){
 
-//   }else{  
-
-//     axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products/${params.name}?${process.env.REACT_APP_KEY}`)
-//     .then(data2 => { const data = data2
-//       sessionStorage.setItem(`${params.name}`,JSON.stringify(data.data))
-//       setDetails(data.data);
-//       // console.log(data.data);
-//       setLoading(true)
-//     })
-//   }
-
-
-  const param = params.name
-  console.log(param);
-  const cartItems = allProducts.map((cart) => cart ).filter((val)=> {
-    return val.id === parseInt(param)
-    });
-  console.log(cartItems[0]);
-  setDetails(cartItems[0])
-        setLoading(true)
+    const param = params.name
+    console.log(param);
+    const cartItems = allProducts.map((cart) => cart ).filter((val)=> {
+      return val.id === parseInt(param)
+      });
+    console.log(cartItems[0]);
+    setDetails(cartItems[0])
+          setLoading(true)
+    
   
+  }else{  
+
+
+    axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products/${params.name}?${process.env.REACT_APP_KEY}`)
+    .then(data2 => { const data = data2
+      sessionStorage.setItem(`${params.name}`,JSON.stringify(data.data))
+      setDetails(data.data);
+      // console.log(data.data);
+      setLoading(true)
+      setTest2(true)
+
+      console.log(test2)
+
+    })
+  }
+
+
 
 }
 
 
 
-useEffect(() => {
 
-fetchDetails();
- },[params.name]);
 
   return (
     

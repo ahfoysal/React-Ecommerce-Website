@@ -6,6 +6,19 @@ import {Link} from  'react-router-dom'
 // import api from '../pages/api';
 
 function Shop({addToCart, allProducts}) {
+  const [ctg , setCtg] = useState({});
+
+  
+useEffect(() => {
+
+  const cartItems = allProducts.map((cart) => cart ).filter((val)=> {
+    return val.name === 'Hoodie'
+    });
+  console.log(setCtg);
+  setCtg(cartItems[0])
+
+
+   },[]);
     return (
 <div className="container">
  
