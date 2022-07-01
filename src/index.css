@@ -11,6 +11,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #FAFAFA !important;
 }
 
 code {
@@ -62,20 +63,4 @@ text-decoration: none !important;
     margin-bottom: 150px;
   
   }
-}
-.header{
-  margin-bottom: 50px;
-
-}
-.cart-container{
-margin-top: 150px;
-}
-.logo{
-  text-decoration: none;
-  font-family: 'Lobster Two', cursive;
-  font-style: italic;
-
-}
-.cartIcon{
-  padding: 0px 80px;
 }

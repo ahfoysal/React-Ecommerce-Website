@@ -1,0 +1,15 @@
+.head-conatiner {
+    display: flex;
+    gap: 5px;
+}
+
+  
+  .logo{
+    text-decoration: none;
+    font-family: 'Lobster Two', cursive;
+    font-style: italic;
+  
+  }
+  .cartIcon{
+    padding: 0px 30px;
+  }

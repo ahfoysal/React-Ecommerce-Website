@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { MdAddShoppingCart } from 'react-icons/md';
 import styled from 'styled-components';
 import {Link} from  'react-router-dom'
+import './shop.css'
 // import { darken } from 'polished';
 // import api from '../pages/api';
 
@@ -23,7 +24,13 @@ useEffect(() => {
 <div className="container">
  
 <h3 className="head">Shop </h3>
+{ allProducts.map(product => (
+  product.categories.map(categories => (
+    <Link to={'/category/'+categories.id}>  <li className="categories" key={categories.id}>{categories.name}</li></Link>
+))
+))}
         <ProductList  >
+
         { allProducts.map(product => (
           <li className="product-con" key={product.id}>
           {/* <li key={product.id} > */}

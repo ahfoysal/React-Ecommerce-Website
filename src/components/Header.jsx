@@ -4,6 +4,7 @@ import {Container, Navbar, Offcanvas, Nav} from 'react-bootstrap'
 import {Link} from 'react-router-dom';
 import Search from "./Search";
 import {FiShoppingBag} from 'react-icons/fi';
+import './header.css'
 
 
 
@@ -20,45 +21,28 @@ const Header = (props) => {
 // console.log(cart);
   
   return (
-    <div>
       <>
-  {['sm'].map((expand) => (
-    <Navbar key={expand} bg="light" expand={expand} className="mb-3"  fixed="top">
+    <Navbar className="mb-3 bg-white"  fixed="top">
       <Container fluid>
         <Navbar.Brand ><Link to={'/'}>
-         <h3 className="logo">Footware</h3>  </Link>  </Navbar.Brand>
-        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-        <Navbar.Offcanvas
-          id={`offcanvasNavbar-expand-${expand}`}
-          aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-          placement="end"
-        >
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-              Offcanvas
-            </Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>           
-            <Nav className="justify-content-center flex-grow-1 pe-3">
-              <Nav.Link>          <Search />
-              </Nav.Link>
-            </Nav>
-          
-          </Offcanvas.Body>
-        </Navbar.Offcanvas>
+               <h3 className="logo">Footware</h3>  </Link>  </Navbar.Brand>
+               <div className="head-conatiner ">
+                  <div ><Search />
+                  </div>
 
-        <Nav className="justify-content-end  ">
-        <Link to={'/shop'}>Shop</Link></Nav>
+                   <div className="cartIcon">
+                  <Link to={'/cart'}><FiShoppingBag/> {cart.length}</Link>
+                    </div>
+                    <div >
+                  <Link to={'/shop'}>SHOP</Link>
+                    </div>
+     
+                 </div>
 
-         <Nav className="justify-content-end  cartIcon">
-
-         <Link to={'/cart'}><FiShoppingBag/> {cart.length}</Link></Nav>
-
+       
       </Container>
     </Navbar>
-  ))}
 </>
-    </div>
   )
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import Home from "./Home";
-import Cuisine from "./Cuisine";
+import Category from "./Category";
 import Searched from "./Searched";
 import Product from "./Product";
 import{ Route, Routes, useLocation } from 'react-router-dom';
@@ -22,8 +22,8 @@ function Pages({test2,setTest2, getStoredCart, setCart,   addToCart,cart, getCar
     // <AnimatePresence exitBeforeEnter>
         <Routes location={location} key={location.pathname}>
        <Route path="/" element={<Home addToCart={addToCart} allProducts={allProducts}/>}/>
-       <Route path="/cuisine/:type" element={<Cuisine />} />
-       <Route path="/searched/:search" element={<Searched addToCart={addToCart}/>} />
+       <Route path="/category/:type" element={<Category setTest2={setTest2} test2={test2} addToCart={addToCart} allProducts={allProducts} setAllProducts={setAllProducts} products={products} />} />
+       <Route path="/searched/:search" element={<Searched addToCart={addToCart} />} />
        <Route path="/product/:name" element={<Product setTest2={setTest2} test2={test2} addToCart={addToCart} allProducts={allProducts} setAllProducts={setAllProducts} products={products}/>} />
        <Route path="/shop/" element={<Shop allProducts={allProducts} addToCart={addToCart}/> } />
        <Route path="/order/:name" element={<Orders addToCart={addToCart}/>} />
