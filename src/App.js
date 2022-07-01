@@ -34,7 +34,7 @@ function App() {
       // sessionStorage.setItem('cartItems', JSON.stringify(cart));
       //     const newItem = sessionStorage.getItem('cartItems');
       //     console.log(JSON.parse(newItem));
-      addToDb(id.slug)
+      addToDb(id.id)
       localStorage.setItem("cartItems", JSON.stringify(newCart))
       // console.log(newCart);
       getCart();
@@ -67,9 +67,9 @@ const nnnn = JSON.parse(newCart)
 const savedCart = getStoredCart();
 const savedId = Object.keys(savedCart);
 
-const cartPd = savedId.map( slug => {
-  const product = nnnn.find( pd => pd.slug === slug)
-  product.abc = savedCart[slug];
+const cartPd = savedId.map( id => {
+  const product = nnnn.find( pd => pd.id.toString() === id)
+  product.abc = savedCart[id];
   return product
 } );
 
@@ -140,7 +140,7 @@ setCart(cartPd)
       <BrowserRouter>  
     <Header cart={cart}/>
      {/* <Category/> */}
-     <Pages  allProducts={allProducts} addToCart={addToCart} cart={cart} setCart={setCart} getCart={getCart} clearTheCart={clearTheCart} getStoredCart={getStoredCart} removeFromDb={removeFromDb} />
+     <Pages      products={products} allProducts={allProducts} addToCart={addToCart} cart={cart} setCart={setCart} getCart={getCart} clearTheCart={clearTheCart} getStoredCart={getStoredCart} removeFromDb={removeFromDb} />
      <ToastContainer />
       </BrowserRouter>
  

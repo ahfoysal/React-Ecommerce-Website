@@ -7,6 +7,9 @@ import axios from 'axios'
 
 function Recipe({addToCart, allProducts}) {
 
+
+
+
   let params = useParams();
   const [details , setDetails] = useState({});
   const [loading , setLoading] = useState(false);
@@ -15,28 +18,40 @@ function Recipe({addToCart, allProducts}) {
 
 
 const fetchDetails = () =>{
-  const check = sessionStorage.getItem(`${params.name}`)
-  if(check){
-    setDetails(JSON.parse(check))
-    setLoading(true)
+//   const check = sessionStorage.getItem(`${params.name}`)
+//   if(check){
+//     setDetails(JSON.parse(check))
+//     setLoading(true)
 
-  }else{  
+//   }else{  
 
-    axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products/${params.name}?${process.env.REACT_APP_KEY}`)
-    .then(data2 => { const data = data2
-      sessionStorage.setItem(`${params.name}`,JSON.stringify(data.data))
-      setDetails(data.data);
-      console.log(data.data);
-      setLoading(true)
-    })
-  }
+//     axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products/${params.name}?${process.env.REACT_APP_KEY}`)
+//     .then(data2 => { const data = data2
+//       sessionStorage.setItem(`${params.name}`,JSON.stringify(data.data))
+//       setDetails(data.data);
+//       // console.log(data.data);
+//       setLoading(true)
+//     })
+//   }
 
-};
+
+  const param = params.name
+  console.log(param);
+  const cartItems = allProducts.map((cart) => cart ).filter((val)=> {
+    return val.id === parseInt(param)
+    });
+  console.log(cartItems[0]);
+  setDetails(cartItems[0])
+        setLoading(true)
+  
+
+}
+
+
 
 useEffect(() => {
 
 fetchDetails();
-
  },[params.name]);
 
   return (

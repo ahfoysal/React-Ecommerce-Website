@@ -63,7 +63,7 @@ const total = cart.reduce((total, prd) => total + prd.price * prd.abc , 0)
                 <strong>{cart.price * cart.abc}</strong>
               </td>
               <td>
-                <button type="button"  onClick={() => removeFromDb(cart.slug)} >
+                <button type="button"  onClick={() => removeFromDb(cart.id)} >
                   <MdDelete size={20} color="#7159c1" />
                 </button>
               </td>
