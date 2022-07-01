@@ -20,7 +20,6 @@ function App() {
    useEffect(() => {
     products();
     getCart();
-    setTest2(true)
 
     }, [])
    const addToCart = (id) =>{
@@ -50,12 +49,16 @@ const products = () =>{
   const check = sessionStorage.getItem('AllItems')
       if(check){
         setAllProducts(JSON.parse(check))
+        setTest2(true)
+
       }else{  
           axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${process.env.REACT_APP_KEY}&per_page=100`)
         .then(data2 => { const data = data2
           sessionStorage.setItem('AllItems',JSON.stringify(data.data))
           setAllProducts(data.data)
           console.log(data);
+          setTest2(true)
+
         })
       }
 
