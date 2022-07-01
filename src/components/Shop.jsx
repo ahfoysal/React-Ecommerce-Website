@@ -4,50 +4,14 @@ import styled from 'styled-components';
 import {Link} from  'react-router-dom'
 // import { darken } from 'polished';
 // import api from '../pages/api';
-import axios from 'axios';
 
-
-function Shop(props) {
-  const addToCart = props.addToCart;
-
-  const [Common, setCommon] = useState([]);
-  
-  
-  useEffect(() => { 
-    products()
-        //   };
-          
-    
-  },[]);
-  const products = () =>{
-    const key =  'consumer_key=ck_f4414d18802ae452b45cd05a41cec38705a3ba5a&consumer_secret=cs_427628913e1aae762409b64e2a2e57e126fe7225';
-
-    
-        
-
-    const check = sessionStorage.getItem('shop')
-        if(check){
-          setCommon(JSON.parse(check))
-        }else{  
-    
-          axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${key}&per_page=20`)
-          .then(data2 => { const data = data2
-            sessionStorage.setItem('shop',JSON.stringify(data.data))
-
-            setCommon(data.data)
-            console.log(data);
-
-          })
-        }
-
-  }
+function Shop({addToCart, allProducts}) {
     return (
 <div className="container">
  
 <h3 className="head">Shop </h3>
-
         <ProductList  >
-        { Common.map(product => (
+        { allProducts.map(product => (
           <li className="product-con" key={product.id}>
           {/* <li key={product.id} > */}
             <Link to={'/product/'+product.id}>

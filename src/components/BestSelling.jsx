@@ -20,7 +20,7 @@ function Common(props) {
       setCommon(JSON.parse(check))
     }else{
 
-      const api = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${process.env.REACT_APP_KEY}&category=239&per_page=100`);
+      const api = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${process.env.REACT_APP_KEY}&category=242&per_page=100`);
       const data = await api.json();
       sessionStorage.setItem('common',JSON.stringify(data))
       setCommon(data);

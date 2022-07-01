@@ -46,7 +46,10 @@ const Header = (props) => {
           
           </Offcanvas.Body>
         </Navbar.Offcanvas>
+
         <Nav className="justify-content-end  cartIcon">
+        <Link to={'/shop'}>Shop</Link>
+
          <Link to={'/cart'}><FiShoppingBag/> {cart.length}</Link></Nav>
       </Container>
     </Navbar>

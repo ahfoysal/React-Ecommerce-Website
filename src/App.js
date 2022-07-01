@@ -6,15 +6,20 @@ import { useState , useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+
 
 
 
  
 function App() {
    const [cart , setCart] = useState([]);
-
+   const [allProducts, setAllProducts] = useState([]);
+   useEffect(() => {
+    products();
+    getCart();
+    }, [])
    const addToCart = (id) =>{
-
     const newCart = [...cart, id];
     setCart(newCart);
     toast.success('🛒 Added to cart', {
@@ -31,14 +36,27 @@ function App() {
       //     console.log(JSON.parse(newItem));
       addToDb(id.slug)
       localStorage.setItem("cartItems", JSON.stringify(newCart))
-      console.log(newCart);
+      // console.log(newCart);
       getCart();
 
   }
   
-useEffect(() => {
-getCart();
-}, [])
+
+const products = () =>{
+  const check = sessionStorage.getItem('AllItems')
+      if(check){
+        setAllProducts(JSON.parse(check))
+      }else{  
+          axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${process.env.REACT_APP_KEY}&per_page=100`)
+        .then(data2 => { const data = data2
+          sessionStorage.setItem('AllItems',JSON.stringify(data.data))
+          setAllProducts(data.data)
+          console.log(data);
+        })
+      }
+
+}
+
 
 const getCart = () => {
   
@@ -55,7 +73,7 @@ const cartPd = savedId.map( slug => {
   return product
 } );
 
-console.log(cartPd);
+// console.log(cartPd);
 setCart(cartPd)
 
 
@@ -122,7 +140,7 @@ setCart(cartPd)
       <BrowserRouter>  
     <Header cart={cart}/>
      {/* <Category/> */}
-     <Pages addToCart={addToCart} cart={cart} setCart={setCart} getCart={getCart} clearTheCart={clearTheCart} getStoredCart={getStoredCart} removeFromDb={removeFromDb} />
+     <Pages  allProducts={allProducts} addToCart={addToCart} cart={cart} setCart={setCart} getCart={getCart} clearTheCart={clearTheCart} getStoredCart={getStoredCart} removeFromDb={removeFromDb} />
      <ToastContainer />
       </BrowserRouter>
  

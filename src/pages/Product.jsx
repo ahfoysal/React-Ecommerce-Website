@@ -5,8 +5,7 @@ import React from 'react'
 import * as ReactBootstrap from 'react-bootstrap'
 import axios from 'axios'
 
-function Recipe(props) {
-  const addToCart = props.addToCart;
+function Recipe({addToCart, allProducts}) {
 
   let params = useParams();
   const [details , setDetails] = useState({});
@@ -36,24 +35,8 @@ const fetchDetails = () =>{
 
 useEffect(() => {
 
-//  const key =  'consumer_key=ck_f4414d18802ae452b45cd05a41cec38705a3ba5a&consumer_secret=cs_427628913e1aae762409b64e2a2e57e126fe7225';
-
-//  axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products/${params.name}?${key}`)
-//  .then(data2 => {
-//   const rslt = data2;
-//   console.log(rslt)
-
-//   })
-//  setImage(data2.data.images[0].src);
-// .then(data3 => setImage(data3.data.images[0].src))
-// .then(data4 => console.log(data4.data))
-//  setLoading(true)
-
- 
-  
-
 fetchDetails();
- 
+
  },[params.name]);
 
   return (
