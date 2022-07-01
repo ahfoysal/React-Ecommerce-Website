@@ -7,7 +7,7 @@ import {useParams} from 'react-router-dom';
 
 
 
-function Cuisine({test2, addToCart, allProducts, setAllProducts, setTest2}) {
+function Cuisine({test2, addToCart, allProducts}) {
 
   let paramss = useParams();
   const [category , setCategory] = useState([]);

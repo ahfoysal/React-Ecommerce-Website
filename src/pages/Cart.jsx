@@ -6,7 +6,7 @@ import './Checkout.css'
 
 
 
-const Cart = ({cart, clearTheCart, removeFromDb}) => {
+const Cart = ({updateDb, getDb, cart, clearTheCart, removeFromDb, getCart }) => {
   ////props
   const navigate = useNavigate();
 /////state
@@ -19,6 +19,49 @@ const ProceedtoPayment = () => {
 const total = cart.reduce((total, prd) => total + prd.price * prd.abc , 0)
 
 // const subTotal = cart.reduce(( prd) =>   parseInt(prd.price) * prd.abc )
+
+// const subTotal = cart.reduce(( prd) =>   parseInt(prd.price) * prd.abc )
+const incrs = (id) => {
+  const exists = getDb();
+    let shopping_cart = {};
+    if (!exists) {
+      shopping_cart[id] = 1;
+    } 
+    else {
+      shopping_cart = JSON.parse(exists);
+      if (shopping_cart[id]) {
+        const newCount = shopping_cart[id] + 1;
+        shopping_cart[id] = newCount;
+      }
+      else {
+        shopping_cart[id] = 1;
+      }
+      updateDb(shopping_cart);
+    console.log(shopping_cart);
+    }
+    getCart()
+}
+const dcrs = (id) => {
+  const exists = getDb();
+    let shopping_cart = {};
+    if (!exists) {
+      shopping_cart[id] = 1;
+    } 
+    else {
+      shopping_cart = JSON.parse(exists);
+      if (shopping_cart[id] & shopping_cart[id] > 1) {
+        const newCount = shopping_cart[id] - 1 ;
+        shopping_cart[id] = newCount;
+      }
+      else {
+        shopping_cart[id] = 1;
+      }
+      updateDb(shopping_cart);
+    console.log(shopping_cart);
+    }
+    getCart()
+
+}
 
 
   return (
@@ -34,7 +77,7 @@ const total = cart.reduce((total, prd) => total + prd.price * prd.abc , 0)
         </thead>
         <tbody>
         {cart.map((cart, index) => (
-              <tr key={`${index+1}`}>
+              <tr key={`${cart.id}`}>
               <td>
                 <img
                 src={cart.images[0].src}
@@ -48,10 +91,10 @@ const total = cart.reduce((total, prd) => total + prd.price * prd.abc , 0)
               <td>
                 <div>
                   <button type="button" >
-                    <MdRemoveCircleOutline size={20} color="#7159c1"/>
+                    <MdRemoveCircleOutline size={20} color="#7159c1" onClick={() => dcrs(cart.id)} />
                   </button>
                   <input type="number" readOnly value={`${cart.abc}`} />
-                  <button type="button"  >
+                  <button type="button"  onClick={() => incrs(cart.id)} >
                     <MdAddCircleOutline size={20} color="#7159c1"/>
                   </button>
                 </div>

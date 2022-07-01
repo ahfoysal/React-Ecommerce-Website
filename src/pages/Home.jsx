@@ -1,7 +1,7 @@
 import Featured from "../components/Featured";
 import Common from "../components/BestSelling";
-import Shop from "../components/Shop";
 import {motion} from 'framer-motion';
+
   function Home({addToCart, allProducts}) {
 
   return (

@@ -147,7 +147,7 @@ setCart(cartPd)
       <BrowserRouter>  
     <Header cart={cart}/>
      {/* <Category/> */}
-     <Pages   setTest2={setTest2} test2={test2}   products={products} allProducts={allProducts} setAllProducts={setAllProducts} addToCart={addToCart} cart={cart} setCart={setCart} getCart={getCart} clearTheCart={clearTheCart} getStoredCart={getStoredCart} removeFromDb={removeFromDb} />
+     <Pages updateDb={updateDb} getDb={getDb}      setTest2= {setTest2} test2={test2}   products={products} allProducts={allProducts} setAllProducts={setAllProducts} addToCart={addToCart} cart={cart} setCart={setCart} getCart={getCart} clearTheCart={clearTheCart} getStoredCart={getStoredCart} removeFromDb={removeFromDb} />
      <ToastContainer />
       </BrowserRouter>
  
