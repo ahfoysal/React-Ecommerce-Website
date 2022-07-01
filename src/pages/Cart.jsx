@@ -2,7 +2,7 @@ import React, {  useEffect, useState } from 'react'
 import { Container, ProductTable, Total } from './styles';
 import { MdRemoveCircleOutline, MdAddCircleOutline, MdDelete } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import './Cart.css'
+import './Checkout.css'
 
 
 
@@ -131,11 +131,13 @@ const total = cart.reduce((total, prd) => total + prd.price * prd.abc , 0)
   </svg>
 </button>
 
+
         <Total>
           <span>TOTAL</span>
           <strong>{total}</strong>
         </Total>
       </footer>
+      {isContainerActive ? <h3 class="head">Thank You For Your Order.</h3> : ""}
 
 
 
