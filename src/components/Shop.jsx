@@ -60,7 +60,7 @@ function Shop(props) {
 
             <button type="button" onClick={() => addToCart(product) } >
               <div>
-                <MdAddShoppingCart size={16} color="#FFF" /> {' 0'}
+                <MdAddShoppingCart size={16} color="#FFF" /> 
 
               </div>
 

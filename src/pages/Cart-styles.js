@@ -96,3 +96,4 @@ export const Total = styled.div`
 
 `;
 
+

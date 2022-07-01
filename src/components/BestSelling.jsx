@@ -11,8 +11,8 @@ function Common(props) {
   const [Common, setCommon] = useState([]);
   useEffect(() => {
     getCommon();
+    // console.log(process.env)
   }, []);
-  const key =  'consumer_key=ck_f4414d18802ae452b45cd05a41cec38705a3ba5a&consumer_secret=cs_427628913e1aae762409b64e2a2e57e126fe7225';
 
   const getCommon = async () => {
     const check = sessionStorage.getItem('common')
@@ -20,7 +20,7 @@ function Common(props) {
       setCommon(JSON.parse(check))
     }else{
 
-      const api = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${key}&category=239&per_page=100`);
+      const api = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${process.env.REACT_APP_KEY}&category=239&per_page=100`);
       const data = await api.json();
       sessionStorage.setItem('common',JSON.stringify(data))
       setCommon(data);

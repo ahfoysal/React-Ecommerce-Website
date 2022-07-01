@@ -7,8 +7,9 @@ import{ Route, Routes, useLocation } from 'react-router-dom';
 import {AnimatePresence} from 'framer-motion';
 import Cart from './Cart';
 import Orders from './Orders';
+import Checkout from './Checkout';
 
-function Pages({getStoredCart, setCart, setCart2,  addToCart,cart, getCart, clearTheCart, removeFromDb }) {
+function Pages({getStoredCart, setCart,   addToCart,cart, getCart, clearTheCart, removeFromDb }) {
   const location = useLocation();
   // const setCart = props.setCart
 
@@ -25,7 +26,9 @@ function Pages({getStoredCart, setCart, setCart2,  addToCart,cart, getCart, clea
        <Route path="/product/:name" element={<Product addToCart={addToCart}/>} />
        <Route path="/order/:name" element={<Orders addToCart={addToCart}/>} />
 
-       <Route path="/cart" element={<Cart getStoredCart={getStoredCart} cart={cart} setCart={setCart} clearTheCart={clearTheCart} getCart={getCart} setCart2={setCart2} removeFromDb={removeFromDb}/>} />
+       <Route path="/cart" element={<Cart getStoredCart={getStoredCart} cart={cart} setCart={setCart} clearTheCart={clearTheCart} getCart={getCart} removeFromDb={removeFromDb}/>} />
+       <Route path="/checkout" element={<Checkout getStoredCart={getStoredCart} cart={cart} setCart={setCart} clearTheCart={clearTheCart} getCart={getCart} removeFromDb={removeFromDb}/>} />
+
 
 
 

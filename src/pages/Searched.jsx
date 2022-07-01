@@ -14,10 +14,9 @@ function Searched(props) {
     const [loading , setLoading] = useState(true);
 
     let params = useParams();
-    const key = 'consumer_key=ck_f4414d18802ae452b45cd05a41cec38705a3ba5a&consumer_secret=cs_427628913e1aae762409b64e2a2e57e126fe7225';
 
     const getSearched = async (name) => {
-    const data = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?search=${name}&${key}&per_page=20`);
+    const data = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?search=${name}&${process.env.REACT_APP_KEY}&per_page=20`);
     const recipes = await data.json();
     console.log(recipes)
     setLoading(false)
