@@ -1,34 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion'
-import {Link, useParams} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import axios from 'axios'
 import { MdAddShoppingCart } from 'react-icons/md';
+import {useParams} from 'react-router-dom';
+
 
 
 function Cuisine({test2, addToCart, allProducts, setAllProducts, setTest2}) {
 
-
-
-
-  let params = useParams();
-  const [category , setCategory] = useState({});
-  const [loading , setLoading] = useState(false);
+  let paramss = useParams();
+  const [category , setCategory] = useState([]);
 
 
 useEffect(() => { 
-  // fetchDetails()
-  const cartItems = allProducts.map((cart)=> {
-    return cart.categories.map(cat => (cart)).filter((val)=> {
-      return val.categories[0].id === 239
-      });
-    // .filter((val)=> {
-    //   return 
-    //   }); 
-    });
-  console.log(cartItems);
-  setCategory(cartItems)
-  console.log(category)
+  fetchDetails()
+  
+  
 },[])
 
 
@@ -37,30 +25,31 @@ const fetchDetails = () =>{
  
   if(test2 === true){
 
-    const param = params.name
-    console.log(param);
-    const cartItems = allProducts.map((cart) => cart ).filter((val)=> {
-      return val.categories.map(cat => ( cat.name)) 
+    const param = paramss.name
+
+    const cartItems = allProducts.map((cart)=> {
+      return cart.categories.map(cat => (cart)).filter((val)=> {
+        return val.categories[0].id === parseInt(param)
+            });
+     
       });
     console.log(cartItems);
-    setCategory(cartItems)
-          setLoading(true)
+    const merged = [].concat.apply([], cartItems);
+    let uniqueChars = [...new Set(merged)];
+  console.log(uniqueChars);
+    setCategory(uniqueChars)
+    console.log(category)
     
+  console.log(paramss.name)
   
   }else{  
 
-
-    axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products/${params.name}?${process.env.REACT_APP_KEY}`)
+    axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${process.env.REACT_APP_KEY}&category=${paramss.name}`)
     .then(data2 => { const data = data2
-      sessionStorage.setItem(`${params.name}`,JSON.stringify(data.data))
+      sessionStorage.setItem(`${paramss.name}`,JSON.stringify(data.data))
       setCategory(data.data);
-      // console.log(data.data);
-      setLoading(true)
-      setTest2(true)
-
-      console.log(test2)
-
     })
+    
   }
 
 
@@ -73,10 +62,9 @@ const fetchDetails = () =>{
 
   return (
     <ProductList  >
-
-        { allProducts.map(product => (
+      
+        { category.map(product => (
           <li className="product-con" key={product.id}>
-          {/* <li key={product.id} > */}
             <Link to={'/product/'+product.id}>
    <img
               src={product.images[0].src}

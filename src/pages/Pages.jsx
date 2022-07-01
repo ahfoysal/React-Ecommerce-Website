@@ -22,7 +22,7 @@ function Pages({test2,setTest2, getStoredCart, setCart,   addToCart,cart, getCar
     // <AnimatePresence exitBeforeEnter>
         <Routes location={location} key={location.pathname}>
        <Route path="/" element={<Home addToCart={addToCart} allProducts={allProducts}/>}/>
-       <Route path="/category/:type" element={<Category setTest2={setTest2} test2={test2} addToCart={addToCart} allProducts={allProducts} setAllProducts={setAllProducts} products={products} />} />
+       <Route path="/category/:name" element={<Category setTest2={setTest2} test2={test2} addToCart={addToCart} allProducts={allProducts} setAllProducts={setAllProducts} products={products} />} />
        <Route path="/searched/:search" element={<Searched addToCart={addToCart} />} />
        <Route path="/product/:name" element={<Product setTest2={setTest2} test2={test2} addToCart={addToCart} allProducts={allProducts} setAllProducts={setAllProducts} products={products}/>} />
        <Route path="/shop/" element={<Shop allProducts={allProducts} addToCart={addToCart}/> } />

@@ -11,13 +11,13 @@ function Recipe({test2, addToCart, allProducts, setAllProducts, setTest2}) {
 
 
   let params = useParams();
-  const [details , setDetails] = useState({});
+  const [details , setDetails] = useState([]);
   const [loading , setLoading] = useState(false);
 
 
 useEffect(() => { 
   fetchDetails()
-
+  console.log(params.name)
 },[])
 
 
