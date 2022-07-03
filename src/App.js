@@ -19,14 +19,10 @@ function App() {
    const [test2 , setTest2] = useState(false);
 
    useEffect(() => {
-  
-      console.log(prd); 
-            setAllProducts(prd)
-
-    products();
     getCart();
-
-
+      console.log(prd); 
+  setAllProducts(prd)
+  gteProducts();
     }, [])
    const addToCart = (id) =>{
     const newCart = [...cart, id];
@@ -51,7 +47,7 @@ function App() {
   }
   
 
-const products = () =>{
+const gteProducts = () =>{
   const check = sessionStorage.getItem('AllItems')
       if(check){
         setAllProducts(JSON.parse(check))
@@ -67,7 +63,6 @@ const products = () =>{
 
         })
       }
-
 }
 
 
@@ -151,9 +146,9 @@ setCart(cartPd)
     <div className="App">
       
       <BrowserRouter>  
-    <Header cart={cart}/>
+    <Header cart={cart} test2={test2}/>
      {/* <Category/> */}
-     <Pages updateDb={updateDb} getDb={getDb}      setTest2= {setTest2} test2={test2}   products={products} allProducts={allProducts} setAllProducts={setAllProducts} addToCart={addToCart} cart={cart} setCart={setCart} getCart={getCart} clearTheCart={clearTheCart} getStoredCart={getStoredCart} removeFromDb={removeFromDb} />
+     <Pages updateDb={updateDb} getDb={getDb}      setTest2= {setTest2} test2={test2}   products={gteProducts} allProducts={allProducts} setAllProducts={setAllProducts} addToCart={addToCart} cart={cart} setCart={setCart} getCart={getCart} clearTheCart={clearTheCart} getStoredCart={getStoredCart} removeFromDb={removeFromDb} />
      <ToastContainer />
       </BrowserRouter>
  

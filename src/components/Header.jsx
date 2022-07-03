@@ -1,6 +1,5 @@
 import React from 'react'
-import {useEffect} from 'react';
-import {Container, Navbar, Offcanvas, Nav} from 'react-bootstrap'
+import {Container, Navbar} from 'react-bootstrap'
 import {Link} from 'react-router-dom';
 import Search from "./Search";
 // import NewSearch from  './NewSearch';
@@ -12,13 +11,7 @@ import './header.css'
 
 
 
-const Header = (props) => {
-  const cart = props.cart;
-  // console.log(props);
-  const total = cart.reduce((total, prd) => total + JSON.parse(prd.price), 0)
-    useEffect(() => {
-      }, []);
-      
+const Header = ({cart, test2}) => {
 
 // console.log(cart);
   
