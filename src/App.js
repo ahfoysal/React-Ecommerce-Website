@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import prd from './pages/products.json'
 
 
 
@@ -18,6 +19,10 @@ function App() {
    const [test2 , setTest2] = useState(false);
 
    useEffect(() => {
+  
+      console.log(prd); 
+            setAllProducts(prd)
+
     products();
     getCart();
 
