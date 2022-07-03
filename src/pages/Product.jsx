@@ -17,7 +17,14 @@ function Recipe({test2, addToCart, allProducts, setAllProducts, setTest2}) {
 
 useEffect(() => { 
   fetchDetails()
-  console.log(params.name)
+  axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products/${params.name}/variations?${process.env.REACT_APP_KEY}`)
+    .then(data2 => { const data = data2
+      const data3 = data.data.map(prd => prd.attributes.map(pr => pr.option))
+
+      console.log(data.data)
+      console.log(data3)
+
+      ;})
 },[])
 
 
@@ -27,11 +34,9 @@ const fetchDetails = () =>{
   if(test2 === true){
 
     const param = params.name
-    console.log(param);
     const cartItems = allProducts.map((cart) => cart ).filter((val)=> {
       return val.id === parseInt(param)
       });
-    console.log(cartItems[0]);
     setDetails(cartItems[0])
           setLoading(true)
     
@@ -43,13 +48,14 @@ const fetchDetails = () =>{
     .then(data2 => { const data = data2
       sessionStorage.setItem(`${params.name}`,JSON.stringify(data.data))
       setDetails(data.data);
-      // console.log(data.data);
+      console.log(data.data);
       setLoading(true)
       setTest2(true)
 
-      console.log(test2)
+      
 
     })
+    
   }
 
 

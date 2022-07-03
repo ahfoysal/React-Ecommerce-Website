@@ -49,18 +49,22 @@ const dcrs = (id) => {
     } 
     else {
       shopping_cart = JSON.parse(exists);
-      if (shopping_cart[id] & shopping_cart[id] > 1) {
+      if (shopping_cart[id] > 1) {
         const newCount = shopping_cart[id] - 1 ;
         shopping_cart[id] = newCount;
       }
+      
       else {
-        shopping_cart[id] = 1;
-      }
+        testCart(id)
+            }
       updateDb(shopping_cart);
     console.log(shopping_cart);
     }
     getCart()
-
+}
+const testCart = (id) => {
+    console.log(id)
+    removeFromDb(id)
 }
 
 

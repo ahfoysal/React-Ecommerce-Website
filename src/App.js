@@ -21,6 +21,7 @@ function App() {
     products();
     getCart();
 
+
     }, [])
    const addToCart = (id) =>{
     const newCart = [...cart, id];

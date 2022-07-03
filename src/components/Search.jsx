@@ -23,7 +23,7 @@ const [visible, setVisible] = useState(true);
     setWidth(window.innerWidth);
   };
   useEffect(() => {
-    console.log(visible);
+    // console.log(visible);
     window.addEventListener("resize", handleWidth);
     width <= 600 ? setVisible(false) : setVisible(true);
     return () => {

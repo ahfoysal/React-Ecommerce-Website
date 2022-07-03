@@ -33,14 +33,21 @@ const fetchDetails = () =>{
             });
      
       });
-    console.log(cartItems);
+    // console.log(cartItems);
     const merged = [].concat.apply([], cartItems);
     let uniqueChars = [...new Set(merged)];
-  console.log(uniqueChars);
+  // console.log(uniqueChars);
     setCategory(uniqueChars)
-    console.log(category)
+    // console.log(category)
     
-  console.log(paramss.name)
+  // console.log(paramss.name)
+  
+  const cartItems2 = allProducts.map((cart2)=> {
+    return cart2.categories.map(cat => (cart2))
+   
+        });
+       
+        console.log(cartItems2);
   
   }else{  
 

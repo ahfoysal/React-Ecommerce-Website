@@ -7,8 +7,7 @@ import * as ReactBootstrap from 'react-bootstrap'
 
 
 
-function Searched(props) {
-  const addToCart = props.addToCart;
+function Searched({addToCart, allProducts}) {
 
     const [searchedRecipes, setSearchedRecipes] = useState([]);
     const [loading , setLoading] = useState(true);
@@ -18,13 +17,16 @@ function Searched(props) {
     const getSearched = async (name) => {
     const data = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?search=${name}&${process.env.REACT_APP_KEY}&per_page=20`);
     const recipes = await data.json();
-    console.log(recipes)
+    // console.log(recipes)
     setLoading(false)
 
     setSearchedRecipes(recipes)
   };
   useEffect(() => {
 getSearched(params.search);
+
+const cartItems = allProducts.map((cart) => cart.name )
+console.log(cartItems.includes("shoe"));
   
 },[params.search]);
   return (
