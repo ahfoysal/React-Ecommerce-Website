@@ -45,7 +45,7 @@ const Checkout = ({cart, setCart}) => {
         body: body1.concat(' ', body2),
         redirect: 'follow'
       };
-      fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/orders?${process.env.REACT_APP_KEY}`, requestOptions)
+      fetch(`https://shop.abusayeeed.xyz/wp/wp-json/wc/v3/orders?${process.env.REACT_APP_KEY}`, requestOptions)
         .then(response => response.json())
         .then(result => {
           const rslt = result;
