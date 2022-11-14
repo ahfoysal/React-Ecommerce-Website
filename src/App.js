@@ -54,7 +54,7 @@ const gteProducts = () =>{
         setTest2(true)
 
       }else{  
-          axios(`https://shop.abusayeeed.xyz/wp/wp-json/wc/v3/products?${process.env.REACT_APP_KEY}&per_page=100`)
+          axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/products?${process.env.REACT_APP_KEY}&per_page=100`)
         .then(data2 => { const data = data2
           sessionStorage.setItem('AllItems',JSON.stringify(data.data))
           setAllProducts(data.data)
