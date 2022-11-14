@@ -23,7 +23,7 @@ function Popular(props) {
           setPopular(JSON.parse(check))
         }else{  
     
-          axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/products?${process.env.REACT_APP_SHOP_LINK}&category=37`)
+          axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/products?${process.env.REACT_APP_KEY}&category=37`)
           .then(data2 => { const data = data2
             sessionStorage.setItem('popular',JSON.stringify(data.data))
 
