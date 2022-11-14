@@ -23,7 +23,7 @@ const fetchDetails = () =>{
 
   }else{  
 
-    axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/orders/${params.name}?${key}`)
+    axios(`https://shop.abusayeeed.xyz/wp/wp-json/wc/v3/orders/${params.name}?${key}`)
     .then(data2 => { const data = data2
       sessionStorage.setItem(`${params.name}`,JSON.stringify(data.data))
       setDetails(data.data);
