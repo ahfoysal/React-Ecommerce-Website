@@ -16,8 +16,8 @@ function Recipe({test2, addToCart, allProducts, setAllProducts, setTest2}) {
 
 
 useEffect(() => { 
-  fetchDetails()
-  axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products/${params.name}/variations?${process.env.REACT_APP_KEY}`)
+  fetchDetails()Y
+  axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/products/${params.name}/variations?${process.env.REACT_APP_KEY}`)
     .then(data2 => { const data = data2
       const data3 = data.data.map(prd => prd.attributes.map(pr => pr.option))
 
