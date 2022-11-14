@@ -51,7 +51,7 @@ const fetchDetails = () =>{
   
   }else{  
 
-    axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${process.env.REACT_APP_KEY}&category=${paramss.name}`)
+    axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/products?${process.env.REACT_APP_KEY}&category=${paramss.name}`)
     .then(data2 => { const data = data2
       sessionStorage.setItem(`${paramss.name}`,JSON.stringify(data.data))
       setCategory(data.data);
