@@ -15,7 +15,7 @@ function Searched({addToCart, allProducts}) {
     let params = useParams();
 
     const getSearched = async (name) => {
-    const data = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?search=${name}&${process.env.REACT_APP_KEY}&per_page=20`);
+    const data = await fetch(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/products?search=${name}&${process.env.REACT_APP_KEY}&per_page=20`);
     const recipes = await data.json();
     // console.log(recipes)
     setLoading(false)
