@@ -23,7 +23,7 @@ function Popular(props) {
           setPopular(JSON.parse(check))
         }else{  
     
-          axios(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${key}&tag=67`)
+          axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/products?${key}&category=37`)
           .then(data2 => { const data = data2
             sessionStorage.setItem('popular',JSON.stringify(data.data))
 
@@ -49,7 +49,7 @@ function Popular(props) {
 //       setPopular(JSON.parse(check))
 //     }else{  
 
-//       const api = await fetch(`https://shop-api.cloudaccess.host/wp-json/wc/v3/products?${key}&tag=67`);
+//       const api = await fetch(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/products?${key}&tag=67`);
 //       const data = await api.json();
 // localStorage.setItem('popular',JSON.stringify(data))
 //       setPopular(data);
