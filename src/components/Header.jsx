@@ -20,7 +20,7 @@ const Header = ({cart, test2}) => {
     <Navbar className="mb-3 bg-white"  fixed="top">
       <Container fluid>
         <Navbar.Brand ><Link to={'/'}>
-               <h3 className="logo">Footware</h3>  </Link>  </Navbar.Brand>
+               <h3 className="logo">Pewds Merch</h3>  </Link>  </Navbar.Brand>
                <div className="head-conatiner ">
                   <div ><Search />
                   </div>
