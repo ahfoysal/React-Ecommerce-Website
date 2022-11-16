@@ -72,10 +72,12 @@ const fetchDetails = () =>{
     <DetailsWrapper>
 {
   loading ? 
-
-  
+  <div>
+     <p className='product_price'>Back</p>
   <div className='container productpage'>
+
     <div className='productpage-image'>
+  
       <img src={details.images[0].src} alt={details.name} />
     </div>
 <Info> 
@@ -96,7 +98,9 @@ const fetchDetails = () =>{
 
 
 
-</Info></div>
+</Info> </div> 
+<div className='container simmmilar'> <p>You might also like  </p> </div>
+</div>
 
 :<div className="spinnerdiv"><ReactBootstrap.Spinner animation="border" /> </div>}
     
