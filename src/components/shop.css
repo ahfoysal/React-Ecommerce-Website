@@ -16,4 +16,38 @@
     width: fit-content;
     color: #1a1a2c;
     word-spacing: 30px;
+    display: inline-block;
+}
+
+.product__name {
+
+    overflow: hidden;
+    font-size: 1.12rem;
+    color: black;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  
+
+    line-height: 1.5em;
+    height: 3em;
+    overflow: hidden;
+
+
+}
+.product__price {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: black;
+    display: inline-block;
+    float: left;
+    
+}
+
+
+.product__rating {
+    color: black;
+    display: inline-block;
+    float: right;
+    font-size: 1.05rem;
 }

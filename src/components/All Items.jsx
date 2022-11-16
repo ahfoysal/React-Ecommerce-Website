@@ -13,9 +13,9 @@ function Producsts({addToCart, allProducts}) {
   }, []);
   
     return (
-<div className="container">
+<div className="gridd">
  
-<h3 className="allitems">All Items </h3>
+<h3 className="allitem container">All Items </h3>
 
         <ProductList  >
     
@@ -30,8 +30,10 @@ function Producsts({addToCart, allProducts}) {
             />
            {product.categories.map(pro =>
            <p className="product__category">  {pro.name} </p>)}
-            <strong>{product.name }</strong>
-            <p>{product.price}</p></Link>
+            <p className="product__name">{product.name }</p>
+            <p className="product__price">৳{product.price}</p>
+            <p className="product__rating">✨0</p></Link>
+           
 
             <button type="button" onClick={() => addToCart(product) } >
               <div>
@@ -39,7 +41,7 @@ function Producsts({addToCart, allProducts}) {
 
               </div>
 
-              <span>ADD TO CART</span>
+              <span>Add To Cart</span>
             </button>
           </li>
         )) }
@@ -49,7 +51,7 @@ function Producsts({addToCart, allProducts}) {
   }
   const ProductList = styled.ul`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
   list-style: none;
   @media screen and (max-width: 800px) {
@@ -84,13 +86,13 @@ function Producsts({addToCart, allProducts}) {
     }
 
     button {
-      background: #7159c1;
+      background: #f90;
       color: #fff;
       border: 0;
       border-radius: 4px;
       overflow: hidden;
       margin-top: auto;
-
+      margin: 0px 8%;
       display: flex;
       align-items: center;
       transition: background 0.2s;
@@ -112,8 +114,15 @@ function Producsts({addToCart, allProducts}) {
 
       span {
         flex: 1;
-        text-align: center;
-        font-weight: bold;
+        border: none;
+        color: #fff;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        font-weight: 700;
+        transition: all .2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }

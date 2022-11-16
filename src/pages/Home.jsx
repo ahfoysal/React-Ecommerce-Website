@@ -17,9 +17,10 @@ import Banner from "../components/banner";
     >
       {/* <Shop /> */}
       <Banner addToCart={addToCart}/>
+      <Featured addToCart={addToCart}/>
       <Producsts allProducts={allProducts} addToCart={addToCart}/>
       
-        <Featured addToCart={addToCart}/>
+      
         <Common addToCart={addToCart}/>
 
     </motion.div>
