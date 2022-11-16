@@ -75,17 +75,19 @@ const fetchDetails = () =>{
 
   
   <div className='container productpage'>
-  <div className='productpage-image'>
-  <img src={details.images[0].src} alt={details.name} />
-</div>
+    <div className='productpage-image'>
+      <img src={details.images[0].src} alt={details.name} />
+    </div>
 <Info> 
-<h2>{details.name}</h2>
+<h1>{details.name}</h1>
   
       <div>    
-<h3 dangerouslySetInnerHTML={{ __html: details.short_description }} ></h3>
-<h3 dangerouslySetInnerHTML={{ __html: details.description }} ></h3>
-<div className="btn">
-       <button className="buy-btn" onClick={() => addToCart(details)}>Add To Cart</button>
+<span dangerouslySetInnerHTML={{ __html: details.short_description }} ></span>
+
+<p className='product_price'>৳{details.price}</p>
+{/* <span dangerouslySetInnerHTML={{ __html: details.description }} ></span> */}
+<div className="btn ">
+       <button className="buy-btn pp-btn" onClick={() => addToCart(details)}>Add To Cart</button>
         </div>
 
   </div>
@@ -104,9 +106,9 @@ const fetchDetails = () =>{
 }
 
 const DetailsWrapper = styled.div`
-margin-top: 10rem;
-margin-bottom: 5rem;
-display: flex;
+margin-top: 0rem;
+margin-bottom: 0rem;
+
 
 
 .active{
@@ -142,9 +144,9 @@ margin-right: 2rem;
 font-weight: 600;
 `;
 const Info = styled.div`
-margin-top: 4rem;
+margin-top: 0rem;
 
-margin-left: 5rem;
+margin-left: 2rem;
 
 `;
 

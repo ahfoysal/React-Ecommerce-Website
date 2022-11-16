@@ -60,7 +60,7 @@ function Common(props) {
 <p dangerouslySetInnerHTML={{ __html: product.short_description }}></p>
 <div className="price">৳{product.price}</div>
 </div> </Link>
-<div className="btn">
+<div className="btn ppbtn">
 <button className="buy-btn" onClick={() => addToCart(product)}>Add to Cart</button>
 </div>
 </SplideSlide>

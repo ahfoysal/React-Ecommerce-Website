@@ -39,12 +39,29 @@ padding-top: 0px !important;
 .productpage{
   display: flex;
 }
-.productpage-image {
-  height: 600px;
-  width: 500px;
+.productpage-image img{
+  height: 622px !important;
+  width: 422px !important;
   object-fit: contain;
 } 
-
+.productpage h1{
+  font-size: 1.25rem;
+  font-weight: 800;
+} 
+.productpage span{
+  font-size: 16px !important;
+  font-weight: 400 !important;
+padding: 2rem 3rem 3rem 0rem;
+display: flex;
+flex-flow: column nowrap;
+margin: 0;
+font-family: "Nunito Sans",sans-serif;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+color: black;
+overflow: hidden;
+    height: 400px;
+}
 .allitems {
     font-size: 40px;
     font-family: 'Lobster Two', cursive;;
@@ -55,6 +72,7 @@ padding-top: 0px !important;
     
    
 }
+
 
  .productpage-image img{
   height: 100%;

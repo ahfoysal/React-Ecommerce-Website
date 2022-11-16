@@ -56,9 +56,7 @@
 
 
 
-.product-info {
-    text-align: center;
-}
+
 
 .banner:hover .product-image {
     transform: translate(-1.5rem, -2rem) rotate(-20deg);
@@ -78,38 +76,4 @@
 .price {
     font-size: 1.2rem;
     font-weight: 500;
-}
-
-.btn {
-    display: flex !important;
-    justify-content: space-evenly !important;
-    align-items: center !important;
-    margin-top: 0.8rem !important;
-}
-
-.buy-btn {
-    background-color: var(--btn);
-    padding: 0.6rem 3.5rem !important;
-    font-weight: 600 !important;
-    font-size: 1rem !important;
-    transition: 300ms ease !important;
-    border: none !important;
-    color: white;
-}
-
-.buy-btn:hover {
-    background-color: var(--btn-hover);
-}
-@media screen and (max-width: 800px) {
-    .container {
-        padding: 2rem 0;
-        width: 100%;
-        flex-direction: column;
-        gap: 3rem;
-    }
-}
-
-.mt-50{
-    margin-top: 80px;
-    
 }

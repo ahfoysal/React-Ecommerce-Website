@@ -18,13 +18,21 @@
     word-spacing: 30px;
     display: inline-block;
 }
-
+.gridd {
+margin: 10px;
+}
+.product_price {
+    font-weight: 900;
+    margin: 0 0.5rem 0 0;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
 .product__name {
 
     overflow: hidden;
     font-size: 1.12rem;
     color: black;
-    margin-top: 0;
+    margin-top: 0px;
     margin-bottom: 0.5rem;
     font-weight: 700;
   
@@ -50,4 +58,15 @@
     display: inline-block;
     float: right;
     font-size: 1.05rem;
+}
+.pp-btn {
+    border: none;
+    
+    border-radius: 0.5rem !important;
+    font-weight: 700;
+    transition: all .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f90;
 }
