@@ -115,9 +115,9 @@ margin-bottom: 0rem;
 background: linear-gradient(35deg, #494949, #313131);
 color: white;
 }
-h2{
+h1{
 margin-bottom: 2rem;
-margin-top: 1rem;
+padding-top: 20%;
 }
 h2{
   font-size: 1rem;
