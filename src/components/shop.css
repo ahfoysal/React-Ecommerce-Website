@@ -3,3 +3,17 @@
     color: black;
     padding: 20px 20px;
 }
+.product__category {
+    padding: 0.25rem 0.5rem;
+    margin-bottom: 0.75rem;
+    border-radius: 1rem;
+    font-size: .5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: rgba(26,26,44,.05);
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    color: #1a1a2c;
+    word-spacing: 30px;
+}

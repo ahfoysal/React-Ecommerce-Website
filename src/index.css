@@ -34,7 +34,7 @@ text-decoration: none !important;
 }
 .header-top{
 padding: 3%;
-padding-top: 10px !important;
+padding-top: 0px !important;
 }
 .productpage{
   display: flex;
@@ -44,6 +44,17 @@ padding-top: 10px !important;
   width: 500px;
   object-fit: contain;
 } 
+
+.allitems {
+    font-size: 40px;
+    font-family: 'Lobster Two', cursive;;
+    font-style: italic;
+    font-weight: 500;
+    color: black;
+    text-align: left;
+    
+   
+}
 
  .productpage-image img{
   height: 100%;

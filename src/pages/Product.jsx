@@ -22,7 +22,7 @@ useEffect(() => {
       const data3 = data.data.map(prd => prd.attributes.map(pr => pr.option))
 
       console.log(data.data)
-      console.log(data3)
+      // console.log(data3)
 
       ;})
 },[])

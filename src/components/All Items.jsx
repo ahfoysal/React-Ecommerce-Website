@@ -15,9 +15,10 @@ function Producsts({addToCart, allProducts}) {
     return (
 <div className="container">
  
-<h3 className="head">Shop </h3>
+<h3 className="allitems">All Items </h3>
 
         <ProductList  >
+    
 
         { allProducts.map(product => (
           <li className="product-con" key={product.id}>
@@ -27,6 +28,8 @@ function Producsts({addToCart, allProducts}) {
               src={product.images[0].src}
               alt={product.name}
             />
+           {product.categories.map(pro =>
+           <p className="product__category">  {pro.name} </p>)}
             <strong>{product.name }</strong>
             <p>{product.price}</p></Link>
 
