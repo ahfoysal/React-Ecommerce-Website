@@ -1,6 +1,9 @@
 import Featured from "../components/Featured";
 import Common from "../components/BestSelling";
 import {motion} from 'framer-motion';
+import Producsts from "../components/All Items";
+import Banner from "../components/banner";
+
 
   function Home({addToCart, allProducts}) {
 
@@ -12,7 +15,10 @@ import {motion} from 'framer-motion';
     transition={{duration: 0.5}}
     
     >
-
+      {/* <Shop /> */}
+      <Banner addToCart={addToCart}/>
+      <Producsts allProducts={allProducts} addToCart={addToCart}/>
+      
         <Featured addToCart={addToCart}/>
         <Common addToCart={addToCart}/>
 

@@ -6,22 +6,17 @@ import './shop.css'
 // import { darken } from 'polished';
 // import api from '../pages/api';
 
-function Shop({addToCart, allProducts}) {
+function Producsts({addToCart, allProducts}) {
   const [ctg , setCtg] = useState({});
   useEffect(() => {
-    
-    console.log(allProducts.map(product =>(product.name)))
+  console.log('hi')
   }, []);
   
     return (
 <div className="container">
  
 <h3 className="head">Shop </h3>
-{ allProducts.map(product => (
-  product.categories.map(categories => (
-    <Link to={'/category/'+categories.id}>  <li className="categories" key={categories.id}>{categories.name}</li></Link>
-))
-))}
+
         <ProductList  >
 
         { allProducts.map(product => (
@@ -124,4 +119,4 @@ function Shop({addToCart, allProducts}) {
 
   
   
-  export default Shop;
+  export default Producsts;

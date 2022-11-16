@@ -32,6 +32,10 @@ a{
 text-decoration: none !important;
 
 }
+.header-top{
+padding: 3%;
+padding-top: 10px !important;
+}
 .productpage{
   display: flex;
 }
@@ -51,6 +55,12 @@ text-decoration: none !important;
   right: 50%;
   top: 50%;
 }
+aside input {
+  border: none;
+  padding: 3px 1rem;
+  /* width: 100%; */
+  width: 200px;
+}
 @media screen and (max-width: 800px) {
   body {
       height: auto;
@@ -60,7 +70,8 @@ text-decoration: none !important;
     flex-direction: column-reverse;
   }
   .header{
-    margin-bottom: 150px;
+    margin-bottom: 400px;
   
   }
+
 }

@@ -17,7 +17,7 @@ const Header = ({cart, test2}) => {
   
   return (
       <>
-    <Navbar className="mb-3 bg-white"  fixed="top">
+    <Navbar className="mb-3 header-top bg-white"  fixed="top">
       <Container fluid>
         <Navbar.Brand ><Link to={'/'}>
                <h3 className="logo">Pewds Merch</h3>  </Link>  </Navbar.Brand>
@@ -26,10 +26,10 @@ const Header = ({cart, test2}) => {
                   </div>
 
                    <div className="cartIcon">
-                  <Link to={'/cart'}><FiShoppingBag/> {cart.length}</Link>
+                  <Link to={'/cart'}><FiShoppingBag className='cart-icon'/> <h3 className='cart-text'>{cart.length}</h3></Link>
                     </div>
                     <div >
-                  <Link to={'/shop'}>SHOP</Link>
+                  {/*   <Link to={'/shop'}>SHOP</Link> */}
                     </div>
      
                  </div>
