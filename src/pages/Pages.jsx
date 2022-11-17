@@ -5,9 +5,10 @@ import Searched from "./Searched";
 import Product from "./Product";
 import{ Route, Routes, useLocation } from 'react-router-dom';
 import {AnimatePresence} from 'framer-motion';
-import Cart from './Cart';
+import Cart from './cart/Cart';
 import Orders from './Orders';
-import Checkout from './Checkout';
+import Checkout from './checkout/Checkout';
+import Checkoutest from './checkout/Checkoutest';
 import Shop from '../components/Shop';
 
 function Pages({updateDb, getDb, test2,setTest2, getStoredCart, setCart,   addToCart,cart, getCart, clearTheCart, removeFromDb, allProducts, setAllProducts }) {
@@ -28,7 +29,8 @@ function Pages({updateDb, getDb, test2,setTest2, getStoredCart, setCart,   addTo
        <Route path="/shop/" element={<Shop allProducts={allProducts} addToCart={addToCart}/> } />
        <Route path="/order/:name" element={<Orders addToCart={addToCart}/>} />
        <Route path="/cart" element={<Cart   updateDb={updateDb} getDb={getDb} getStoredCart={getStoredCart} cart={cart} setCart={setCart} clearTheCart={clearTheCart} getCart={getCart} removeFromDb={removeFromDb}/>} />
-       <Route path="/checkout" element={<Checkout getStoredCart={getStoredCart} cart={cart} setCart={setCart} clearTheCart={clearTheCart} getCart={getCart} removeFromDb={removeFromDb}/>} />
+       <Route path="/checkout" element={<Checkoutest getStoredCart={getStoredCart} cart={cart} setCart={setCart} clearTheCart={clearTheCart} getCart={getCart} removeFromDb={removeFromDb}/>} />
+       <Route path="/checkout-test" element={<Checkoutest getStoredCart={getStoredCart} cart={cart} setCart={setCart} clearTheCart={clearTheCart} getCart={getCart} removeFromDb={removeFromDb}/>} />
 
 
 

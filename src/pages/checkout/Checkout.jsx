@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import React, {   useState } from 'react'
 import './Checkout.css'
+import Multiform from "./multi-check";
 
 
 
@@ -9,10 +10,10 @@ const Checkout = ({cart, setCart}) => {
 
   const [isContainerActive, setIsContainerActive] = useState(false);
   const [somethingWentWrong, setSomethingWentWrong] = useState(false);
-
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
+  const [email, setEmail] = useState('');
 
 
 
@@ -35,7 +36,7 @@ const Checkout = ({cart, setCart}) => {
     var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 
-   const body1 = `{"payment_method":"cod","payment_method_title":"Cash On Delivery","billing":{"first_name":"${name}","address_1":"${address}","phone":"${phone}"},"line_items":`
+   const body1 = `{"payment_method":"cod","payment_method_title":"Cash On Delivery","billing":{"first_name":"${name}","address_1":"${address}","phone":"${phone}","email":"${email}"},"line_items":`
   const body2= `${newCart}}`
       const body3 = body1.concat(' ', body2);
   
@@ -64,7 +65,9 @@ const Checkout = ({cart, setCart}) => {
   }
   
   return (
+    
     <div className='mt-50 container' >
+        <Multiform />
       <p>Complete your Order</p>
       <h4>How'd you like to pay?</h4>
       <p>Choose a payment method and verify your details to successfully place the order.</p>
@@ -78,11 +81,14 @@ const Checkout = ({cart, setCart}) => {
         <label htmlFor="name">Name</label>
         <input type="text" name='name'  value={name} onChange={(e) => setName(e.target.value)} required />
         <br/> <br/> 
-        <label htmlFor="phone">Address</label>  
-        <input type="text" name='phone' value={address} onChange={(e) => setAddress(e.target.value)} required />
+        <label htmlFor="address">Address</label>  
+        <input type="text" name='adress' value={address} onChange={(e) => setAddress(e.target.value)} required />
         <br/> <br/> 
         <label htmlFor="phone">Phone</label>  
         <input type="text" name='phone' value={phone} onChange={(e) => setPhone(e.target.value)} required />
+        <br/> <br/> 
+        <label htmlFor="email">Email</label>  
+        <input type="text" name='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
         <br></br><br></br><br></br>
         <input type="radio" value="Male" name="gender" /> Cash On Delivery <br></br>
         <input type="radio" value="Female" name="gender" /> Bkash 
@@ -96,7 +102,8 @@ const Checkout = ({cart, setCart}) => {
   </svg>
 </button>
       </form>
-    <h1>{total}</h1>     
+    <h1>{total}</h1>   
+  
   
 {isContainerActive ? <h3 className="head">Thank You For Your Order.</h3> : ""}
 {somethingWentWrong ? <h3 className="head">somthing went wrong</h3> : ""}

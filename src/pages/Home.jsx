@@ -2,6 +2,7 @@ import Featured from "../components/Featured";
 import Common from "../components/BestSelling";
 import {motion} from 'framer-motion';
 import Producsts from "../components/All Items";
+
 import Banner from "../components/banner";
 
 

@@ -2,7 +2,7 @@
 import { Container, ProductTable, Total } from './Cart-styles';
 import { MdRemoveCircleOutline, MdAddCircleOutline, MdDelete } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import './Checkout.css'
+import '../checkout/Checkout.css'
 
 
 
