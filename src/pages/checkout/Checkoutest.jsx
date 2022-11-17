@@ -99,8 +99,8 @@ const Checkoutest = ({cart, setCart}) => {
         <label htmlFor="phone">Phone</label>  
         <input type="text" name='phone' value={phone} onChange={(e) => setPhone(e.target.value)} required />
         <br/> <br/> 
-        <label htmlFor="email">Email</label>  
-        <input type="text" name='email' value={email} onChange={(e) => setEmail(e.target.value)}  />
+        {/* <label htmlFor="email">Email</label>  
+        <input type="text" name='email' value={email} onChange={(e) => setEmail(e.target.value)}  /> */}
         <br></br>
         <button>
           Continue
