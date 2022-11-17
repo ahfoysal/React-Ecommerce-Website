@@ -58,7 +58,7 @@ const Checkoutest = ({cart, setCart}) => {
     var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 
-   const body1 = `{"payment_method":"cod","payment_method_title":"Cash On Delivery","billing":{"first_name":"${name}","address_1":"${address}","phone":"${phone}","email":"${email}"},"line_items":`
+   const body1 = `{"payment_method":"cod","payment_method_title":"Cash On Delivery","billing":{"first_name":"${name}","address_1":"${address}","phone":"${phone}","email":"test@gmail.com"},"line_items":`
   const body2= `${newCart}}`
       const body3 = body1.concat(' ', body2);
   
