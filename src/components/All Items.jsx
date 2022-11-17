@@ -21,7 +21,7 @@ function Producsts({addToCart, allProducts}) {
     
 
         { allProducts.map(product => (
-          <li className="product-con" key={product.id}>
+          <li className="product-con" key={product.id} id={product.id}>
           {/* <li key={product.id} > */}
             <Link to={'/product/'+product.id}>
    <img
