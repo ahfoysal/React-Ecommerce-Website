@@ -35,7 +35,7 @@ console.log(user);
                <div className="head-conatiner ">
                   <div ><Search />
                   </div>
-                  <div>{user && <p>{user.email}</p>}</div>
+                  <div>{user && <p>{user.displayName}</p>}</div>
 
                    <div className="cartIcon">
                   <Link to={'/cart'}><FiShoppingBag className='cart-icon'/> <h3 className='cart-text'>{cart.length}</h3></Link>

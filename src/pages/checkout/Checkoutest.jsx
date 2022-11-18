@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import React, {   useState } from 'react'
+import React, {   useEffect, useState } from 'react'
 import './Checkout.css'
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
@@ -13,11 +13,13 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button1 from 'react-bootstrap/Button';
+import { useUserAuth } from '../../context/UserAuthContext';
+
 
 
 const Checkoutest = ({cart, setCart}) => {
   const navigate = useNavigate();
-
+  let { user } =  useUserAuth();
   const [isContainerActive, setIsContainerActive] = useState(false);
   const [somethingWentWrong, setSomethingWentWrong] = useState(false);
   const [name, setName] = useState('');
@@ -29,7 +31,7 @@ const Checkoutest = ({cart, setCart}) => {
   const [radio, setRadio] = useState(false);
   const [activeStep, setActiveStep] = React.useState(0);
 
-
+  
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -174,6 +176,12 @@ const Checkoutest = ({cart, setCart}) => {
            </div>,
     },
   ];
+  useEffect(() => {
+  
+   if (user){ 
+    console.log(user.displayName)
+    setName(user.displayName)}
+    }, [])
   return (
     
     <div className='mt-50 container' >
