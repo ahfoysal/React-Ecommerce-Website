@@ -54,6 +54,9 @@ margin-top: 5px;
     width: 200px;
     font-size: 13px;
   }
+  .margin-top {
+    margin-top: 84px;
+}
   
   .open {
     display: block;

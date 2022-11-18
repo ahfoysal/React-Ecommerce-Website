@@ -9,7 +9,7 @@ import './shop.css'
 function Producsts({addToCart, allProducts}) {
   const [ctg , setCtg] = useState({});
   useEffect(() => {
-  console.log('hi')
+
   }, []);
   
     return (

@@ -1,25 +1,33 @@
 import Pages from "./pages/Pages";
 // import Category from "./components/Category";
 import {BrowserRouter} from 'react-router-dom'
+
 import Header from "./components/Header";
-import { useState , useEffect} from "react";
+import { useState , useEffect, createContext} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import prd from './pages/products.json'
+import { useUserAuth } from './context/UserAuthContext';
+import { UserAuthContextProvider } from './context/UserAuthContext';
 
 
 
 
+export const TestContext = createContext();
  
 function App() {
+  // const { user } = useUserAuth();
+  // console.log(user)
    const [cart , setCart] = useState([]);
    const [allProducts, setAllProducts] = useState([]);
    const [test2 , setTest2] = useState(false);
+   const [context , setContext] = useState('huddai');
 
    useEffect(() => {
     getCart();
+    // console.log(user)
       console.log(prd); 
   setAllProducts(prd)
   gteProducts();
@@ -146,10 +154,12 @@ setCart(cartPd)
     <div className="App">
       
       <BrowserRouter>  
+      <UserAuthContextProvider value={context}>
     <Header cart={cart} test2={test2}/>
      {/* <Category/> */}
      <Pages updateDb={updateDb} getDb={getDb} setTest2= {setTest2} test2={test2}   products={gteProducts} allProducts={allProducts} setAllProducts={setAllProducts} addToCart={addToCart} cart={cart} setCart={setCart} getCart={getCart} clearTheCart={clearTheCart} getStoredCart={getStoredCart} removeFromDb={removeFromDb} />
      <ToastContainer />
+     </UserAuthContextProvider>
       </BrowserRouter>
  
     </div>

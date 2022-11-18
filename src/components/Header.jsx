@@ -6,16 +6,27 @@ import Search from "./Search";
 
 import {FiShoppingBag} from 'react-icons/fi';
 import './header.css'
+import { useUserAuth } from '../context/UserAuthContext';
 
 
 
 
 
 const Header = ({cart, test2}) => {
-
-// console.log(cart);
+  
+  const handleLogOut = async () => {
+    
+    try {
+      await logOut();
+    }catch(err) {
+        console.log(err.message)
+    }
+  }
+  let { user, logOut } =  useUserAuth();
+console.log(user);
   
   return (
+
       <>
     <Navbar className="mb-3 header-top bg-white"  fixed="top">
       <Container fluid>
@@ -24,12 +35,17 @@ const Header = ({cart, test2}) => {
                <div className="head-conatiner ">
                   <div ><Search />
                   </div>
+                  <div>{user && <p>{user.email}</p>}</div>
 
                    <div className="cartIcon">
                   <Link to={'/cart'}><FiShoppingBag className='cart-icon'/> <h3 className='cart-text'>{cart.length}</h3></Link>
                     </div>
+              
                     <div >
-                  {/*   <Link to={'/shop'}>SHOP</Link> */}
+                  {/*   <Link to={'/shop'}>SHOP</Link> */} <Link to={'/Login'}> {!user &&  <p>Login</p>}</Link>
+                  {user && <button onClick={handleLogOut}>Logout</button> }
+               
+           
                     </div>
      
                  </div>
