@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import axios from 'axios'
 import { MdAddShoppingCart } from 'react-icons/md';
 import {useParams} from 'react-router-dom';
+import { TestContext } from '../App';
 
 
 
-function Cuisine({test2, addToCart, allProducts}) {
+function Cuisine() {
+  const {context, allProducts, addToCart, test2} = useContext(TestContext);
 
   let paramss = useParams();
   const [category , setCategory] = useState([]);

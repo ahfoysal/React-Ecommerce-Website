@@ -1,13 +1,17 @@
-// import React, {  useEffect, useState } from 'react'
+import React, {  useContext, useEffect, useState } from 'react'
 import { Container, ProductTable, Total } from './Cart-styles';
 import { MdRemoveCircleOutline, MdAddCircleOutline, MdDelete } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import '../checkout/Checkout.css'
+import { TestContext } from '../../App';
 
 
 
-const Cart = ({updateDb, getDb, cart, clearTheCart, removeFromDb, getCart }) => {
+
+const Cart = () => {
   ////props
+  const {   updateDb, getDb, cart, clearTheCart, removeFromDb, getCart} = useContext(TestContext);
+
   const navigate = useNavigate();
 /////state
   // const [isCartEmpty, setIsCartEmpty] = '';

@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom';
 import styled from 'styled-components';
 import {Link} from  'react-router-dom';
 import * as ReactBootstrap from 'react-bootstrap'
+import { TestContext } from '../App';
 
 
 
-function Searched({addToCart, allProducts}) {
+function Searched() {
+  const { allProducts, addToCart} = useContext(TestContext);
+
+
 
     const [searchedRecipes, setSearchedRecipes] = useState([]);
     const [loading , setLoading] = useState(true);

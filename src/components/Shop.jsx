@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MdAddShoppingCart } from 'react-icons/md';
 import styled from 'styled-components';
 import {Link} from  'react-router-dom'
 import './shop.css'
+import { TestContext } from "../App";
 // import { darken } from 'polished';
 // import api from '../pages/api';
 
-function Shop({addToCart, allProducts}) {
+function Shop() {
   const [ctg , setCtg] = useState({});
+  const {context, allProducts, addToCart} = useContext(TestContext);
+
   useEffect(() => {
     
     console.log(allProducts.map(product =>(product.name)))

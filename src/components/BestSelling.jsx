@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import '@splidejs/react-splide/css';
 import {Link} from  'react-router-dom'
+import { TestContext } from "../App";
 
 
-function Common(props) {
-  const addToCart = props.addToCart;
+function Common() {
 
+  const {context, allProducts, addToCart} = useContext(TestContext);
+  
   const [Common, setCommon] = useState([]);
   useEffect(() => {
     getCommon();

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import React, {   useEffect, useState } from 'react'
+import React, {   useContext, useEffect, useState } from 'react'
 import './Checkout.css'
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
@@ -14,10 +14,13 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button1 from 'react-bootstrap/Button';
 import { useUserAuth } from '../../context/UserAuthContext';
+import { TestContext } from '../../App';
 
 
 
-const Checkoutest = ({cart, setCart}) => {
+const Checkoutest = () => {
+  const { cart, setCart} = useContext(TestContext);
+
   const navigate = useNavigate();
   let { user } =  useUserAuth();
   const [isContainerActive, setIsContainerActive] = useState(false);

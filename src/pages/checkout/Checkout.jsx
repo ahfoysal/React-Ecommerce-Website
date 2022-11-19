@@ -1,11 +1,14 @@
 import { useNavigate } from 'react-router-dom';
-import React, {   useState } from 'react'
+import React, {   useContext, useState } from 'react'
 import './Checkout.css'
 import Multiform from "./multi-check";
+import { TestContext } from '../../App';
 
 
 
-const Checkout = ({cart, setCart}) => {
+const Checkout = () => {
+  const { cart, setCart} = useContext(TestContext);
+
   const navigate = useNavigate();
 
   const [isContainerActive, setIsContainerActive] = useState(false);

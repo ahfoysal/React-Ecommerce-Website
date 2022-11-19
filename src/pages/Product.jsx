@@ -1,12 +1,14 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import styled from 'styled-components'
 import {useParams} from 'react-router-dom';
 import React from 'react'
 import * as ReactBootstrap from 'react-bootstrap'
 import axios from 'axios'
+import { TestContext } from '../App';
 
-function Recipe({test2, addToCart, allProducts, setAllProducts, setTest2}) {
+function Recipe() {
 
+  const { allProducts, addToCart, test2, setTest2} = useContext(TestContext);
 
 
 

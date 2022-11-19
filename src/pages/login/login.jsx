@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import { Alert } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
@@ -8,7 +8,9 @@ import { useUserAuth } from '../../context/UserAuthContext';
 
 
 
+
 const Login = () => {
+
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ]  = useState("");
   const { logIn } = useUserAuth();
@@ -35,7 +37,7 @@ const Login = () => {
     <Form  onSubmit={handleSubmit}>
     {error && <Alert variant='danger'>{error}</Alert>}
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
+        <Form.Label>Email address </Form.Label>
         <Form.Control type="email" placeholder="Enter email"  onChange={(e) => setEmail(e.target.value)}/>
     
       </Form.Group>

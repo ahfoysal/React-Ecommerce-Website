@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import '@splidejs/react-splide/css';
 import {Link} from  'react-router-dom'
 import './Featured.css';
 import axios from "axios";
+import { TestContext } from "../App";
 
 
 
-function Popular(props) {
-  // console.log(props);
-  const addToCart = props.addToCart;
+function Popular() {
+
+  const {context, allProducts, addToCart} = useContext(TestContext);
+
   const [Popular, setPopular] = useState([]);
 
   useEffect(() => { 
