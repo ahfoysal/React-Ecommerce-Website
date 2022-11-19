@@ -159,6 +159,12 @@ const Checkoutest = ({cart, setCart}) => {
   </label>
 </div>
     
+{!radio  && <div>
+<Form onSubmit={createOrder}>
+  
+      <Button1 variant="warning" type="submit">Checkout</Button1></Form>
+ </div>  }
+
 {radio  &&  <div><p>Bkash Number: 01861389963</p>
 <Form onSubmit={createOrder}>
     <Form.Group as={Row} className="mb-3" controlId="trxid">
