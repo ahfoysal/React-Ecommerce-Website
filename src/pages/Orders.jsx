@@ -14,7 +14,6 @@ function Orders(props) {
 
 
 
-const key = 'consumer_key=ck_7d700d7c05bea9f024076feb890944ad286703f2&consumer_secret=cs_59a8c6db54711f8a9fc314b95e0ad782a946c191';
 const fetchDetails = () =>{
   const check = sessionStorage.getItem(`${params.name}`)
   if(check){
@@ -23,7 +22,7 @@ const fetchDetails = () =>{
 
   }else{  
 
-    axios(`https://shop.abusayeeed.xyz/wp/wp-json/wc/v3/orders/${params.name}?${key}`)
+    axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/orders/${params.name}?${process.env.REACT_APP_KEY}`)
     .then(data2 => { const data = data2
       sessionStorage.setItem(`${params.name}`,JSON.stringify(data.data))
       setDetails(data.data);

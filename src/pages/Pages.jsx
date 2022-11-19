@@ -10,6 +10,7 @@ import Order from './Order';
 import Checkout from './checkout/Checkout';
 import Checkoutest from './checkout/Checkoutest';
 import Shop from '../components/Shop';
+import TestDb from '../components/testDb';
 import Login from './login/login';
 import Signup from './login/signup';
 
@@ -39,7 +40,7 @@ function Pages({updateDb, getDb, test2,setTest2, getStoredCart, setCart,   addTo
        <Route path="/checkout-2" element={<Checkout />} />
        <Route path="/login/" element={<Login   />} />
        <Route path="/signup/" element={<Signup />} />
-       <Route path="/order/" element={ <Order /> }/>
+       <Route path="/order/" element={  <TestDb /> }/>
      
 
 

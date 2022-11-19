@@ -4,6 +4,7 @@ import {motion} from 'framer-motion';
 import Producsts from "../components/All Items";
 
 import Banner from "../components/banner";
+import TestDb from "../components/testDb";
 
 
   function Home({addToCart, allProducts}) {
@@ -23,6 +24,7 @@ import Banner from "../components/banner";
       
       
         <Common />
+       
 
     </motion.div>
   )

@@ -6,6 +6,7 @@ import { TestContext } from '../../App';
 
 
 
+
 const Checkout = () => {
   const { cart, setCart} = useContext(TestContext);
 
@@ -66,6 +67,9 @@ const Checkout = () => {
         
       console.log(body3)
   }
+
+/////testing db order info
+
   
   return (
     

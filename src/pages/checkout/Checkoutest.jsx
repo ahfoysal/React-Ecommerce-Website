@@ -15,6 +15,8 @@ import Row from 'react-bootstrap/Row';
 import Button1 from 'react-bootstrap/Button';
 import { useUserAuth } from '../../context/UserAuthContext';
 import { TestContext } from '../../App';
+import { addDoc, collection, doc, updateDoc,arrayUnion, arrayRemove } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 
 
@@ -83,6 +85,8 @@ const Checkoutest = () => {
         .then(result => {
           const rslt = result;
           console.log(rslt)
+          // console.log(rslt.id)
+          if(user){addingOrderToDB(rslt, rslt.id)}
           navigate(`/order/${rslt.number}`)      
           setCart([]) 
           localStorage.removeItem('shopping_cart');
@@ -95,6 +99,8 @@ const Checkoutest = () => {
         
       console.log(body3)
   }
+
+  
  
    
   const steps = [
@@ -191,6 +197,45 @@ const Checkoutest = () => {
     console.log(user.displayName)
     setName(user.displayName)}
     }, [])
+
+
+///// adding info to data test 
+    const [orderCollection, setOrderCollection] = useState([])
+    const ordersCollection = collection(db, "order");
+    
+    
+      const addingOrderToDB = async (order, orderId) => {
+       const res = await addDoc(ordersCollection, order)
+       
+           updateOrder(res.id, orderId)
+          console.log(res.id)
+       }
+      
+    
+    // const addToDb = id => {
+      
+           
+    //     let order = {};
+      
+      
+    //       if (order[id]) {
+    //         const newCount =  user.displayName;
+    //         order[id] = newCount;
+    //       }
+    //       else {
+    //         order[id] = user.email;
+    //       }
+        
+    //       addingOrderToDB()
+         
+    
+    //   }
+      const updateOrder = async (id)  =>   {
+        const orderDoc = doc(db, "order", id)
+        const newFeilds = {email: user.email}
+        await updateDoc(orderDoc, newFeilds)
+      }
+
   return (
     
     <div className='mt-50 container' >
