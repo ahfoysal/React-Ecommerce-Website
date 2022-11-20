@@ -4,7 +4,8 @@ import {motion} from 'framer-motion';
 import Producsts from "../components/All Items";
 
 import Banner from "../components/banner";
-import TestDb from "../components/testDb";
+import TestDb from "../components/OrdersPage/testDb";
+import Search from "../components/Search";
 
 
   function Home({addToCart, allProducts}) {
@@ -18,6 +19,8 @@ import TestDb from "../components/testDb";
     
     >
       {/* <Shop /> */}
+      <div className="search-bar"><Search />
+                  </div>
       <Banner />
       <Featured />
       <Producsts />

@@ -31,10 +31,12 @@ const Checkoutest = () => {
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
+  const [method, setMethod] = useState("cod");
   const [trxid, setTrxid] = useState('');
   const [formfillup, setFormfillup] = useState(false);
   const [radio, setRadio] = useState(false);
   const [activeStep, setActiveStep] = React.useState(0);
+
 
   
   const handleNext = () => {
@@ -69,8 +71,9 @@ const Checkoutest = () => {
 
     var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
+     
 
-   const body1 = `{"payment_method":"cod","payment_method_title":"Cash On Delivery","customer_note":"hello","transaction_id":"12345","billing":{"first_name":"${name}","address_1":"${address}","phone":"${phone}","email":"test1@gmail.com"},"line_items":`
+   const body1 = `{"payment_method": "${method}","customer_note":"hello","transaction_id":"12345","billing":{"first_name":"${name}","address_1":"${address}","phone":"${phone}","email":"test1@gmail.com"},"line_items":`
   const body2= `${newCart}}`
       const body3 = body1.concat(' ', body2);
   
@@ -156,13 +159,13 @@ const Checkoutest = () => {
 
 
     <div className="form-check">
-  <input className="form-check-input" onClick={()=>setRadio(false)} type="radio" name="flexRadioDefault" id="flexRadioDefault1" defaultChecked />
+  <input className="form-check-input" onClick={()=>setRadio(false) & setMethod("cod")} type="radio" name="flexRadioDefault" id="flexRadioDefault1" defaultChecked />
   <label className="form-check-label" htmlFor="flexRadioDefault1" >
     Cash On Delivery
   </label>
 </div>
 <div className="form-check">
-  <input className="form-check-input" onClick={()=>setRadio(true)} type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+  <input className="form-check-input" onClick={()=>setRadio(true) & setMethod("Bkash")} type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
   <label className="form-check-label"  htmlFor="flexRadioDefault2">
    Bkash
   </label>

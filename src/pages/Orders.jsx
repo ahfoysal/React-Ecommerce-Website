@@ -66,7 +66,7 @@ fetchDetails();
   <div className='container productpage'>
   
 <Info> 
-<h2>Order Number :{details.number}</h2>
+<h2>Order Number : 69420{details.number}</h2>
 <h2>Current Status: {details.status}</h2>
 <h2>Name:{details.billing.first_name}</h2>
 <h2>Phone: {details.billing.phone}</h2>

@@ -84,12 +84,44 @@ overflow: hidden;
   right: 50%;
   top: 50%;
 }
-aside input {
-  border: none;
-  padding: 3px 1rem;
-  /* width: 100%; */
-  width: 200px;
+
+  .open {
+    display: block;
+    transition: display 0.35s ease-out;
+    border-color: #fbfbfb !important;
+    border: 0.5px solid !important;
 }
+/* .search-bar {
+  float: right !important;
+} */
+
+.sidenav---sidenav-toggle---1KRjR .sidenav---icon-bar---u1f02{
+  background-color: black !important;
+}
+.sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-:hover > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo, .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-:hover > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f, .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---highlighted---oUx9u > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo, .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-.sidenav---highlighted---oUx9u > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f {
+  color: black !important;
+}
+.sidenav---sidenav---_2tBP *, .sidenav---sidenav---_2tBP *:before, .sidenav---sidenav---_2tBP *:after{
+  background-color: transparent !important;
+}
+.sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f > * {
+  color: black !important;
+}
+.sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f {
+  color: black !important;
+}
+  
+  .sidenav---sidenav---_2tBP {
+    position: fixed !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1006;
+    min-width: 64px;
+    background: transparent !important;
+    transition: min-width 0.2s;
+}
+
 .MuiBox-root{
   max-width: 50% !important;
  

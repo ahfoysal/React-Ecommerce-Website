@@ -10,12 +10,13 @@ import Order from './Order';
 import Checkout from './checkout/Checkout';
 import Checkoutest from './checkout/Checkoutest';
 import Shop from '../components/Shop';
-import TestDb from '../components/testDb';
+import Header from '../components/Header2';
+import TestDb from '../components/OrdersPage/testDb';
 import Login from './login/login';
 import Signup from './login/signup';
 
 
-function Pages({updateDb, getDb, test2,setTest2, getStoredCart, setCart,   addToCart,cart, getCart, clearTheCart, removeFromDb, allProducts, setAllProducts }) {
+function Pages() {
   const location = useLocation();
   // const setCart = props.setCart
 
@@ -41,6 +42,7 @@ function Pages({updateDb, getDb, test2,setTest2, getStoredCart, setCart,   addTo
        <Route path="/login/" element={<Login   />} />
        <Route path="/signup/" element={<Signup />} />
        <Route path="/order/" element={  <TestDb /> }/>
+  
      
 
 

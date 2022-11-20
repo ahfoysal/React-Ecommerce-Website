@@ -33,11 +33,11 @@ margin-top: 5px;
     text-align: center;
     min-width: 18px;
     height: 19px;
-    background: #f90;
-    color: #fff;
+    background: #f90 !important;
+    color: #fff !important;
     font-weight: 700;
-    left: calc(100% - 12px);
-    bottom: calc(100% - 12px);
+    left: calc(100% - 29px);
+    bottom: calc(100% - 22px);
     margin: 0;
     border-radius: 99px;
   }
