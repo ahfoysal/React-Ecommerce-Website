@@ -5,7 +5,7 @@ import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/rea
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import { Link, Route, Router } from 'react-router-dom';
 
-import { FaHistory, FaHome, } from 'react-icons/fa';
+import { FaHistory, FaHome, FaUser, } from 'react-icons/fa';
 import { FiShoppingBag } from 'react-icons/fi';
 import { TestContext } from '../App';
 
@@ -51,6 +51,17 @@ const Header2 = () => {
             </NavIcon>
                <NavText>
                <Link to={'/order'}>     Orders
+               </Link>       </NavText>
+          
+        </NavItem>
+        <NavItem eventKey="order">
+            <NavIcon>
+            <div className="cartIcon">
+                  <Link to={'/login'}><FaUser className='cart-icon'/> </Link>
+                    </div>
+            </NavIcon>
+               <NavText>
+               <Link to={'/login'}>     Login
                </Link>       </NavText>
           
         </NavItem>
