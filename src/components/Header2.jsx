@@ -8,9 +8,12 @@ import { Link, Route, Router } from 'react-router-dom';
 import { FaHistory, FaHome, FaUser, } from 'react-icons/fa';
 import { FiShoppingBag } from 'react-icons/fi';
 import { TestContext } from '../App';
+import { useUserAuth } from '../context/UserAuthContext';
 
 const Header2 = () => {
     const { cart} = useContext(TestContext);
+    let { user, logOut } =  useUserAuth();
+
 
   return (
     <SideNav
@@ -61,7 +64,8 @@ const Header2 = () => {
                     </div>
             </NavIcon>
                <NavText>
-               <Link to={'/login'}>     Login
+               <Link to={'/login'}>     {!user &&  <p>Login</p>}
+               <p>{user?.displayName}</p>
                </Link>       </NavText>
           
         </NavItem>
