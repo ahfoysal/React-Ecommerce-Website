@@ -122,6 +122,11 @@ overflow: hidden;
     transition: min-width 0.2s;
 }
 
+.order-images img {
+  height: 100px !important;
+  flex-direction: row;
+  display: flex;
+}
 .MuiBox-root{
   max-width: 50% !important;
  
