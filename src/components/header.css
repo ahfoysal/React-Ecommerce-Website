@@ -1,6 +1,9 @@
 .head-conatiner {
-    display: flex;
-    gap: 5px;
+  display: flex;
+  gap: 20px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
 }
 .container-fluid {
   justify-content: end !important;
