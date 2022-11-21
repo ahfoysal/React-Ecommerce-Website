@@ -71,7 +71,7 @@ const fetchDetails = () =>{
   return (
     
     
-    <DetailsWrapper>
+    <DetailsWrapper className='home-page'>
 {
   loading ? 
   <div>

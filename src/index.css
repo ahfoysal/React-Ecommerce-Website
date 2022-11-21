@@ -129,7 +129,19 @@ svg.star {
     transition: min-width 0.2s;
 }
 
-
+.margin-top {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.orders {
+  width: 32%;
+}
+.order-container {
+  display: flex;
+  width: 80%;
+  overflow: hidden;
+}
 .order-images img {
   height: 100px !important;
   flex-direction: row;

@@ -12,25 +12,58 @@ const TestDb = () => {
   const {    setActiveTabCart, setActiveTabOrder,setActiveTabHome, setActiveTabUser} = useContext(TestContext);
   let { user } =  useUserAuth();
 
-  const [order, setOrder] = useState();
+  const [order, setOrder] = useState([]);
   const ordersCollection = collection(db, "order");
-  const [details , setDetails] = useState();
+  const [details , setDetails] = useState([]);
   const [loading , setLoading] = useState(false);
   const [loading2 , setLoading2] = useState(false);
 
-  const [newEmail, setNewEnail] = useState('');
-  const [newNumber, setNewNumber] = useState(0);
-  const [orderCollection, setOrderCollection] = useState([])
+
   
 
 
    
 
+  const getData = async () => {
+    const data = await getDocs(ordersCollection)
+    const newData= data.docs?.map((doc) => ({...doc.data(), id: doc.id}))
+    const emails = newData?.map((email) => email.email)
+    console.log(emails)
+    console.log(newData)
+    const param = user?.email
+    const cartItems = newData?.map((cart) => cart ).filter((val)=> {
+      return val.email === param
+      });
+      setOrder(cartItems)
+     
+          setLoading(true)
+    
+      
+    
+}
+const getData2 =  () => {
+  
+   
+  axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/orders/?${process.env.REACT_APP_KEY}`)
+  .then(data2 => { const data = data2
+  
+    setDetails(data.data);
+   
+    console.log(data.data);
+  
+  })
+  
+    
+  
+}
+
+
+  
+  
 
 
 
   useEffect(() => {
-
 
     setActiveTabCart(false)
     setActiveTabOrder(true)
@@ -39,55 +72,29 @@ const TestDb = () => {
 
         if(!user){
           setLoading(false)
-          setLoading2(false)
         }
 
 
-    const getData = async () => {
-      const data = await getDocs(ordersCollection)
-      const newData= data.docs.map((doc) => ({...doc.data(), id: doc.id}))
-      const emails = newData.map((email) => email.email)
-      console.log(emails)
-      console.log(newData)
-      const param = user.email
-      const cartItems = newData.map((cart) => cart ).filter((val)=> {
-        return val.email === param
-        });
-        setOrder(cartItems)
-        setLoading(true)
-       
-    
-      
-        
-      
-  }
+getData2()
+getData()
 
-    getData()
-    axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/orders/?${process.env.REACT_APP_KEY}`)
-    .then(data2 => { const data = data2
-    
-      setDetails(data.data);
-     
-      setLoading(true)
-      console.log(data.data);
-    
-    })
-
-    
   
 
     
 }, [])
 
   return (
-    <div>
+    <div className='mt-50 home-page'>
+            <h3 className='logo'>Your Orders</h3>
+        
     {
-         loading ?   <div className='margin-top container innner' >
+         loading ?   <div className='margin-top  innner ' >
+          
         {user &&         order?.map((name) => {
                      return  <div key={name.number} className='orders' > <Link to={`/order/${name.number}`}><h3>Order ID: 69420{name.number}</h3>
                       <p>Payment Method: {name.payment_method}</p>
-                    <div>
-                    {name.line_items.map((pro) => {
+                    <div className='order-container'>
+                    {name.line_items?.map((pro) => {
                       return  <div className='order-images'> <img src={pro.image.src} alt=""  className='order_pa'/> </div>}
                     )}</div>
 
@@ -95,13 +102,15 @@ const TestDb = () => {
                      <p>Total Amount: {name.total}</p>
                      <p>status   {details?.map((cart) => cart ).filter((val)=> {
                     return val.id === Number(name.number)
-                    }).map((cart) => 
+                    })?.map((cart) => 
                    <span> {cart.status} </span> )}</p>
                   </Link>   </div>
                      })}
                      {!user && <p>Please Login To Check Orders</p> }
                   
-            </div>  : <div className="spinnerdiv"><ReactBootstrap.Spinner animation="border" /> </div> }</div>
+            </div>  : <div className="spinnerdiv"><ReactBootstrap.Spinner animation="border" /> </div> }
+          {user?.email &&  <button className='btn btn-primary' onClick={() => getData()}>refresh</button>
+}            </div>
   )
 }
 

@@ -22,6 +22,7 @@ import { db } from '../../firebase';
 
 const Checkoutest = () => {
   const { cart, setCart} = useContext(TestContext);
+  const [isCartEmpty, setIsCartEmpty] = useState(true);
 
   const navigate = useNavigate();
   let { user } =  useUserAuth();
@@ -195,7 +196,8 @@ const Checkoutest = () => {
     },
   ];
   useEffect(() => {
-  
+    if(cart.length < 1 ){setIsCartEmpty(false)}
+
    if (user){ 
     console.log(user.displayName)
     setName(user.displayName)}
@@ -242,7 +244,7 @@ const Checkoutest = () => {
   return (
     
     <div className='mt-50 container' >
-       <Box sx={{ maxWidth: 400 }}>
+       {isCartEmpty ? <><Box sx={{ maxWidth: 400 }}>
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((step, index) => (
           <Step key={step.label}>
@@ -288,7 +290,7 @@ const Checkoutest = () => {
 {somethingWentWrong ? <h3 className="head">somthing went wrong</h3> : ""}
 
 
-
+</> : <><p>Please Add Some Products In Cart</p></>}
     </div>
   )
 }

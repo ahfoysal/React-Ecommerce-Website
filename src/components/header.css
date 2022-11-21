@@ -8,6 +8,10 @@
 .container-fluid {
   justify-content: end !important;
 }
+.home-page {
+  opacity: 1;
+  padding-left: 90px !important;
+}
 
 .icons.sidenav---sidenav-nav---3tvij {
   align-items: center;

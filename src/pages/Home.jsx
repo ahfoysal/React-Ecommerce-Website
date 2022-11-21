@@ -23,7 +23,7 @@ import { TestContext } from "../App";
 
   return (
 
-    <motion.div
+    <motion.div className="home-page"
     animate={{opacity: 1}}
     initial={{opacity: 0}}
     exit={{opacity: 0}}
@@ -31,8 +31,7 @@ import { TestContext } from "../App";
     
     >
       {/* <Shop /> */}
-      <div className="search-bar">
-                  </div>
+  
       <Banner />
       <Featured />
       <Producsts />
