@@ -21,6 +21,13 @@ function App() {
    const [cart , setCart] = useState([]);
    const [allProducts, setAllProducts] = useState([]);
    const [test2 , setTest2] = useState(false);
+   const [activeTabHome , setActiveTabHome] = useState(false);
+   const [activeTabCart , setActiveTabCart] = useState(false);
+   const [activeTabOrder , setActiveTabOrder] = useState(false);
+   const [activeTabUser , setActiveTabUser] = useState(false);
+
+
+
   
 
    useEffect(() => {
@@ -153,9 +160,15 @@ setCart(cartPd)
       
       <BrowserRouter>  
       <UserAuthContextProvider>
-        <TestContext.Provider value={{ allProducts, addToCart, test2, setTest2, updateDb, getDb, cart, clearTheCart, removeFromDb, getCart, getStoredCart, setCart  }}>
-    {/* <Header cart={cart} test2={test2}/> */}
-    <Header2 cart={cart} test2={test2}/>
+        <TestContext.Provider value={{ allProducts, addToCart,
+           test2, setTest2, updateDb, getDb, cart,
+            clearTheCart, removeFromDb, getCart,
+             getStoredCart, setCart,
+              activeTabCart ,setActiveTabCart, setActiveTabHome, setActiveTabOrder,
+              setActiveTabUser,  activeTabUser,
+              activeTabHome, activeTabOrder }}>
+    <Header cart={cart} test2={test2}/>
+    <Header2 />
      {/* <Category/> */}
      <Pages  />
  

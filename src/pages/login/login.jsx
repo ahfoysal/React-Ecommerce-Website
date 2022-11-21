@@ -1,15 +1,17 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import { Alert } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUserAuth } from '../../context/UserAuthContext';
+import { TestContext } from '../../App';
 
 
 
 
 
 const Login = () => {
+  const {    setActiveTabCart, setActiveTabOrder,setActiveTabHome, setActiveTabUser} = useContext(TestContext);
 
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ]  = useState("");
@@ -32,6 +34,17 @@ const Login = () => {
      
     };
 
+
+    useEffect(() => {
+
+
+      setActiveTabCart(false)
+      setActiveTabOrder(false)
+      setActiveTabHome(false)
+      setActiveTabUser(true) 
+     if(user){ navigate(`/profile`)}
+  
+    })
   return (
     <div className='container margin-top'>
     <Form  onSubmit={handleSubmit}>

@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { db } from '../../firebase'
 import { collection, addDoc,  getDocs} from "firebase/firestore";
 import { useUserAuth } from '../../context/UserAuthContext';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import * as ReactBootstrap from 'react-bootstrap'
+import { TestContext } from '../../App';
 
 
 const TestDb = () => {
+  const {    setActiveTabCart, setActiveTabOrder,setActiveTabHome, setActiveTabUser} = useContext(TestContext);
+  let { user } =  useUserAuth();
+
   const [order, setOrder] = useState();
   const ordersCollection = collection(db, "order");
   const [details , setDetails] = useState();
@@ -17,7 +21,6 @@ const TestDb = () => {
   const [newEmail, setNewEnail] = useState('');
   const [newNumber, setNewNumber] = useState(0);
   const [orderCollection, setOrderCollection] = useState([])
-  let { user } =  useUserAuth();
   
 
 
@@ -27,6 +30,13 @@ const TestDb = () => {
 
 
   useEffect(() => {
+
+
+    setActiveTabCart(false)
+    setActiveTabOrder(true)
+    setActiveTabHome(false)
+    setActiveTabUser(false)
+
         if(!user){
           setLoading(false)
           setLoading2(false)
@@ -58,7 +68,7 @@ const TestDb = () => {
     
       setDetails(data.data);
      
-      setLoading2(true)
+      setLoading(true)
       console.log(data.data);
     
     })
@@ -72,8 +82,8 @@ const TestDb = () => {
   return (
     <div>
     {
-        loading2 & loading ?   <div className='margin-top container innner' >
-        {user &&         order.map((name) => {
+         loading ?   <div className='margin-top container innner' >
+        {user &&         order?.map((name) => {
                      return  <div key={name.number} className='orders' > <Link to={`/order/${name.number}`}><h3>Order ID: 69420{name.number}</h3>
                       <p>Payment Method: {name.payment_method}</p>
                     <div>
@@ -83,7 +93,7 @@ const TestDb = () => {
 
 
                      <p>Total Amount: {name.total}</p>
-                     <p>status   {details.map((cart) => cart ).filter((val)=> {
+                     <p>status   {details?.map((cart) => cart ).filter((val)=> {
                     return val.id === Number(name.number)
                     }).map((cart) => 
                    <span> {cart.status} </span> )}</p>

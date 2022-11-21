@@ -6,11 +6,23 @@ import Producsts from "../components/All Items";
 import Banner from "../components/banner";
 import TestDb from "../components/OrdersPage/testDb";
 import Search from "../components/Search";
+import { useContext, useEffect } from "react";
+import { TestContext } from "../App";
 
 
-  function Home({addToCart, allProducts}) {
+  function Home() {
+    const {    setActiveTabCart, setActiveTabOrder,setActiveTabHome, setActiveTabUser} = useContext(TestContext);
+    useEffect(() => {
+      setActiveTabCart(false)
+      setActiveTabOrder(false)
+      setActiveTabHome(true)
+      setActiveTabUser(false)
+    
+    })
+    
 
   return (
+
     <motion.div
     animate={{opacity: 1}}
     initial={{opacity: 0}}
@@ -19,7 +31,7 @@ import Search from "../components/Search";
     
     >
       {/* <Shop /> */}
-      <div className="search-bar"><Search />
+      <div className="search-bar">
                   </div>
       <Banner />
       <Featured />

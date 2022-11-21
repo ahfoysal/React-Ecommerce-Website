@@ -2,6 +2,41 @@
     display: flex;
     gap: 5px;
 }
+.container-fluid {
+  justify-content: end !important;
+}
+
+.icons.sidenav---sidenav-nav---3tvij {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  align-items: start;
+  gap: 20px;
+  flex-direction: column;
+  flex: auto;
+}
+.nav-icons{
+  color: rgb(26, 26, 44);
+}
+.sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL {
+  min-width: 120px !important;
+}
+.sidenav---sidenav---_2tBP {
+  box-sizing: border-box;
+  line-height: 20px;
+  padding: 10px !important;
+}
+.sidenav---sidenav---_2tBP {
+  box-sizing: border-box;
+  line-height: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.sidenav---sidenav---_2tBP {
+  box-sizing: border-box;
+  line-height: 20px;
+  height: 100vh !important;
+}
 
   
   .logo{

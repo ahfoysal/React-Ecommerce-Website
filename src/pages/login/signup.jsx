@@ -1,15 +1,18 @@
 
 
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Alert } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useUserAuth } from '../../context/UserAuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import {  updateProfile, getAuth, updatePhoneNumber } from "firebase/auth"
+import { TestContext } from '../../App';
 
 
 const Signup = () => {
+  const {    setActiveTabCart, setActiveTabOrder,setActiveTabHome, setActiveTabUser} = useContext(TestContext);
+
   let { user } =  useUserAuth();
   const auth = getAuth();
     const [ email, setEmail ] = useState("");
@@ -45,6 +48,16 @@ const Signup = () => {
      
     }
 
+    useEffect(() => {
+
+
+      setActiveTabCart(false)
+      setActiveTabOrder(false)
+      setActiveTabHome(false)
+      setActiveTabUser(true) 
+     if(user){ navigate(`/profile`)}
+  
+    })
   return (
     <div className='container margin-top'>
     <Form onSubmit={handleSubmit}> 

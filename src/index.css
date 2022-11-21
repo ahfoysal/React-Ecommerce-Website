@@ -113,7 +113,11 @@ overflow: hidden;
 .sidenav---navicon---3gCRo{
 opacity: 1 !important;
 }
-  
+svg.star {
+  font-size: 15px;
+  color: rgb(255, 153, 0);
+}
+
   .sidenav---sidenav---_2tBP {
     position: fixed !important;
     top: 0;
@@ -121,9 +125,10 @@ opacity: 1 !important;
     left: 0;
     z-index: 1006;
     min-width: 64px;
-    background: transparent !important;
+    background: white !important;
     transition: min-width 0.2s;
 }
+
 
 .order-images img {
   height: 100px !important;

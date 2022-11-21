@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {Link} from  'react-router-dom'
 import './shop.css'
 import { TestContext } from "../App";
+import { FaStar } from "react-icons/fa";
 // import { darken } from 'polished';
 // import api from '../pages/api';
 
@@ -35,7 +36,7 @@ function Producsts() {
            <p className="product__category">  {pro.name} </p>)}
             <p className="product__name">{product.name }</p>
             <p className="product__price">৳{product.price}</p>
-            <p className="product__rating">✨0</p></Link>
+            <p className="product__rating"><FaStar  className="star"/>0</p></Link>
            
 
             <button type="button" onClick={() => addToCart(product) } >
