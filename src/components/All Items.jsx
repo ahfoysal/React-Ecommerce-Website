@@ -5,26 +5,78 @@ import {Link} from  'react-router-dom'
 import './shop.css'
 import { TestContext } from "../App";
 import { FaStar } from "react-icons/fa";
+import axios from "axios";
+import prd from '../pages/products.json'
 // import { darken } from 'polished';
 // import api from '../pages/api';
 
 function Producsts() {
-  const {context, allProducts, addToCart} = useContext(TestContext);
-
-  const [ctg , setCtg] = useState({});
+  const {context, allProducts, addToCart, setAllProducts, test2} = useContext(TestContext);
+  const [ctg , setCtg] = useState('');
+  const [pro , setPro] = useState(prd);
   useEffect(() => {
-
+    
+   
+   
   }, []);
+
+const gteProducts = (id) =>{
+ 
+  if(test2 === true){
+
+    const param = id
+
+    const cartItems = allProducts.map((cart)=> {
+      return cart.categories.map(cat => (cart)).filter((val)=> {
+        return val.categories[0].id === id
+            });
+     
+      });
+    console.log(cartItems);
+    const merged = [].concat.apply([], cartItems);
+    let uniqueChars = [...new Set(merged)];
+  console.log(uniqueChars);
+    setPro(uniqueChars)
+    // console.log(category)
+    
+  // console.log(paramss.name)
+  
+  const cartItems2 = allProducts.map((cart2)=> {
+    return cart2.categories.map(cat => (cart2))
+   
+        });
+       
+        console.log(cartItems2);
+  
+  }else{  
+
+    axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/products?${process.env.REACT_APP_KEY}&category=${id}`)
+    .then(data2 => { const data = data2
+      setPro(data.data);
+    })
+    
+  }
+
+
+
+}
+  
+  
   
     return (
 <div className="gridd">
  
 <h3 className="allitem container">All Items </h3>
-
+{ allProducts.map(product => (
+  product.categories.map(categories => (<>
+    <button className="test" key={categories.id} onClick={() => gteProducts(categories.id)}>{categories.name}</button>
+   </>
+))
+))}
         <ProductList  >
     
 
-        { allProducts.map(product => (
+        { pro.map(product => (
           <li className="product-con" key={product.id} id={product.id}>
           {/* <li key={product.id} > */}
             <Link to={'/product/'+product.id}>

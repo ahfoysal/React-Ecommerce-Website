@@ -160,7 +160,7 @@ setCart(cartPd)
       
       <BrowserRouter>  
       <UserAuthContextProvider>
-        <TestContext.Provider value={{ allProducts, addToCart,
+        <TestContext.Provider value={{ allProducts, setAllProducts, addToCart,
            test2, setTest2, updateDb, getDb, cart,
             clearTheCart, removeFromDb, getCart,
              getStoredCart, setCart,

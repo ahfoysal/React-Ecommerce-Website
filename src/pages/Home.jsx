@@ -20,6 +20,7 @@ import { TestContext } from "../App";
     
     })
     
+    
 
   return (
 
@@ -32,12 +33,12 @@ import { TestContext } from "../App";
     >
       {/* <Shop /> */}
   
-      <Banner />
-      <Featured />
+      {/* <Banner /> */}
+      {/* <Featured /> */}
       <Producsts />
       
       
-        <Common />
+        {/* <Common /> */}
        
 
     </motion.div>
