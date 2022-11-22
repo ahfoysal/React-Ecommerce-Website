@@ -46,7 +46,7 @@ const Header = () => {
                   <div ><Search />
                   </div>
                   <Navbar.Brand ><Link to={'/'}>
-               <h3 className="logo">Pewds Merch</h3>  </Link>  </Navbar.Brand>
+               <h3 className="logo">Pewds</h3>  </Link>  </Navbar.Brand>
      
                  </div>
 

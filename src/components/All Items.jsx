@@ -152,12 +152,14 @@ console.log(id)
        
        {product.sale_price && <div> <p className="tag">Sale</p></div>}
        
+    
+      
+        <div className="card-body">
         {product.categories.map(pro =>
            <p className="product__category">  {pro.name} </p>)}
         <h5 className="card-title">
             <p className="product__name">{product.name }</p>
           </h5>
-        <div className="card-body">
           <div className="clearfix mb-3">
           <p className="product__price">৳{product.price}</p>
 
