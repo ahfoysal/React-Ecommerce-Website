@@ -161,7 +161,7 @@ console.log(id)
             <p className="product__name">{product.name }</p>
           </h5>
           <div className="clearfix mb-3">
-          <p className="product__price">৳{product.price}</p>
+          <p className="product__price">৳{product.price} <span className=" del">৳{product.regular_price}</span></p>
 
           <p className="product__rating"><FaStar  className="star"/>0</p>
           </div>
