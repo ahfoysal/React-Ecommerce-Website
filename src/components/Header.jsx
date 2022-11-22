@@ -1,20 +1,21 @@
 import React, { useContext } from 'react'
 import {Container, Navbar} from 'react-bootstrap'
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import Search from "./Search";
 // import NewSearch from  './NewSearch';
 
-import {FiShoppingBag} from 'react-icons/fi';
 import './header.css'
 import { useUserAuth } from '../context/UserAuthContext';
 import { TestContext } from '../App';
-
-
-
+import Left from '@mui/icons-material/KeyboardArrowLeft';
+import Right from '@mui/icons-material/KeyboardArrowRight';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
+import ShoppingCartIcon2 from '@mui/icons-material/ShoppingCart';
 
 
 const Header = () => {
-  const {    setHeaderActive, headerActive} = useContext(TestContext);
+  const history = useNavigate()
+  const {    setHeaderActive, headerActive, activeTabCart, cart} = useContext(TestContext);
 
   const handleHeader =  () => {
  
@@ -40,11 +41,21 @@ const Header = () => {
       <>
     <Navbar className=" header-top  "  >
       <Container fluid>
-    <div className='head-start'>  <button onClick={ () => handleHeader()}>Header</button></div>
+    <div className={`head-start ${headerActive ? '' : 'active'}`}> 
+    
+  {headerActive ? <Left  fontSize="large" className='nav-icons'onClick={ () => handleHeader()}  /> :  <Right  onClick={ () => handleHeader()} fontSize="large" className='nav-icons'  />}
+    </div>
                <div className="head-conatiner ">
-            
-                  <div ><Search />
+            <div>
+              <button className='border-none header__back' onClick={() => history(-1)}> Back</button>
+            </div>
+                  <div ><Search  />
                   </div>
+
+                  <div className="cartIcon2">
+                  <Link to={'/cart'}>{activeTabCart ? <ShoppingCartIcon2  fontSize="large" className='nav-icons'  /> : <ShoppingCartIcon  fontSize="large" className='nav-icons'  />} <h3 className='cart-text2'>{cart.length}</h3></Link>
+                    </div>
+
                   <Navbar.Brand ><Link to={'/'}>
                <h3 className="logo">Pewds</h3>  </Link>  </Navbar.Brand>
      

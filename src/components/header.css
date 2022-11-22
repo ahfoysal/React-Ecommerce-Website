@@ -1,6 +1,6 @@
 .head-conatiner {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   height: 100px;
   justify-content: center;
   align-items: center;
@@ -132,6 +132,27 @@ margin-top: 5px;
     gap: 20px;
     justify-content: end;
 }
+.cartIcon2 {
+  position: relative;
+  display: none;
+}
+.header__back {
+  margin-right: auto;
+  padding: .33rem .66rem;
+  display: inline-block;
+  border: none;
+}
+.header__back, .header__search {
+  padding: .33rem .15rem .33rem .66rem;
+  background: #fff;
+  box-shadow: 0 .25rem .5rem rgba(26,26,44,.05);
+  border-radius: .5rem;
+  font-size: .85rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
   @media screen and (max-width: 600px) {
     
     .magnifierContainer {
@@ -148,15 +169,41 @@ margin-top: 5px;
      .active{
       display: flex !important;
     }
-    button.sidenav---sidenav-toggle---1KRjR {
-      margin-top: 50px;
-  }
-  .head-start{
-display: block;
-z-index: 52 !important;
-position: fixed;
-  }
 
+    
+  .head-start{
+    display: block;
+    z-index: 52 !important;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    left: 75px;
+    background-color: #f90 !important;
+    border-radius: 0px 25px 25px 0px;
+  }
+  .head-start.active {
+    left: 0px !important;
+}
+  .cart-text2 {
+  position: absolute;
+  padding: 4px 4px 5px;
+  font-size: 10px;
+  text-align: center;
+  min-width: 18px;
+  height: 19px;
+  background: #f90 !important;
+  color: #fff !important;
+  font-weight: 700;
+  left: calc(100% - 15px);
+  bottom: calc(100% - 15px);
+  margin: 0;
+  border-radius: 99px;
+}
+.cartIcon2 {
+  position: relative;
+  display: block;
+}
   }
   
   

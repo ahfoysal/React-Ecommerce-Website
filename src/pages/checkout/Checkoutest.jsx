@@ -245,7 +245,7 @@ const Checkoutest = () => {
   return (
     
     <div className='mt-40 container checkout-page' >
-       {isCartEmpty ? <><Box className='mt-40 info'   sx={{ maxWidth: 400 }}>
+       {cart.length >= 1 && <><Box className='mt-40 info'   sx={{ maxWidth: 400 }}>
         <h3>Complete your Order {user && <>, {user.displayName}</>}!</h3>
         {isContainerActive ? <h3 className="head">Thank You For Your Order.</h3> : ""}
 {somethingWentWrong ? <h3 className="head">somthing went wrong</h3> : ""}
@@ -302,7 +302,8 @@ const Checkoutest = () => {
 
 
 
-</> : <><p>Please Add Some Products In Cart</p></>}
+</> }
+{cart < 1 && <p>Please Add atleast a Products In Cart</p>}
     </div>
   )
 }

@@ -42,7 +42,7 @@ const [visible, setVisible] = useState(true);
 // value={input}
 //     />
 //     <Button variant="outline-success" onClick={submitHandler}><FaSearch/></Button>
-    <div className=" search-bar ">
+    <div className=" search-bar header__search ">
         
         <div>
          <Form className="d-flex " onSubmit={submitHandler}>

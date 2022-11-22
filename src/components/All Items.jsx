@@ -169,14 +169,15 @@ console.log(id)
           </div>
         
           </></Link>
+          <div className="add-to-cart">
           <button  onClick={() => addToCart(product) } className='addtocart-btn buy-btn pp-btn' >
-              <div>
+           
                 <MdAddShoppingCart size={16} color="#FFF" /> 
 
-              </div>
+             
 
               <span>Add To Cart</span>
-            </button>
+            </button></div>
           
           <div className="clearfix mb-1">
 

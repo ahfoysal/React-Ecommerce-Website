@@ -228,6 +228,11 @@ svg.star {
     width: 18% !important;
 }
 }
+.add-to-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @media screen and (max-width: 600px) {
   body {

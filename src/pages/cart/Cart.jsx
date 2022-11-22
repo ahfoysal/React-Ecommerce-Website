@@ -10,7 +10,7 @@ import { TestContext } from '../../App';
 
 const Cart = () => {
   ////props
-  const {   updateDb, getDb, cart, clearTheCart, removeFromDb, getCart, setActiveTabCart, setActiveTabOrder,setActiveTabHome, setActiveTabUser} = useContext(TestContext);
+  const {   updateDb, getDb, cart, clearTheCart, removeFromDb, getCart, setActiveTabCart, setActiveTabOrder,setActiveTabHome, setActiveTabUser, setHeaderActive} = useContext(TestContext);
 
   const navigate = useNavigate();
 /////state
@@ -19,14 +19,14 @@ const Cart = () => {
 
 /////checkout button 
 useEffect(() => {
-   if(cart.length < 1 ){setIsCartEmpty(false)}
+ if(cart.length < 1 ){setIsCartEmpty(false)} 
+
   setActiveTabCart(true)
   setActiveTabOrder(false)
   setActiveTabHome(false)
   setActiveTabUser(false)
-  
-
-})
+  setHeaderActive(false)
+}, [])
 
 const ProceedtoPayment = () => {
   navigate("/checkout")      
@@ -85,7 +85,7 @@ const testCart = (id) => {
 
 
   return (<>
-    {isCartEmpty ? <Container className='mt-10 home-page'>
+    {cart.length >= 1   && <Container className='mt-10 home-page'>
     <ProductTable>
       <thead>
         <tr>
@@ -154,7 +154,7 @@ const testCart = (id) => {
       
     {/* ))} */}
 
-</Container> : <p> No Item Found</p>}</>
+</Container> }  {cart < 1 && <p> NO Product Found</p> }</>
   )
 }
 
