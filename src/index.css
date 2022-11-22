@@ -227,5 +227,16 @@ svg.star {
   .form-label {
     width: 18% !important;
 }
-
 }
+
+@media screen and (max-width: 600px) {
+  body {
+      height: auto;
+  }
+  
+  .home-page {
+
+    padding-left: 0px !important;
+  }
+}
+

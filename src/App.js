@@ -24,6 +24,7 @@ function App() {
    const [activeTabCart , setActiveTabCart] = useState(false);
    const [activeTabOrder , setActiveTabOrder] = useState(false);
    const [activeTabUser , setActiveTabUser] = useState(false);
+   const [headerActive , setHeaderActive] = useState(false);
 
 
 
@@ -164,9 +165,11 @@ setCart(cartPd)
              getStoredCart, setCart,
               activeTabCart ,setActiveTabCart, setActiveTabHome, setActiveTabOrder,
               setActiveTabUser,  activeTabUser,
-              activeTabHome, activeTabOrder }}>
+              activeTabHome, activeTabOrder,
+              headerActive, setHeaderActive
+              }}>
     <Header cart={cart} test2={test2}/>
-    <Header2 />
+    <Header2  />
      {/* <Category/> */}
      <Pages  />
  

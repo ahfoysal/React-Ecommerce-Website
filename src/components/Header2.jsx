@@ -20,14 +20,15 @@ import { useUserAuth } from '../context/UserAuthContext';
 const Header2 = () => {
 
 
-    const { cart} = useContext(TestContext);
+
+    const { cart, setHeaderActive, headerActive} = useContext(TestContext);
     const { activeTabCart, activeTabHome, activeTabOrder,  activeTabUser} = useContext(TestContext);
 
     let { user } =  useUserAuth();
     
 
   return (
-    <SideNav className="side-nav"
+    <SideNav className={`side-nav ${headerActive ? 'active' : ''}`}
     onSelect={(selected) => {
         // Add your code here
     }}
