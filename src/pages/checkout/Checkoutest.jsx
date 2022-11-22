@@ -17,6 +17,7 @@ import { useUserAuth } from '../../context/UserAuthContext';
 import { TestContext } from '../../App';
 import { addDoc, collection, doc, updateDoc,arrayUnion, arrayRemove } from 'firebase/firestore';
 import { db } from '../../firebase';
+import { css } from '@emotion/react';
 
 
 
@@ -109,8 +110,8 @@ const Checkoutest = () => {
    
   const steps = [
     {
-      label: 'Personal Information',
-      description:   
+      label: 'Delivery Information',
+      description: 
       <div> 
     
            
@@ -151,8 +152,8 @@ const Checkoutest = () => {
    
     },
     {
-      label: 'Payment Options',
-      description:
+      label: 'Choose a payment method',
+      description: 
       <div>
     
 
@@ -243,9 +244,12 @@ const Checkoutest = () => {
 
   return (
     
-    <div className='mt-50 container' >
-       {isCartEmpty ? <><Box sx={{ maxWidth: 400 }}>
-      <Stepper activeStep={activeStep} orientation="vertical">
+    <div className='mt-40 container checkout-page' >
+       {isCartEmpty ? <><Box className='mt-40 info'   sx={{ maxWidth: 400 }}>
+        <h3>Complete your Order {user && <>, {user.displayName}</>}!</h3>
+        {isContainerActive ? <h3 className="head">Thank You For Your Order.</h3> : ""}
+{somethingWentWrong ? <h3 className="head">somthing went wrong</h3> : ""}
+      <Stepper activeStep={activeStep} orientation="vertical" >
         {steps.map((step, index) => (
           <Step key={step.label}>
             <StepLabel
@@ -283,11 +287,19 @@ const Checkoutest = () => {
      
     </Box>
       
-    <h1>{total}</h1>   
+  <div className="summary mt-20">    
+  <h4>Order Summary</h4>
+  <br /> 
+  {cart.map((css) => {
+    return <><p className='starts'>{css.name} <span className='start-span'>X{css.abc}</span>  <span>৳{css.price * css.abc}</span> </p></>
+   
+  })}
+  <span className='start' >Delivery Charge: ৳0</span>
+  <br />
+  <span>Grand Total : ৳{total}</span>   
+</div>
   
-  
-{isContainerActive ? <h3 className="head">Thank You For Your Order.</h3> : ""}
-{somethingWentWrong ? <h3 className="head">somthing went wrong</h3> : ""}
+
 
 
 </> : <><p>Please Add Some Products In Cart</p></>}

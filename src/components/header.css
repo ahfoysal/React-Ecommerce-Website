@@ -22,6 +22,15 @@
   flex-direction: column;
   flex: auto;
 }
+
+.open {
+  display: block;
+  transition: display 0.35s ease-out;
+  /* border-color: #fbfbfb !important; */
+  /* border: 0.5px solid !important; */
+  border: none;
+}
+
 .nav-icons{
   color: rgb(26, 26, 44);
 }

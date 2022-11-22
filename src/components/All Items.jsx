@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { MdAddShoppingCart } from 'react-icons/md';
 import styled from 'styled-components';
 import {Link} from  'react-router-dom'
 import './shop.css'
@@ -9,6 +8,7 @@ import axios from "axios";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import '@splidejs/react-splide/css';
 import { Pagination } from "@mui/material";
+import { MdAddShoppingCart } from "react-icons/md";
 // import { darken } from 'polished';
 // import api from '../pages/api';
 
@@ -132,30 +132,42 @@ console.log(id)
         <SplideSlide className={'catergory-bar test '}><button className={` cat-btn test ${active === 'all' ? 'cat-active' : ' '}`} onClick={() => (setPro(allProducts), setActive('all'))}>All Products</button></SplideSlide>
         
         {ctg.map((ctgn) => {
-  return <SplideSlide className={' catergory-bar'} >   <button  className={` cat-btn  ${active === ctgn ? 'cat-active' : ' '}`}  onClick={() => gteProducts(ctgn)} > {ctgn}</button> </SplideSlide>
+  return <SplideSlide className={' catergory-bar'} key={ctgn}>   <button  className={` cat-btn  ${active === ctgn ? 'cat-active' : ' '}`}  onClick={() => gteProducts(ctgn)} > {ctgn}</button> </SplideSlide>
 })}
         </Splide>
 
 
-        <ProductList  >
-
-
+        <div className="container-fluid bg-trasparent my-4 p-3"  style={{position: "relative"}}>
+        <div className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
         { pro.slice((page-1) * 12, (page-1) * 12 + 12).map(product => (
-          <li className="product-con" key={product.id} id={product.id}>
-          {/* <li key={product.id} > */}
-            <Link to={'/product/'+product.id}>
-   <img
-              src={product.images[0].src}
-              alt={product.name}
-            />
-           {product.categories.map(pro =>
-           <p className="product__category">  {pro.name} </p>)}
-            <p className="product__name">{product.name }</p>
-            <p className="product__price">৳{product.price}</p>
-            <p className="product__rating"><FaStar  className="star"/>0</p></Link>
-           
+        <>
+        
+        <div className="col hp" key={product.id}>
+      <div className="card h-100 shadow-sm">
+  
+            <div>  <Link to={'/product/'+product.id}> <>
+          <img src={product.images[0].src} className="card-img-top" alt="product.title" />
+      
 
-            <button type="button" onClick={() => addToCart(product) } >
+       
+       {product.sale_price && <div className="label-top shadow-sm"> <p>Sale</p></div>}
+       
+        {product.categories.map(pro =>
+           <p className="product__category">  {pro.name} </p>)}
+        <h5 className="card-title">
+            <p className="product__name">{product.name }</p>
+          </h5>
+        <div className="card-body">
+          <div className="clearfix mb-3">
+          <p className="product__price">৳{product.price}</p>
+
+          <p className="product__rating"><FaStar  className="star"/>0</p>
+          </div>
+         
+          </div>
+        
+          </></Link>
+          <button  onClick={() => addToCart(product) } className='addtocart-btn buy-btn pp-btn' >
               <div>
                 <MdAddShoppingCart size={16} color="#FFF" /> 
 
@@ -163,10 +175,24 @@ console.log(id)
 
               <span>Add To Cart</span>
             </button>
-          </li>
+          
+          <div className="clearfix mb-1">
+
+            <span className="float-start"><i className="fas fa-question-circle"></i></span>
+
+            <span className="float-end">
+              <i className="far fa-heart" ></i>
+
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        </>
         )) }
-        
-      </ProductList>
+        </div>    </div>
+          
       <Pagination className="paginatin" count={Math.ceil(pro.length / 12)}
       onChange={(_, value) => {
         setPage(value);

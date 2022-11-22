@@ -28,7 +28,7 @@ const Header = ({cart, test2}) => {
   return (
 
       <>
-    <Navbar className=" header-top bg-white"  >
+    <Navbar className=" header-top  "  >
       <Container fluid>
        
                <div className="head-conatiner ">
