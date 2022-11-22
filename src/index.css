@@ -233,7 +233,14 @@ svg.star {
   body {
       height: auto;
   }
-  
+  .head-conatiner {
+    display: flex;
+    gap: 20px;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+}
+
   .home-page {
 
     padding-left: 0px !important;
