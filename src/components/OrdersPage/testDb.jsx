@@ -48,7 +48,7 @@ const getData2 =  () => {
   axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/orders/?${process.env.REACT_APP_KEY}`)
   .then(data2 => { const data = data2
   
-    setDetails(data.data);
+    // setDetails(data.data);
    
     // console.log(data.data);
   
