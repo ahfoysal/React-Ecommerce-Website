@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import prd from './pages/products.json'
 import { UserAuthContextProvider } from './context/UserAuthContext';
 import Header2 from "./components/Header2";
 
@@ -28,21 +27,20 @@ function App() {
 
 
 
+
   
 
    useEffect(() => {
     getCart();
    
-      console.log(prd); 
-  setAllProducts(prd)
   gteProducts();
     }, [])
    const addToCart = (id) =>{
     const newCart = [...cart, id];
     setCart(newCart);
     toast.success('🛒 Added to cart', {
-      position: "bottom-left",
-      autoClose: 5000,
+      position: "top-right",
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,

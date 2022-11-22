@@ -74,7 +74,7 @@ const Checkoutest = () => {
       myHeaders.append("Content-Type", "application/json");
      
 
-   const body1 = `{"payment_method": "${method}","customer_note":"hello","transaction_id":"12345","billing":{"first_name":"${name}","address_1":"${address}","phone":"${phone}","email":"test1@gmail.com"},"line_items":`
+   const body1 = `{"payment_method": "${method}","customer_note":"hello","transaction_id":"${trxid}","billing":{"first_name":"${name}","address_1":"${address}","phone":"${phone}","email":"test1@gmail.com"},"line_items":`
   const body2= `${newCart}}`
       const body3 = body1.concat(' ', body2);
   

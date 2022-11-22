@@ -35,6 +35,7 @@ const TestDb = () => {
       return val.email === param
       });
       setOrder(cartItems)
+      console.log(cartItems)
      
           setLoading(true)
     
@@ -49,7 +50,7 @@ const getData2 =  () => {
   
     setDetails(data.data);
    
-    console.log(data.data);
+    // console.log(data.data);
   
   })
   

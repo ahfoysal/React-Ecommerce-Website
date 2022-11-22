@@ -6,36 +6,86 @@ import './shop.css'
 import { TestContext } from "../App";
 import { FaStar } from "react-icons/fa";
 import axios from "axios";
-import prd from '../pages/products.json'
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import '@splidejs/react-splide/css';
+import { Pagination } from "@mui/material";
 // import { darken } from 'polished';
 // import api from '../pages/api';
 
 function Producsts() {
   const {context, allProducts, addToCart, setAllProducts, test2} = useContext(TestContext);
-  const [ctg , setCtg] = useState('');
-  const [pro , setPro] = useState(prd);
+  const [ctg , setCtg] = useState([]);
+  const [pro , setPro] = useState([]);
+  const [active , setActive] = useState('all');
+  const [page , setPage] = useState(1);
+
+ 
+
+
   useEffect(() => {
+  
+    gteProducts2()
+    getCat()
     
-   
-   
   }, []);
 
+
+const getCat = () =>{
+  axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/products?${process.env.REACT_APP_KEY}&per_page=100`)
+          .then(data2 => { const data = data2
+            sessionStorage.setItem('AllItems',JSON.stringify(data.data))
+            setPro(data.data)
+            // console.log(data);
+            const ctgName =  data.data.map(product => {
+              return product.categories.map(categories => ( categories.name))})
+              const merged = [].concat.apply([], ctgName);
+              let uniqueChars = [...new Set(merged)];
+              const ctgId =  data.data.map(product => {
+               return product.categories.map(categories => ( categories.id))})
+               const merged2 = [].concat.apply([], ctgId);
+               let uniqueChars2 = [...new Set(merged2)];
+              //  console.log(uniqueChars, uniqueChars2 )
+               setCtg(uniqueChars)
+          
+  
+    })
+        
+  
+    setPage(1)
+  
+}
+
+  const gteProducts2 = () =>{
+  
+            axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/products?${process.env.REACT_APP_KEY}&per_page=100`)
+          .then(data2 => { const data = data2
+            sessionStorage.setItem('AllItems',JSON.stringify(data.data))
+            setPro(data.data)
+            // console.log(data);
+  
+          })
+        
+  }
+
 const gteProducts = (id) =>{
- 
+setActive(id)
+console.log(id)
+
+  setPage(1)
   if(test2 === true){
 
     const param = id
 
     const cartItems = allProducts.map((cart)=> {
       return cart.categories.map(cat => (cart)).filter((val)=> {
-        return val.categories[0].id === id
+        return val.categories[0].name === id
             });
      
       });
-    console.log(cartItems);
+    // console.log(cartItems);
     const merged = [].concat.apply([], cartItems);
     let uniqueChars = [...new Set(merged)];
-  console.log(uniqueChars);
+  // console.log(uniqueChars);
     setPro(uniqueChars)
     // console.log(category)
     
@@ -46,7 +96,7 @@ const gteProducts = (id) =>{
    
         });
        
-        console.log(cartItems2);
+        // console.log(cartItems2);
   
   }else{  
 
@@ -66,17 +116,31 @@ const gteProducts = (id) =>{
     return (
 <div className="gridd">
  
-<h3 className="allitem container">All Items </h3>
-{ allProducts.map(product => (
-  product.categories.map(categories => (<>
-    <button className="test" key={categories.id} onClick={() => gteProducts(categories.id)}>{categories.name}</button>
-   </>
-))
-))}
-        <ProductList  >
-    
 
-        { pro.map(product => (
+
+
+
+<Splide  options={{
+        arrows: false,      pagination: false,        gap: '10px',   perPage: 10,
+        breakpoints: {
+          700: {        perPage: 5,    gap: '10px'      },
+          
+          1000: {        perPage: 5,    gap: '10px'      }
+
+        }
+      }}>
+        <SplideSlide className={'catergory-bar test '}><button className={` cat-btn test ${active === 'all' ? 'cat-active' : ' '}`} onClick={() => (setPro(allProducts), setActive('all'))}>All Products</button></SplideSlide>
+        
+        {ctg.map((ctgn) => {
+  return <SplideSlide className={' catergory-bar'} >   <button  className={` cat-btn  ${active === ctgn ? 'cat-active' : ' '}`}  onClick={() => gteProducts(ctgn)} > {ctgn}</button> </SplideSlide>
+})}
+        </Splide>
+
+
+        <ProductList  >
+
+
+        { pro.slice((page-1) * 12, (page-1) * 12 + 12).map(product => (
           <li className="product-con" key={product.id} id={product.id}>
           {/* <li key={product.id} > */}
             <Link to={'/product/'+product.id}>
@@ -101,7 +165,14 @@ const gteProducts = (id) =>{
             </button>
           </li>
         )) }
+        
       </ProductList>
+      <Pagination className="paginatin" count={Math.ceil(pro.length / 12)}
+      onChange={(_, value) => {
+        setPage(value);
+        window.scroll(0,450)
+      }}
+      />
    </div>
   )
   }
