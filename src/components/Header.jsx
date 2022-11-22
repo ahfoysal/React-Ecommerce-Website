@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import {Container, Navbar} from 'react-bootstrap'
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useNavigate, useLocation} from 'react-router-dom';
 import Search from "./Search";
 // import NewSearch from  './NewSearch';
 
@@ -13,12 +13,18 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ShoppingCartIcon2 from '@mui/icons-material/ShoppingCart';
 
 
+
 const Header = () => {
+  let params = useLocation();
+
+  const param = params.pathname
+
+
   const history = useNavigate()
   const {    setHeaderActive, headerActive, activeTabCart, cart} = useContext(TestContext);
 
   const handleHeader =  () => {
- 
+ console.log(param)
     if(headerActive === true){
       setHeaderActive(false)
     }else{setHeaderActive(true)}
@@ -47,7 +53,7 @@ const Header = () => {
     </div>
                <div className="head-conatiner ">
             <div>
-              <button className='border-none header__back' onClick={() => history(-1)}> Back</button>
+             {param != '/' && <button className='border-none header__back' onClick={() => history(-1)}> Back</button>}
             </div>
                   <div ><Search  />
                   </div>
