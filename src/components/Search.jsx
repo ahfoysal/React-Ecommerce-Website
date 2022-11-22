@@ -48,7 +48,7 @@ const [visible, setVisible] = useState(true);
          <Form className="d-flex " onSubmit={submitHandler}>
 
         <aside className={visible ? "open" : "close"}>
-          <input placeholder="Search..." type="text"  onChange={(e) => setInput(e.target.value)} 
+          <input placeholder="Search..." type="text" className='border-none'  onChange={(e) => setInput(e.target.value)} 
 value={input}/>
         </aside></Form></div>
         <div className="magnifierContainer">

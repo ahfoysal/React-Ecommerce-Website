@@ -150,7 +150,7 @@ console.log(id)
       
 
        
-       {product.sale_price && <div className="label-top shadow-sm"> <p>Sale</p></div>}
+       {product.sale_price && <div> <p className="tag">Sale</p></div>}
        
         {product.categories.map(pro =>
            <p className="product__category">  {pro.name} </p>)}

@@ -33,7 +33,7 @@ import { TestContext } from "../App";
     >
       {/* <Shop /> */}
   
-      {/* <Banner /> */}
+      <Banner />
       {/* <Featured /> */}
       <Producsts />
       

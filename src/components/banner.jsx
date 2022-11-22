@@ -7,12 +7,12 @@ function Banner(props) {
 
   return (
   
-    <div className="container">
+    <div >
       <Splide  options={{
         arrows: false,      pagination: true,        gap: '3rem',   perPage: 1,
         breakpoints: {
           700: {        perPage: 1,    gap: '10px'      },  
-          1000: {        perPage: 2,    gap: '10px'      }
+     
 
         }
       }}>
