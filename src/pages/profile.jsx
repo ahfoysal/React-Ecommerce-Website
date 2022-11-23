@@ -35,7 +35,7 @@ console.log(user)
       <div className="profile__header">
       <img src="https://i.pravatar.cc/150?u=dfgsad@da.c" alt="" className="profile__avatar" />
       <span className="profile__header_span">
-        <h3>Hi, {user.displayName}</h3>
+        <h3>Hi, {user?.displayName}</h3>
         <p className="profile-stats">This is your profile page. Here, you can view and customize your profile details. Double check your details before check out.</p>
       </span>
       <div className="buttons" style={{marginLeft: "auto"}}>
@@ -45,8 +45,8 @@ console.log(user)
 
       </div>
       <div className="profile__inner">
-        <p>   <span>Name</span> <span>   {user.displayName}   </span>  </p>
-        <p>   <span>Email Address</span> <span>   {user.email}   </span>  </p>
+        <p>   <span>Name</span> <span>   {user?.displayName}   </span>  </p>
+        <p>   <span>Email Address</span> <span>   {user?.email}   </span>  </p>
         {/* <p>   <span>Name</span> <span>   {user.displayName}   </span>  </p>
         <p>   <span>Name</span> <span>   {user.displayName}   </span>  </p>
         <p>   <span>Name</span> <span>   {user.displayName}   </span>  </p>

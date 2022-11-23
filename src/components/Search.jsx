@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import {FaSearch} from 'react-icons/fa';
 import {useNavigate} from 'react-router-dom'
 import {FormControl, Form, Button} from 'react-bootstrap';
+import SearchIcon from '@mui/icons-material/Search';
 
 
 function Search() {
@@ -53,7 +54,7 @@ value={input}/>
         </aside></Form></div>
         <div className="magnifierContainer">
         </div>
-        <FaSearch onClick={handleVisibility}/>
+        <SearchIcon onClick={handleVisibility} fontSize="large" className='nav-icons' />
 
 
          </div>
