@@ -32,7 +32,7 @@ useEffect(() => {
 const ProceedtoPayment = () => {
   navigate("/checkout")      
 }
-const total = cart.reduce((total, prd) => total + prd.price * prd.abc , 0)
+const total = (cart.reduce((total, prd) => total + prd.price * prd.abc , 0).toFixed(2))
 const total2 = cart.reduce((total, prd) => total + prd.abc , 0)
 
 

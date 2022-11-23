@@ -1,5 +1,5 @@
 .cart-page {
-  padding: 3rem 0rem 0rem 7rem ;
+  padding: 3rem 2rem 0rem 7rem ;
 }
 .cart__inner {
   display: flex !important;
@@ -142,7 +142,7 @@
   justify-content: center;
   background: #f90;
   box-shadow: 0 0.5rem 1rem rgb(255 153 0 / 25%);
-  padding: 0.5rem 1.5rem!important;
+  padding: 0.5rem 1.5rem;
   width: fit-content;
 }
 

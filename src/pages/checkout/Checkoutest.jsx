@@ -59,7 +59,7 @@ const Checkoutest = () => {
 
 
  
-  const total = cart.reduce((total, prd) => total + prd.price * prd.abc , 0)
+  const total = (cart.reduce((total, prd) => total + prd.price * prd.abc , 0).toFixed(2))
 
   const createOrder = (e) => {
     e.preventDefault();
@@ -291,7 +291,7 @@ const Checkoutest = () => {
     return <div className="payment__item">
           <span className='payment__name'>{css.name} </span>
           <span className='payment__quantity'>X{css.abc}</span>  
-          <span className='payment__price'>৳{css.price * css.abc}</span> </div>
+          <span className='payment__price'>৳{(css.price * css.abc).toFixed(2)}</span> </div>
     
     
    
