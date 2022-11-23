@@ -459,7 +459,7 @@
   padding: 20px 20px !important;
 }
 .payment__inner {
-  flex-flow: column nowrap;
+  flex-flow: column-reverse nowrap;
 }
 .payment__method, .payment__summary {
   flex: 0 0 100%;
