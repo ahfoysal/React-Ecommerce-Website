@@ -102,7 +102,7 @@ const testCart = (id) => {
   </div>
   <div className="cartItem__details">
 
-    <p className="cartItem__name">{cart.name}</p>
+ <Link to={'/product/'+cart.id}>   <p className="cartItem__name">{cart.name}</p></Link>
     <div className="cartItem__footer">
     <div className='cartItem_title'>
       <p className="cartItem__price">
