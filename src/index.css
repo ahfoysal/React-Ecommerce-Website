@@ -51,6 +51,7 @@ text-decoration: none !important;
 .cat-active{
   font-weight: 700;
   opacity: 1;
+  border-bottom: 1px solid;
 }
 .paginatin {
   display: flex;
@@ -120,6 +121,7 @@ font-size: 16px !important;
 line-height: .5 !important;
 
 }
+
 .start-span{
   opacity: .5;
 }

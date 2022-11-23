@@ -129,10 +129,10 @@ console.log(id)
 
         }
       }}>
-        <SplideSlide className={'catergory-bar test '}><p className={` cat-btn test ${active === 'all' ? 'cat-active' : ' '}`} onClick={() => (setPro(allProducts), setActive('all'))}>All Products</p></SplideSlide>
+        <SplideSlide className={'catergory-bar  test '}><p className={` cat-btn categories__category ${active === 'all' ? 'cat-active' : ' '}`} onClick={() => (setPro(allProducts), setActive('all'))}>All Products</p></SplideSlide>
         
         {ctg.map((ctgn) => {
-  return <SplideSlide className={' catergory-bar'} key={ctgn}>   <p  className={` cat-btn  ${active === ctgn ? 'cat-active' : ' '}`}  onClick={() => gteProducts(ctgn)} > {ctgn}</p> </SplideSlide>
+  return <SplideSlide className={' catergory-bar'} key={ctgn}>   <p  className={` cat-btn categories__category ${active === ctgn ? 'cat-active' : ' '}`}  onClick={() => gteProducts(ctgn)} > {ctgn}</p> </SplideSlide>
 })}
         </Splide>
 
