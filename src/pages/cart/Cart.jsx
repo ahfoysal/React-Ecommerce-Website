@@ -88,7 +88,7 @@ const testCart = (id) => {
 
 
   return (<>
-    {cart.length >= 1   && <Container className='mt-10 home-page cart-page'>
+    {cart.length >= 1   && <Container className=' home-page cart-page'>
       <div><p className='top-line'>Your Cart</p></div>
       <div className="cart__inner">
      
@@ -185,9 +185,18 @@ const testCart = (id) => {
     <p>
     Number of items: {total2}
     </p>
-    <p >
+    <span style={{opacity: ".7"}}>
     This price is exclusive of Delivery charge. Delivery charge will be added during checkout.
-    </p>
+    </span>
+    <div className="buttons">
+
+       <button onClick={() => ProceedtoPayment() }>
+       Proceed to Payment</button>
+       <button className="red" onClick={clearTheCart }>
+      Clear  Cart</button>
+ 
+
+    </div>
   
     </div>
     
@@ -196,7 +205,7 @@ const testCart = (id) => {
     
     
     </div>
-
+{/* 
     <footer>
 
       <button onClick={() => ProceedtoPayment() } className="btn"  >
@@ -211,7 +220,7 @@ const testCart = (id) => {
       </Total>
       <button  onClick={clearTheCart} >Clear Cart</button>
 
-    </footer>
+    </footer> */}
 
 
 

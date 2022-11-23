@@ -53,7 +53,7 @@ const Header = () => {
     </div>
                <div className="head-conatiner ">
             <div>
-             {param != '/' && <button className='border-none header__back' onClick={() => history(-1)}> Back</button>}
+             {param !== '/' && <button className='border-none header__back' onClick={() => history(-1)}> Back</button>}
             </div>
                   <div ><Search  />
                   </div>

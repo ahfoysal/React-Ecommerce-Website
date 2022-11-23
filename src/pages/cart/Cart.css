@@ -113,6 +113,32 @@
   align-self: flex-start;
   padding: 2rem;
 }
+.cart__checkout .buttons {
+  margin-top: 1rem;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.red{
+  background-color: red !important; 
+}.buttons button {
+  border: none;
+  color: #fff;
+  padding: .5rem;
+  border-radius: .5rem;
+  font-weight: 700;
+  transition: all .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f90;
+  box-shadow: 0 0.5rem 1rem rgb(255 153 0 / 25%);
+  padding: 0.5rem 1.5rem!important;
+  width: fit-content;
+}
+
 .cart__total {
   font-size: 1.5rem;
   font-weight: 900;
@@ -217,4 +243,23 @@
 .checked-out .checkbtn {
   background-color: #20bf6b;
   transition-delay: 1150ms;
+}
+@media (max-width: 550px){
+  .cart__inner {
+    flex-direction: column;
+}
+.cart__items {
+  flex: 0 0 100%;
+  margin-bottom: 3rem;
+}
+.cart__checkout {
+  flex: 0 0 100%;
+  margin-left: 0;
+  padding: 1.5rem;
+}
+
+.cart-page {
+ 
+  padding: 5rem 3rem 3rem !important;
+}
 }
