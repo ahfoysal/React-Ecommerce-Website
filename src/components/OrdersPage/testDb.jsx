@@ -28,14 +28,14 @@ const TestDb = () => {
     const data = await getDocs(ordersCollection)
     const newData= data.docs?.map((doc) => ({...doc.data(), id: doc.id}))
     const emails = newData?.map((email) => email.email)
-    console.log(emails)
-    console.log(newData)
+    // console.log(emails)
+    // console.log(newData)
     const param = user?.email
     const cartItems = newData?.map((cart) => cart ).filter((val)=> {
       return val.email === param
       });
       setOrder(cartItems)
-      console.log(cartItems)
+      // console.log(cartItems)
      
           setLoading(true)
     
@@ -48,9 +48,9 @@ const getData2 =  () => {
   axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/orders/?${process.env.REACT_APP_KEY}`)
   .then(data2 => { const data = data2
   
-    // setDetails(data.data);
+    setDetails(data.data);
    
-    // console.log(data.data);
+    console.log(data.data);
   
   })
   
@@ -92,7 +92,7 @@ getData()
          loading ?   <div className='orders__inner' >
           
         {user &&         order?.map((name) => {
-                     return  <div key={name.number} className='payment__summary' > <Link to={`/order/${name.number}`}>
+                     return  <div key={name.number} className='payment__summary pay_sum' > <Link to={`/order/${name.number}`}>
                       <h5>Order ID: 69420{name.number}</h5>
                       <p>Payment Method: {name.payment_method}</p>
                     <div className='order__list noScrollbar'>
@@ -106,14 +106,28 @@ getData()
                       }
                     )}</div>
 
-
-                     <p>Total Amount: {name.total}</p>
-                     <p>status   {details?.map((cart) => cart ).filter((val)=> {
+                        <div className="payment__item" style={{marginTop: "auto"}}>
+                        <span className="payment__name">Total Amount</span>
+                          <span className="payment__price">{name.total}</span>
+                        </div>
+                        <div className="payment__item" style={{marginTop: "auto"}}>
+                     <p className="payment__name">status  </p>
+                      {details.map((cart) => cart ).filter((val)=> {
                     return val.id === Number(name.number)
                     })?.map((cart) => 
-                   <span> {cart.status} </span> )}</p>
+                   <span className='payment__status'> {cart.status} </span> )}
+
+                          </div>
+
+
+
                   </Link>   </div>
                      })}
+
+
+
+
+                     
                      {!user && <p>Please Login To Check Orders</p> }
                   
             </div>  : <div className="spinnerdiv"><ReactBootstrap.Spinner animation="border" /> </div> }

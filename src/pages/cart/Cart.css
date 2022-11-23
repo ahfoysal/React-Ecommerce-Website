@@ -316,9 +316,20 @@
   box-shadow: 0 .25rem .5rem rgba(26,26,44,.05);
   max-width: 418px;
 }
+.pay_sum{
+  flex-grow: 0 !important;
+  flex-shrink: 0 !important;
+  flex-basis: calc(33.33333% - 2rem) !important;
+  width: calc(33.33333% - 2rem) !important;
+  margin: 1rem !important;
+  max-width: auto ;
+  align-self: stretch !important;
+  display: flex !important;
+  flex-flow: column nowrap !important;
+}
 .payment__summary {
   flex: 0 0 40%;
-  max-width: 40%;
+  max-width: 40% !important;
   background: #fff;
   border-radius: .5rem;
   box-shadow: 0 .25rem .5rem rgba(26,26,44,.05);
@@ -362,7 +373,8 @@
   margin-left: -1rem;
   flex-flow: row wrap;
 }
-.orders .payment__summary {
+
+ .payment__summary {
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: calc(33.33333% - 2rem);
@@ -374,13 +386,13 @@
   flex-flow: column nowrap;
 }
 .payment__summary {
-  flex: 0 0 40%;
-  max-width: 40%;
+  flex: 0 0 40% ;
+  max-width: 40% ;
   background: #fff;
   border-radius: .5rem;
   box-shadow: 0 .25rem .5rem rgba(26,26,44,.05);
   align-self: flex-start;
-  padding: 2rem;
+  padding: 2rem ;
 }
 .payment__summary h5 {
   font-size: 1.25rem;
@@ -400,6 +412,19 @@
   -ms-scroll-snap-type: x mandatory;
   scroll-snap-type: x mandatory;
 }
+.orders .payment__summary {
+  flex-grow: 0 !important;
+  flex-shrink: 0;
+  flex-basis: calc(33.33333% - 2rem);
+  width: calc(33.33333% - 2rem) !important;
+  margin: 1rem;
+  max-width: auto;
+  align-self: stretch;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+
 .order__item {
   display: flex ;
   flex-direction: column !important;
@@ -419,6 +444,38 @@
   bottom: auto;
   top: .5rem;
 }
+.payment__item {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  align-items: flex-end;
+}
+.payment__item span {
+  white-space: nowrap;
+  color: #000;
+}
+.payment__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.payment__price {
+  margin-left: auto;
+  padding-left: 1rem;
+  font-size: 20px;
+  font-weight: bolder;
+  white-space: nowrap;
+    color: #000;
+}
+
+.payment__status{
+  margin-left: auto;
+  padding-left: 1rem;
+  font-size: 18px;
+  font-weight: bolder;
+  white-space: nowrap;
+    color: green !important;
+}
+
 .order__price, .order__quantity {
   position: absolute;
   padding: .25rem .5rem;
