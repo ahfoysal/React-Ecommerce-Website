@@ -190,6 +190,11 @@
 .profile__inner p span:nth-child(2) {
     flex: 80% 1;
 }
+
+.order_sum.pay_sum {
+    width: 100% !important;
+    max-width: 100% !important;
+}
 @media (max-width: 550px){
     
 }

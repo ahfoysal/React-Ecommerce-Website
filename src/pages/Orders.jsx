@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import styled from 'styled-components'
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import React from 'react'
 import * as ReactBootstrap from 'react-bootstrap'
 import axios from 'axios'
@@ -58,77 +58,49 @@ fetchDetails();
   return (
     
     
-    <DetailsWrapper>
+    <div className='cart-page'>
+
 {
   loading ? 
+  <div className='orders__inner' >  
+  <p className='top-line'>Order ID: 69420{details.number}</p>
+  <div key={details.number} className='order_sum pay_sum' >
+  <p>Payment Method: {details.payment_method}</p>
+      <div className='order__list noScrollbar'>
+       
+     {details.line_items?.map((pro) => {
+                    return   <div className='order__item item_order'> 
+                    <Link to={'/product/'+pro.product_id}>
+                <div className='order__image'><img src={pro.image.src} alt=""   /></div>
+                 <span className='order__name'>{pro.name}</span>
+                <span className="order__quantity">x{pro.quantity}</span>
+                </Link> </div>
 
-  
-  <div className='container productpage'>
-  
-<Info> 
-<h2>Order Number : 69420{details.number}</h2>
-<h2>Current Status: {details.status}</h2>
-<h2>Name:{details.billing.first_name}</h2>
-<h2>Phone: {details.billing.phone}</h2>
-<h2>Total Amount:{details.total}</h2>
+                      }
+                    )}</div>
+                    
+                    <div className="payment__item" style={{marginTop: "auto"}}>
+                        <span className="payment__name">Total Amount</span>
+                          <span className="payment__price">{details.total}</span>
+                        </div>
+                        <div className="payment__item" style={{marginTop: "auto"}}>
+                     <p className="payment__name">status  </p>
+                     <span className='payment__status'> {details.status} </span> 
 
 
-  
-      <div>    
-<div className="btn">
-       <button className="buy-btn" href={'/'}>Back to home</button>
-        </div>
-
-  </div>
- 
+                          </div>
 
 
-
-
-</Info></div>
+    </div>
+ </div>
 
 :<div className="spinnerdiv"><ReactBootstrap.Spinner animation="border" /> </div>}
     
-       </DetailsWrapper>
+       </div>
        
   )
 }
 
-const DetailsWrapper = styled.div`
-margin-top: 10rem;
-margin-bottom: 5rem;
-display: flex;
 
-
-.active{
-background: linear-gradient(35deg, #494949, #313131);
-color: white;
-}
-h2{
-margin-bottom: 2rem;
-margin-top: 1rem;
-}
-h2{
-  font-size: 1rem;
-  margin-bottom: 2rem;
-  margin-top: 1rem;
-  }
-li{
-font-size: 1.2rem;
-line-height: 2.5rem;
-
-}
-ul{
-margin-top: 2rem;
-}
-
-`;
-
-const Info = styled.div`
-margin-top: 4rem;
-
-margin-left: 5rem;
-
-`;
 
 export default Orders

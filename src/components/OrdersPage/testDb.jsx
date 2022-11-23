@@ -85,8 +85,8 @@ getData()
 }, [])
 
   return (
-    <div className=' cart-page'>
-            <p className='top-line'>Your Orders</p>
+    <div className='cart-page'>
+            <p className='top-line'>Your Orders </p>
         
     {
          loading ?   <div className='orders__inner' >

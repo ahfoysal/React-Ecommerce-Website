@@ -160,7 +160,7 @@ console.log(id)
         <h5 className="card-title">
             <p className="product__name">{product.name }</p>
           </h5>
-          <div className="clearfix mb-3">
+          <div className="clearfix ">
           <p className="product__price">৳{product.price} {product.sale_price && <span className=" del">৳{product.regular_price}</span>}</p>
 
           <p className="product__rating"><FaStar  className="star"/>0</p>
