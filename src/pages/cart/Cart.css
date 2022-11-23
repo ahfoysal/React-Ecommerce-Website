@@ -402,8 +402,8 @@
 }
 .order__item {
   display: flex ;
-  flex-direction: column;
-  min-width: 120px;
+  flex-direction: column !important;
+  min-width: 120px !important;
   flex: 0.4 1;
   padding: 1rem;
   border-radius: .5rem;
@@ -414,7 +414,7 @@
   scroll-snap-align: start;
 }
 .item_order {
-  display: flex ;
+  display: flex !important;
   flex-direction: column;
   min-width: 120px;
   flex: 0.4 1;
