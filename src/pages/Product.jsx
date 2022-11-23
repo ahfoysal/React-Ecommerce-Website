@@ -95,7 +95,11 @@ const page = Math.random() * 10
 <p className='product_price'>৳{details.price}</p>
 {/* <span dangerouslySetInnerHTML={{ __html: details.description }} ></span> */}
 <div className="btn ">
-       <button className="buy-btn pp-btn" onClick={() => addToCart(details)}>Add To Cart</button>
+       <button className="buy-btn pp-btn" onClick={() => addToCart(details)}> <MdAddShoppingCart size={16} color="#FFF" /> 
+
+             
+
+<span>  Add To Cart</span></button>
         </div>
 
   </div>

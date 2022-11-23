@@ -2,8 +2,9 @@ import React, {  useContext, useEffect, useState } from 'react'
 import { Container, ProductTable, Total } from './Cart-styles';
 import { MdRemoveCircleOutline, MdAddCircleOutline, MdDelete } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import '../checkout/Checkout.css'
+import '../cart/Cart.css'
 import { TestContext } from '../../App';
+import Remove from '@mui/icons-material/RemoveShoppingCart';
 
 
 
@@ -32,6 +33,8 @@ const ProceedtoPayment = () => {
   navigate("/checkout")      
 }
 const total = cart.reduce((total, prd) => total + prd.price * prd.abc , 0)
+const total2 = cart.reduce((total, prd) => total + prd.abc , 0)
+
 
 // const subTotal = cart.reduce(( prd) =>   parseInt(prd.price) * prd.abc )
 
@@ -85,18 +88,60 @@ const testCart = (id) => {
 
 
   return (<>
-    {cart.length >= 1   && <Container className='mt-10 home-page'>
-    <ProductTable>
-      <thead>
-        <tr>
+    {cart.length >= 1   && <Container className='mt-10 home-page cart-page'>
+      <div><p className='top-line'>Your Cart</p></div>
+      <div className="cart__inner">
+     
+        <div className="cart__items">
+        {cart.map((cart, index) => (    
+  <div className="cartItem">
+  <div className="cartItem__image">
+            <img  src={cart.images[0].src}
+              alt={cart.name} />
+
+  </div>
+  <div className="cartItem__details">
+
+    <p className="cartItem__name">{cart.name}</p>
+    <div className="cartItem__footer">
+      <p className="cartItem__price">
+        {cart.price}
+      </p>
+      <div className="cartItem__buttons">
+      <button type="button" >
+                  <MdRemoveCircleOutline size={20} color="#1a1a2c" onClick={() => dcrs(cart.id)} />
+                </button>
+                <input className='cart-input' readOnly value={`${cart.abc}`} />
+                <button type="button"  onClick={() => incrs(cart.id)} >
+                  <MdAddCircleOutline size={20} color="#1a1a2c"/>
+                </button>
+      </div>
+      <div className="cartItem__remove"><button className="buttonRed"   onClick={() => removeFromDb(cart.id)}>
+      <Remove  className='btnremove' fontSize="small" />
+
+
+      </button>
+      </div>
+    </div>
+  </div>
+  
+
+  </div>
+
+
+            ) ) }
+        
+         {/* <ProductTable>
+          <thead>
+          <tr>
           <th />
           <th>PRODUCT</th>
           <th>AMOUNT</th>
           <th>SUBTOTAL</th>
-        </tr>
-      </thead>
-      <tbody>
-      {cart.map((cart, index) => (
+            </tr>
+           </thead>
+           <tbody>
+           {cart.map((cart, index) => (
             <tr key={`${cart.id}`}>
             <td>
               <img
@@ -130,7 +175,27 @@ const testCart = (id) => {
           </tr>
         ) ) }
       </tbody>
-    </ProductTable>
+    </ProductTable> */}
+    </div>
+    <div className="cart__checkout">
+    <p className='top-line'>Checkout</p>
+    <p className="cart__total">
+    Sub-Total: ৳{total}
+    </p>
+    <p>
+    Number of items: {total2}
+    </p>
+    <p >
+    This price is exclusive of Delivery charge. Delivery charge will be added during checkout.
+    </p>
+  
+    </div>
+    
+    
+    
+    
+    
+    </div>
 
     <footer>
 

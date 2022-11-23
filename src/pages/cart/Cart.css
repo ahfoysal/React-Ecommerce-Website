@@ -1,5 +1,124 @@
-
-
+.cart-page {
+  padding-left: 90px !important;
+  padding: 5rem 3rem 3rem ;
+}
+.cart__inner {
+  display: flex !important;
+}
+.cart__items {
+  flex: 0 0 50%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.cart__items {
+  flex: 0 0 50%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.cartItem {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  background: #fff;
+  border-radius: .5rem;
+  overflow: hidden;
+  box-shadow: 0 .25rem .5rem rgba(26,26,44,.05);
+  transition: all .2s;
+}
+.cartItem__image {
+  flex: 0 0 30%;
+  height: 0;
+  padding-bottom: 30%;
+  position: relative;
+}
+.cartItem__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 1rem;
+  position: absolute;
+}
+.cartItem__details {
+  padding: 1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  height: 120px;
+}
+.cartItem__footer {
+  display: flex;
+  margin-top: auto;
+  align-items: baseline;
+}
+.cartItem__price {
+  margin: 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.cartItem__buttons {
+  margin-left: auto;
+  border-radius: .25rem;
+  overflow: hidden;
+  background: #fafafa;
+  box-shadow: 0 .15rem .25rem rgba(26,26,44,.05);
+  white-space: nowrap;
+}
+.cartItem__buttons button {
+  background: #eee;
+  border: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: .85rem;
+  transition: all .2s;
+}
+.cart-input {
+  width: 25px !important;
+  padding: 0px !important;
+  text-align: center !important;
+  border: none;
+}
+.buttonRed {
+  background: #dc143c;
+  color: #fff;
+  border: none;
+  height: 1.5rem;
+  border-radius: .25rem;
+  margin-left: .5rem;
+}
+.btnremove {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentColor;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-size: 1.5rem;
+}
+.cart__checkout {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: calc(50% - 2rem);
+  background: #fff;
+  margin-left: 2rem;
+  border-radius: .5rem;
+  box-shadow: 0 .25rem .5rem rgba(26,26,44,.05);
+  align-self: flex-start;
+  padding: 2rem;
+}
+.cart__total {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-top: 2rem;
+  margin-bottom: .25rem;
+}
 .checkbtn {
   -webkit-appearance: none;
   -moz-appearance: none;
