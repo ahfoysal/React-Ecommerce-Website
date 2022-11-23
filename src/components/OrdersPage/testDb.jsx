@@ -99,7 +99,7 @@ getData()
                      
                     {name.line_items?.map((pro) => {
                               return   <div className='order__item '> 
-                      <div className='order__image'><img src={pro.image.src} alt=""  className='order_pa'/>
+                      <div className='order__image'><img src={pro.image.src} alt=""  />
                       </div></div>
                       }
                     )}</div>
