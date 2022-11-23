@@ -1,7 +1,7 @@
 import React, {  useContext, useEffect, useState } from 'react'
 import { Container, ProductTable, Total } from './Cart-styles';
 import { MdRemoveCircleOutline, MdAddCircleOutline, MdDelete } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../cart/Cart.css'
 import { TestContext } from '../../App';
 import Remove from '@mui/icons-material/RemoveShoppingCart';
@@ -228,7 +228,16 @@ const testCart = (id) => {
       
     {/* ))} */}
 
-</Container> }  {cart < 1 && <p> NO Product Found</p> }</>
+</Container> }  {cart < 1 && <div className='cart-page'><p> No Products In cart</p>
+<div className="buttons">
+<Link to={'/'}>
+<button >
+Continue Shopping</button></Link>
+
+
+
+</div>
+</div> }</>
   )
 }
 
