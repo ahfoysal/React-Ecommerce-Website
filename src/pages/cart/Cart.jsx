@@ -83,7 +83,7 @@ const dcrs = (id) => {
 }
 const testCart = (id) => {
     console.log(id)
-    removeFromDb(id)
+    removeFromDb()
 }
 
 
@@ -106,7 +106,7 @@ const testCart = (id) => {
     <div className="cartItem__footer">
     <div className='cartItem_title'>
       <p className="cartItem__price">
-        {cart.price}
+      ৳{cart.price}
        
       </p>
       {cart.sale_price && <p className=" del">৳{cart.regular_price}</p>}</div>

@@ -125,6 +125,7 @@ setCart(cartPd)
   
   
   const removeFromDb = id => {
+    console.log(id)
     const exists = getDb();
     if (!exists) {
   
