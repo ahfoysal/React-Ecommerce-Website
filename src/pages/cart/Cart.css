@@ -413,6 +413,35 @@
   overflow: hidden;
   scroll-snap-align: start;
 }
+.order__quantity {
+  left: auto;
+  right: .5rem;
+  bottom: auto;
+  top: .5rem;
+}
+.order__price, .order__quantity {
+  position: absolute;
+  padding: .25rem .5rem;
+  border-radius: 1rem;
+  font-size: .6rem;
+  font-weight: 700;
+  background: rgba(26,26,44,.05);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #1a1a2c;
+  left: 1rem;
+  bottom: 2.5rem;
+}
+.order__name {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #000;
+  font-size: 16px;
+}
+
 .item_order {
   display: flex !important;
   flex-direction: column;
