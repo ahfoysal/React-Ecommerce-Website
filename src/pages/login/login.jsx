@@ -21,6 +21,11 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { user } = useUserAuth();
+  const history = useHistory()
+const location= useLocation()
+ 
+ let { from } = location.state || { from: { pathname: "/" } };
+
   const handleGoogleSignIn = async (e) => {
       e.preventDefault();
 
@@ -38,7 +43,8 @@ const Login = () => {
      try{
     await logIn(email, password);
     console.log(user)
-      navigate('/')
+      <!-- navigate('/') -->
+      history.replace(from);
       
      }catch (err) {setError(err.message)}
  
