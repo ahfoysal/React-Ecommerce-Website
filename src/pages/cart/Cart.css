@@ -401,7 +401,7 @@
   scroll-snap-type: x mandatory;
 }
 .order__item {
-  display: flex;
+  display: flex ;
   flex-direction: column;
   min-width: 120px;
   flex: 0.4 1;
