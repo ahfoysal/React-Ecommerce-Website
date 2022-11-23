@@ -10,7 +10,18 @@ function Orders(props) {
   let params = useParams();
   const [details , setDetails] = useState({});
   const [loading , setLoading] = useState(false);
-
+  const getData2 =  () => {
+  
+   
+    axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/orders/${params.name}?${process.env.REACT_APP_KEY}`)
+    .then(data2 => { const data = data2
+    
+      setDetails(data.data);
+     
+      console.log(data.data);
+    
+    })
+  }
 
 
 
@@ -52,7 +63,7 @@ useEffect(() => {
   
 
 fetchDetails();
- 
+getData2()
  },[params.name]);
 
   return (
@@ -63,9 +74,12 @@ fetchDetails();
 {
   loading ? 
   <div className='orders__inner' >  
-  <p className='top-line'>Order ID: 69420{details.number}</p>
   <div key={details.number} className='order_sum pay_sum' >
+  <p className='top-line'>Order ID: 69420{details.number}</p>
+
   <p>Payment Method: {details.payment_method}</p>
+  <p>Payment Method: {details.payment_method}</p>
+
       <div className='order__list noScrollbar'>
        
      {details.line_items?.map((pro) => {

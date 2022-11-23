@@ -106,10 +106,10 @@ const testCart = (id) => {
     <div className="cartItem__footer">
     <div className='cartItem_title'>
       <p className="cartItem__price">
-      ৳{cart.price}
+      ৳{(cart.price * cart.abc).toFixed(1)}
        
       </p>
-      {cart.sale_price && <p className=" del">৳{cart.regular_price}</p>}</div>
+      {cart.sale_price && <p className=" del">৳{(cart.regular_price * cart.abc).toFixed(1)}</p>}</div>
       <div className="cartItem__buttons">
       <button type="button" >
                   <MdRemoveCircleOutline size={20} color="#1a1a2c" onClick={() => dcrs(cart.id)} />

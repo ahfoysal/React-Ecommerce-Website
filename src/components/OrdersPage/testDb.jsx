@@ -15,6 +15,8 @@ const TestDb = () => {
   const [order, setOrder] = useState([]);
   const ordersCollection = collection(db, "order");
   const [details , setDetails] = useState([]);
+  const [details2 , setDetails2] = useState({});
+
   const [loading , setLoading] = useState(false);
   const [loading2 , setLoading2] = useState(false);
 
