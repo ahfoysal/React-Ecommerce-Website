@@ -129,7 +129,7 @@ margin-top: 5px;
     display: inline-flex;
     flex-wrap: nowrap !important;
     flex-direction: row;
-    gap: 20px;
+    gap: 8px;
     justify-content: end;
 }
 .cartIcon2 {
@@ -144,8 +144,6 @@ margin-top: 5px;
 }
 .header__back, .header__search {
   padding: .33rem .15rem .33rem .66rem;
-  background: #fff;
-  box-shadow: 0 .25rem .5rem rgba(26,26,44,.05);
   border-radius: .5rem;
   font-size: .85rem;
   margin-right: 1rem;

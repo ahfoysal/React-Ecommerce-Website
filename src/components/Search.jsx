@@ -52,8 +52,9 @@ const [visible, setVisible] = useState(true);
 value={input}/>
         </aside></Form></div>
         <div className="magnifierContainer">
-        <FaSearch onClick={handleVisibility}/>
         </div>
+        <FaSearch onClick={handleVisibility}/>
+
 
          </div>
     
