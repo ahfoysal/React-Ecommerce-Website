@@ -98,7 +98,7 @@ getData()
                     <div className='order__list noScrollbar'>
                      
                     {name.line_items?.map((pro) => {
-                              return   <div className='order__item'> 
+                              return   <div className='order__item item_order'> 
                       <div className='order__image'><img src={pro.image.src} alt=""   />
                       </div></div>
                       }
