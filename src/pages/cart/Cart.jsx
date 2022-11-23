@@ -88,7 +88,7 @@ const testCart = (id) => {
 
 
   return (<>
-    {cart.length >= 1   && <Container className=' home-page cart-page'>
+    {cart.length >= 1   && <div className='cart-page'>
       <div><p className='top-line'>Your Cart</p></div>
       <div className="cart__inner">
      
@@ -104,9 +104,12 @@ const testCart = (id) => {
 
     <p className="cartItem__name">{cart.name}</p>
     <div className="cartItem__footer">
+    <div className='cartItem_title'>
       <p className="cartItem__price">
         {cart.price}
+       
       </p>
+      {cart.sale_price && <p className=" del">৳{cart.regular_price}</p>}</div>
       <div className="cartItem__buttons">
       <button type="button" >
                   <MdRemoveCircleOutline size={20} color="#1a1a2c" onClick={() => dcrs(cart.id)} />
@@ -228,7 +231,7 @@ const testCart = (id) => {
       
     {/* ))} */}
 
-</Container> }  {cart < 1 && <div className='cart-page'><p> No Products In cart</p>
+</div> }  {cart < 1 && <div className='cart-page'><p> No Products In cart</p>
 <div className="buttons">
 <Link to={'/'}>
 <button >

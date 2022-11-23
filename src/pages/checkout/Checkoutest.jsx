@@ -155,18 +155,13 @@ const Checkoutest = () => {
       label: 'Choose a payment method',
       description: 
       <div>
-    
-
-
-
-
-    <div className="form-check">
+    <div className="form-check ">
   <input className="form-check-input" onClick={()=>setRadio(false) & setMethod("cod")} type="radio" name="flexRadioDefault" id="flexRadioDefault1" defaultChecked />
   <label className="form-check-label" htmlFor="flexRadioDefault1" >
     Cash On Delivery
   </label>
 </div>
-<div className="form-check">
+<div className="form-check ">
   <input className="form-check-input" onClick={()=>setRadio(true) & setMethod("Bkash")} type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
   <label className="form-check-label"  htmlFor="flexRadioDefault2">
    Bkash
@@ -176,6 +171,7 @@ const Checkoutest = () => {
 {!radio  && <div>
 <Form onSubmit={createOrder}>
   
+
       <Button1 variant="warning" type="submit">Checkout</Button1></Form>
  </div>  }
 
@@ -244,9 +240,10 @@ const Checkoutest = () => {
 
   return (
     
-    <div className='mt-40 container checkout-page' >
-       {cart.length >= 1 && <><Box className='mt-40 info'   sx={{ maxWidth: 400 }}>
-        <h3>Complete your Order {user && <>, {user.displayName}</>}!</h3>
+    <div className='cart-page checkout' >
+            <div><p className='top-line'>Your Cart</p></div>
+
+       {cart.length >= 1 && <div className='payment__inner'><Box className='payment__method'   sx={{ maxWidth: 400 }}>
         {isContainerActive ? <h3 className="head">Thank You For Your Order.</h3> : ""}
 {somethingWentWrong ? <h3 className="head">somthing went wrong</h3> : ""}
       <Stepper activeStep={activeStep} orientation="vertical" >
@@ -287,22 +284,40 @@ const Checkoutest = () => {
      
     </Box>
       
-  <div className="summary mt-20">    
-  <h4>Order Summary</h4>
-  <br /> 
+  <div className="payment__summary">    
+  <p className='top-line2'>Order Summary</p>
+  <div className='payment__summaryList'>
   {cart.map((css) => {
-    return <><p className='starts'>{css.name} <span className='start-span'>X{css.abc}</span>  <span>৳{css.price * css.abc}</span> </p></>
+    return <div className="payment__item">
+          <span className='payment__name'>{css.name} </span>
+          <span className='payment__quantity'>X{css.abc}</span>  
+          <span className='payment__price'>৳{css.price * css.abc}</span> </div>
+    
+    
    
   })}
-  <span className='start' >Delivery Charge: ৳0</span>
-  <br />
-  <span>Grand Total : ৳{total}</span>   
+  <hr />
+  <div className="payment__item">
+          <span className='payment__name'>Delivery Charge: </span>
+          <span className='payment__price'>৳0</span> </div>
+          <div className="payment__item" >
+          <span className='payment__name'> Total : </span>
+          <span className='payment__price'>৳{total}</span> </div>
+
+          <div className="payment__item" style={{marginTop: "30px"}}>
+          <span className='payment__name'>Grand Total : </span>
+          <span className='payment__price'>৳{total}</span> </div>
+
+   </div>
+   
+ 
+ 
 </div>
   
 
 
 
-</> }
+</div> }
 {cart < 1 && <p>Please Add atleast a Products In Cart</p>}
     </div>
   )

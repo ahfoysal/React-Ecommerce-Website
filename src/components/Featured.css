@@ -103,7 +103,7 @@
 
 .buy-btn {
     background-color: var(--btn);
-    padding: 0.6rem 3.5rem !important;
+    padding: 0.6rem 2rem !important;
     font-weight: 600 !important;
     font-size: 1rem !important;
     transition: 300ms ease !important;

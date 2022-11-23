@@ -182,7 +182,7 @@ svg.star {
   display: flex;
 }
 .MuiBox-root{
-  max-width: 50% !important;
+  max-width: 100% !important;
  
 }
  .del{
@@ -203,14 +203,33 @@ svg.star {
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 .5rem 1rem rgba(26,26,44,.05);
-  background: #fff;
+  background: transparent !important;
+  visibility: visible;
+    transform-origin: 50% 50% 0px;
+
+}
+.productSingle__details .productSingle__footer {
+  margin-top: auto;
+}
+.productSingle__price {
+  display: flex;
+  align-items: baseline;
+  margin: .25rem;
+
+}
+.price {
+  font-weight: 900;
+  margin: 0 .5rem 0 0;
+  line-height: 1.2;
+  font-size: 30px !important;
+  
 }
 .productSingle__image img {
   width: 100%;
   height: 100%;
   position: absolute;
-  object-fit: contain;
-  padding: 1rem;
+  object-fit: cover;
+  padding: 5px;
 }
 .productSingle__details {
   padding: 3rem 1rem 3rem 3rem;
@@ -232,22 +251,38 @@ line-height: 1.2;
   font-size: 18px;
 }
 .top-line{
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-  font-size: 20px;
+
+  margin-bottom: 3rem;
+
   font-weight: 700;
+  font-size: 1.5rem;
+
 }
-@media screen and (max-width: 800px) {
+.top-line2{
+
+
+  
+  font-weight: 700;
+  font-size: 1.5rem;
+
+}
+.add-to-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.head-start {
+  display: none;
+}
+@media (max-width: 800px){
   body {
       height: auto;
   }
-  .productpage{
-    display: flex;
-    flex-direction: column-reverse;
  
-      padding: 5rem 3rem 3rem;
-  
-  }
+  .productSingle {
+    padding: 10px 20px 0px 0px !important;
+}
   .header{
     margin-bottom: 400px;
   
@@ -255,14 +290,12 @@ line-height: 1.2;
   .form-label {
     width: 18% !important;
 }
-}
-.add-to-cart {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
 }
 
-@media screen and (max-width: 600px) {
+
+
+@media (max-width: 550px){
   body {
       height: auto;
   }
@@ -281,5 +314,34 @@ line-height: 1.2;
   .cart-page {
     padding-left: 0px !important;
   }
+  .productSingle {
+    padding: 3rem 1.5rem !important;
+}
+.productSingle__inner {
+  flex-flow: column;
+  
+}
+.productSingle__image {
+  flex: 0 0 100%;
+  padding-bottom: 133%;
+}
+.productSingle__details {
+  padding: 3rem 0;
+}
+.banner {
+  padding: 0px !important;
+  position: relative;
+  list-style: none;
+  width: 100%;
+  border-radius: 0px !important;
+  padding-right: 0px !important;
+}
+.cart-page {
+  padding-left: 0px !important;
+  
+}
+
+
+
 }
 

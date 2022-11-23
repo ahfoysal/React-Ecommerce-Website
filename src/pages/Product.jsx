@@ -74,27 +74,29 @@ const page = Math.random() * 10
 
   return (
     
+    <div className='home-page'>
     
-    <div className='home-page productpage container'>
 {
   loading ? 
-  <div className=' dfsdfsdfs'>
+  <div className='productSingle'>
  
   <div className=' productSingle__inner'>
 
     <div className='productSingle__image'>
   
       <img src={details.images[0].src} alt={details.name} />
-    </div>
+      {details.sale_price && <div> <p className="tag">Sale</p></div>}
+    </div >
 <div className='productSingle__details '> 
 <p className='productSingle__name'>{details.name}</p>
-  
-      <div>    
 <span dangerouslySetInnerHTML={{ __html: details.short_description }} className='productSingle__features ' ></span>
 
-<p className='product_price'>৳{details.price}</p>
+  
+      <div className='productSingle__footer'>    
+
+<p className='productSingle__price price'>৳{details.price} {details.sale_price && <span className=" del">৳{details.regular_price}</span>}</p>
 {/* <span dangerouslySetInnerHTML={{ __html: details.description }} ></span> */}
-<div className="btn ">
+<div className="buttons ">
        <button className="buy-btn pp-btn" onClick={() => addToCart(details)}> <MdAddShoppingCart size={16} color="#FFF" /> 
 
              
@@ -138,7 +140,7 @@ const page = Math.random() * 10
             <p className="product__name">{product.name }</p>
           </h5>
           <div className="clearfix mb-3">
-          <p className="product__price">৳{product.price} <span className=" del">৳{product.regular_price}</span></p>
+          <p className="product__price">৳{product.price} {product.sale_price && <span className=" del">৳{product.regular_price}</span>}</p>
 
           <p className="product__rating"><FaStar  className="star"/>0</p>
           </div>

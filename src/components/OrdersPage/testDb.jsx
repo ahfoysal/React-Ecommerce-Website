@@ -85,18 +85,23 @@ getData()
 }, [])
 
   return (
-    <div className='mt-50 home-page'>
-            <h3 className='logo'>Your Orders</h3>
+    <div className=' cart-page'>
+            <p className='top-line'>Your Orders</p>
         
     {
-         loading ?   <div className='margin-top  innner ' >
+         loading ?   <div className='orders__inner' >
           
         {user &&         order?.map((name) => {
-                     return  <div key={name.number} className='orders' > <Link to={`/order/${name.number}`}><h3>Order ID: 69420{name.number}</h3>
+                     return  <div key={name.number} className='payment__summary' > <Link to={`/order/${name.number}`}>
+                      <h5>Order ID: 69420{name.number}</h5>
                       <p>Payment Method: {name.payment_method}</p>
-                    <div className='order-container'>
+                    <div className='order__list noScrollbar'>
+                     
                     {name.line_items?.map((pro) => {
-                      return  <div className='order-images'> <img src={pro.image.src} alt=""  className='order_pa'/> </div>}
+                              return   <div className='order__item '> 
+                      <div className='order__image'><img src={pro.image.src} alt=""  className='order_pa'/>
+                      </div></div>
+                      }
                     )}</div>
 
 
