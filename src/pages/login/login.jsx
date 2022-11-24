@@ -8,7 +8,7 @@ import { TestContext } from '../../App';
 import GoogleButton from 'react-google-button'
 import { useContextS } from '../../components/Function';
 import { useForm } from 'react-hook-form';
-
+import { motion } from "framer-motion";
 
 
 
@@ -45,6 +45,7 @@ const location= useLocation()
 
       try {
           await googleSignIn()
+          setError('Success Login')
           navigate(`/`)
       }catch(err) {
             setError(err.message)
@@ -82,44 +83,41 @@ const location= useLocation()
     <form className='form' onSubmit={handleSubmit(onSubmit)}>
       <h4>Log In</h4>
     {error && <Alert variant='danger'>{error}</Alert>}
-
-
-
-
-    
-
+  
     <div className="input-bx">
             <input  type="text" required="required" {...register("email", { required: true }) }/>
             <span>Username</span>
             {errors.email && <span>This field is required</span>}
-
         </div>
         <br />
         <div className="input-bx">
             <input type="password" required="required"    {...register("password", { required: true })}/>
             <span>Password</span>
         </div>
+        <br />
 
     
 <div className="buttons form__element">
       <Button  type="submit">
         LOGIN
-      </Button>
-      
-     
-      
+      </Button>      
       </div>
-    </form>
-   
-<div className="buttons form__element">
-<GoogleButton onClick={ handleGoogleSignIn } />
 
-<Link to={'/signup'}>   <Button  type="submit">
+
+<span className='form-span'>Need help logging in?</span>
+<hr /> 
+      <div className="buttons form__element">
+<GoogleButton onClick={ handleGoogleSignIn }  style={{width: "100%"}}/>
+
+<Link to={'/signup'}>   <Button  type="submit" className='secondary'>
         Sign Up
       </Button></Link>
 
 </div>
-    
+  
+    </form>
+   
+  
     </div>
   )
 }
