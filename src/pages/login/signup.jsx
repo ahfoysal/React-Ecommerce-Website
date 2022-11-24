@@ -8,17 +8,18 @@ import { useUserAuth } from '../../context/UserAuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import {  updateProfile, getAuth, updatePhoneNumber } from "firebase/auth"
 import { TestContext } from '../../App';
+import GoogleButton from 'react-google-button';
 
 
 const Signup = () => {
   const {    setActiveTabCart, setActiveTabOrder,setActiveTabHome, setActiveTabUser} = useContext(TestContext);
 
-  let { user } =  useUserAuth();
+
   const auth = getAuth();
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ]  = useState("");
     const [ name, setName ]  = useState("");
-    const { signUp } = useUserAuth();
+    const { signUp ,googleSignIn, user} = useUserAuth();
     const [error, setError] = useState("");
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
@@ -30,13 +31,7 @@ const Signup = () => {
         navigate('/')
         test()
         
-       }catch (err) {setError(err.message)}
-      
-       
-
-        
-    
-    
+       }catch (err) {setError(err.message)} 
       };
     function test() {
       updateProfile(auth.currentUser, {
@@ -48,6 +43,17 @@ const Signup = () => {
      
     }
 
+    const handleGoogleSignIn = async (e) => {
+      e.preventDefault();
+
+      try {
+          await googleSignIn()
+          setError('Success Login')
+          navigate(`/`)
+      }catch(err) {
+            setError(err.message)
+      }
+  }
     useEffect(() => {
 
 
@@ -72,27 +78,26 @@ const Signup = () => {
             <span>Email</span>
         </div>     <br />
 
-
-
-
-
-      {/* <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-      </Form.Group> */}
-
-
-
       <div className="input-bx">
             <input  type="password" required="required" onChange={(e) => setPassword(e.target.value)}/>
             <span>Password</span>
         </div>     <br />
 
 
+        <div className="buttons form__element">
+      <Button type="submit">  Sign Up</Button></div>
+      <span className='form-span'>Already have an account?</span>
+<hr /> 
+      <div className="buttons form__element">
+      <Link to={'/login'}>   <Button   className='secondary'>
+      LogIn
+      </Button></Link>
+<GoogleButton onClick={ handleGoogleSignIn }  style={{width: "100%"}}/>
 
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+
+
+</div>
+  
      
     </form>
     

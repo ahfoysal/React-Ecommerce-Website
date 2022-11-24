@@ -88,8 +88,8 @@ const location= useLocation()
   
     <div className="input-bx">
             <input  type="text" required="required" {...register("email", { required: true }) }/>
-            <span>Username</span>
-            {errors.email && <span>This field is required</span>}
+            <span>Email</span>
+          
         </div>     <br />
         <div className="input-bx">
             <input type="password" required="required"    {...register("password", { required: true })}/>
@@ -102,7 +102,7 @@ const location= useLocation()
       <div className="buttons form__element">
 <GoogleButton onClick={ handleGoogleSignIn }  style={{width: "100%"}}/>
 
-<Link to={'/signup'}>   <Button  type="submit" className='secondary'>
+<Link to={'/signup'}>   <Button   className='secondary'>
         Sign Up
       </Button></Link>
 
