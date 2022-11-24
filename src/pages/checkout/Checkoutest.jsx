@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import React, {   useContext, useEffect, useState } from 'react'
 import './Checkout.css'
 import Box from '@mui/material/Box';
@@ -242,6 +242,7 @@ const Checkoutest = () => {
     
     <div className='cart-page checkout' >
             <div><p className='top-line'>Your Cart</p></div>
+         {/* {!user && <div> <Link to={'/login'}><p className='top-line'>Login</p> </Link></div>}    */}
 
        {cart.length >= 1 && <div className='payment__inner'><Box className='payment__method'   sx={{ maxWidth: 400 }}>
         {isContainerActive ? <h3 className="head">Thank You For Your Order.</h3> : ""}

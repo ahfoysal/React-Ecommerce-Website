@@ -4,27 +4,38 @@ import { createContext, useEffect, useState, useContext } from "react";
 const contextProviderS = createContext();
 
 export function ContextProviderS({ children }) {
-    const [contextT, setContextT] = useState("hi");
+    // const [cart , setCart] = useState([]);
+    // const [cart , setCart] = useState([]);
+    // const [allProducts, setAllProducts] = useState([]);
+
+
+
+
+
+
+
+    const [contextT, setContextT] = useState();
     function contextTest(email, password ) {
 
-        const unsubscribe =  onAuthStateChanged( (currentUser) => {
-             console.log('hi');
-        });
+        const unsubscribe = () => {
+             console.log(email, password);
+        };
         return unsubscribe(email, password)
          
     }
+    
 
     
     useEffect(() => {
-       const unsubscribe =  onAuthStateChanged( (currentUser) => {
-             console.log('unsubscribe');
-        });
-        return () => {
-            unsubscribe();
-        }
+    //    const unsubscribe =  () => {
+    //          console.log('unsubscribe');
+    //     };
+    //     return () => {
+    //         unsubscribe();
+    //     }
     }, []);
     return(  
-    <contextProviderS.Provider value={{ contextT, contextTest }}>{children}</contextProviderS.Provider>)
+    <contextProviderS.Provider value={{ contextT, contextTest, setContextT }}>{children}</contextProviderS.Provider>)
     ;
 
 }

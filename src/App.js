@@ -163,11 +163,13 @@ setCart(cartPd)
       <UserAuthContextProvider>
         <ContextProviderS>
 
-        <TestContext.Provider value={{ allProducts, setAllProducts, addToCart,
+        <TestContext.Provider value={{ allProducts,
+         setAllProducts, addToCart,
            test2, setTest2, updateDb, getDb, cart,
             clearTheCart, removeFromDb, getCart,
              getStoredCart, setCart,
-              activeTabCart ,setActiveTabCart, setActiveTabHome, setActiveTabOrder,
+              activeTabCart ,setActiveTabCart,
+               setActiveTabHome, setActiveTabOrder,
               setActiveTabUser,  activeTabUser,
               activeTabHome, activeTabOrder,
               headerActive, setHeaderActive

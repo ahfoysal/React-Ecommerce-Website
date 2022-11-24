@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import { Alert } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useHistory } from 'react-router-dom';
 import { useUserAuth } from '../../context/UserAuthContext';
 import { TestContext } from '../../App';
 import GoogleButton from 'react-google-button'
@@ -21,10 +21,15 @@ const Login = () => {
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ]  = useState("");
   const { logIn, googleSignIn, user } = useUserAuth();
-  const { contextT} = useContextS();
+
+  const { contextT, contextTest, setContextT} = useContextS();
+
+
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const history = useHistory()
+  // const history = useHistory()
+  const history = useNavigate()
+
 const location= useLocation()
  
  let { from } = location.state || { from: { pathname: "/" } };
@@ -34,7 +39,7 @@ const location= useLocation()
 
       try {
           await googleSignIn()
-          { navigate(`/`)}
+          navigate(`/`)
       }catch(err) {
             setError(err.message)
       }
@@ -72,14 +77,14 @@ const location= useLocation()
 
 
 
-    <div class="input-bx">
+    <div className="input-bx">
     {error && <Alert variant='danger'>{error}</Alert>}
 
             <input type="text" required="required"  onChange={(e) => setEmail(e.target.value)} />
             <span>Username</span>
         </div>
         <br />
-        <div class="input-bx">
+        <div className="input-bx">
             <input type="password" required="required"    onChange={(e) => setPassword(e.target.value)}/>
             <span>Password</span>
         </div>
@@ -103,8 +108,8 @@ const location= useLocation()
 
     <Link to={'/signup'}> <h3 > sign up </h3></Link>
 
-    <button onClick={console.log(contextT)}></button>
-    <button></button>
+    <button onClick={() => (setContextT('working'))}> test </button>
+    <button onClick={() => (console.log(contextT))}> test2 </button>
     </div>
   )
 }
