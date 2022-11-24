@@ -5,15 +5,11 @@ import React from 'react'
 import * as ReactBootstrap from 'react-bootstrap'
 import axios from 'axios'
 import { TestContext } from '../App';
-
 function Orders(props) {
 const test = useContext(TestContext)
   let params = useParams();
   const [details , setDetails] = useState({});
   const [loading , setLoading] = useState(false);
-
-
-
 
 const fetchDetails = () =>{
   const check = sessionStorage.getItem(`${params.name}`)

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import React, {   useContext, useEffect, useState } from 'react'
 import './Checkout.css'
 import Box from '@mui/material/Box';
@@ -7,7 +7,6 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import StepContent from '@mui/material/StepContent';
 import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -15,16 +14,11 @@ import Row from 'react-bootstrap/Row';
 import Button1 from 'react-bootstrap/Button';
 import { useUserAuth } from '../../context/UserAuthContext';
 import { TestContext } from '../../App';
-import { addDoc, collection, doc, updateDoc,arrayUnion, arrayRemove } from 'firebase/firestore';
+import { addDoc, collection, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
-import { css } from '@emotion/react';
-
-
 
 const Checkoutest = () => {
   const { cart, setCart} = useContext(TestContext);
-  const [isCartEmpty, setIsCartEmpty] = useState(true);
-
   const navigate = useNavigate();
   let { user } =  useUserAuth();
   const [isContainerActive, setIsContainerActive] = useState(false);
@@ -35,32 +29,28 @@ const Checkoutest = () => {
   const [email, setEmail] = useState('');
   const [method, setMethod] = useState("cod");
   const [trxid, setTrxid] = useState('');
-  const [formfillup, setFormfillup] = useState(false);
   const [radio, setRadio] = useState(false);
   const [activeStep, setActiveStep] = React.useState(0);
 
 
-  
+  const total = (cart.reduce((total, prd) => total + prd.price * prd.abc , 0).toFixed(2))
+
+
+  /////////   Step Handler BAck & Continue
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
-
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-   console.log(`test`)
    handleNext()
   };
-
+////////////////////
   
 
-
- 
-  const total = (cart.reduce((total, prd) => total + prd.price * prd.abc , 0).toFixed(2))
-
+/////// Create Order
   const createOrder = (e) => {
     e.preventDefault();
 
@@ -193,10 +183,7 @@ const Checkoutest = () => {
     },
   ];
   useEffect(() => {
-    if(cart.length < 1 ){setIsCartEmpty(false)}
-
    if (user){ 
-    console.log(user.displayName)
     setName(user.displayName)}
     }, [])
 
@@ -204,46 +191,23 @@ const Checkoutest = () => {
 ///// adding info to data test 
     const [orderCollection, setOrderCollection] = useState([])
     const ordersCollection = collection(db, "order");
-    
-    
       const addingOrderToDB = async (order, orderId) => {
        const res = await addDoc(ordersCollection, order)
-       
            updateOrder(res.id, orderId)
           console.log(res.id)
        }
       
-    
-    // const addToDb = id => {
-      
-           
-    //     let order = {};
-      
-      
-    //       if (order[id]) {
-    //         const newCount =  user.displayName;
-    //         order[id] = newCount;
-    //       }
-    //       else {
-    //         order[id] = user.email;
-    //       }
-        
-    //       addingOrderToDB()
-         
-    
-    //   }
       const updateOrder = async (id)  =>   {
         const orderDoc = doc(db, "order", id)
         const newFeilds = {email: user.email}
         await updateDoc(orderDoc, newFeilds)
       }
+/////////////////
 
   return (
     
     <div className='cart-page checkout' >
-            <div><p className='top-line'>Your Cart</p></div>
-         {/* {!user && <div> <Link to={'/login'}><p className='top-line'>Login</p> </Link></div>}    */}
-
+            <div><p className='top-line'>Complete your Order</p></div>
        {cart.length >= 1 && <div className='payment__inner'><Box className='payment__method'   sx={{ maxWidth: 400 }}>
         {isContainerActive ? <h3 className="head">Thank You For Your Order.</h3> : ""}
 {somethingWentWrong ? <h3 className="head">somthing went wrong</h3> : ""}
@@ -262,21 +226,12 @@ const Checkoutest = () => {
             <StepContent>
               <div>{step.description}</div>
               <Box sx={{ mb: 2 }}>
-                <div>
-              
-                  <Button
-                    disabled={index === 0}
-                    onClick={handleBack}
-                    sx={{ mt: 1, mr: 1 }}
-                  >
-                    Back
-                  </Button>
-                  
-                  
+                <div>            
+<Button disabled={index === 0}  onClick={handleBack} sx={{ mt: 1, mr: 1 }}>Back</Button>
 
                 </div>
-                
-              </Box>
+   
+             </Box>
             </StepContent>
           </Step>
         ))}
@@ -294,8 +249,6 @@ const Checkoutest = () => {
           <span className='payment__quantity'>X{css.abc}</span>  
           <span className='payment__price'>৳{(css.price * css.abc).toFixed(2)}</span> </div>
     
-    
-   
   })}
   <hr />
   <div className="payment__item">
@@ -310,14 +263,8 @@ const Checkoutest = () => {
           <span className='payment__price'>৳{total}</span> </div>
 
    </div>
-   
- 
- 
+
 </div>
-  
-
-
-
 </div> }
 {cart < 1 && <p>Please Add atleast a Products In Cart</p>}
     </div>

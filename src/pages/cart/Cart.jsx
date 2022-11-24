@@ -134,51 +134,7 @@ const testCart = (id) => {
 
             ) ) }
         
-         {/* <ProductTable>
-          <thead>
-          <tr>
-          <th />
-          <th>PRODUCT</th>
-          <th>AMOUNT</th>
-          <th>SUBTOTAL</th>
-            </tr>
-           </thead>
-           <tbody>
-           {cart.map((cart, index) => (
-            <tr key={`${cart.id}`}>
-            <td>
-              <img
-              src={cart.images[0].src}
-              alt={cart.name}
-            />
-            </td>
-            <td>
-              <strong>{cart.name}</strong>
-              <span>{cart.price}</span>
-            </td>
-            <td>
-              <div>
-                <button type="button" >
-                  <MdRemoveCircleOutline size={20} color="#7159c1" onClick={() => dcrs(cart.id)} />
-                </button>
-                <input type="number" readOnly value={`${cart.abc}`} />
-                <button type="button"  onClick={() => incrs(cart.id)} >
-                  <MdAddCircleOutline size={20} color="#7159c1"/>
-                </button>
-              </div>
-            </td>
-            <td>
-              <strong>{cart.price * cart.abc}</strong>
-            </td>
-            <td>
-              <button type="button"  onClick={() => removeFromDb(cart.id)} >
-                <MdDelete size={20} color="#7159c1" />
-              </button>
-            </td>
-          </tr>
-        ) ) }
-      </tbody>
-    </ProductTable> */}
+      
     </div>
     <div className="cart__checkout">
     <p className='top-line'>Checkout</p>
@@ -208,38 +164,10 @@ const testCart = (id) => {
     
     
     </div>
-{/* 
-    <footer>
 
-      <button onClick={() => ProceedtoPayment() } className="btn"  >
-
-<span>Proceed to Checkout</span>
-</button>
-
-
-      <Total>
-        <span>TOTAL</span>
-        <strong>{total}</strong>
-      </Total>
-      <button  onClick={clearTheCart} >Clear Cart</button>
-
-    </footer> */}
-
-
-
-      {/* </div> */}
-      
-    {/* ))} */}
 
 </div> }  {cart < 1 && <div className='cart-page'><p> No Products In cart</p>
-<div className="buttons">
-<Link to={'/'}>
-<button >
-Continue Shopping</button></Link>
-
-
-
-</div>
+<div className="buttons"><Link to={'/'}><button >Continue Shopping</button></Link></div>
 </div> }</>
   )
 }

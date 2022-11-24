@@ -22,7 +22,7 @@ const Login = () => {
   const [ password, setPassword ]  = useState("");
   const { logIn, googleSignIn, user } = useUserAuth();
 
-  const { contextT, contextTest, setContextT} = useContextS();
+  const { contextTest, setContextT} = useContextS();
 
 
   const [error, setError] = useState("");
@@ -108,8 +108,7 @@ const location= useLocation()
 
     <Link to={'/signup'}> <h3 > sign up </h3></Link>
 
-    <button onClick={() => (setContextT('working'))}> test </button>
-    <button onClick={() => (console.log(contextT))}> test2 </button>
+    
     </div>
   )
 }

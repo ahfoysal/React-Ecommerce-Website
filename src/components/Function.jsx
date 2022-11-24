@@ -4,17 +4,11 @@ import { createContext, useEffect, useState, useContext } from "react";
 const contextProviderS = createContext();
 
 export function ContextProviderS({ children }) {
-    // const [cart , setCart] = useState([]);
-    // const [cart , setCart] = useState([]);
-    // const [allProducts, setAllProducts] = useState([]);
+  
 
 
-
-
-
-
-
-    const [contextT, setContextT] = useState();
+    const [contextT, setContextT] = useState(true);
+    
     function contextTest(email, password ) {
 
         const unsubscribe = () => {

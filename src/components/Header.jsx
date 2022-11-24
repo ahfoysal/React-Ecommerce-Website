@@ -2,8 +2,6 @@ import React, { useContext } from 'react'
 import {Container, Navbar} from 'react-bootstrap'
 import {Link, useNavigate, useLocation} from 'react-router-dom';
 import Search from "./Search";
-// import NewSearch from  './NewSearch';
-
 import './header.css'
 import { useUserAuth } from '../context/UserAuthContext';
 import { TestContext } from '../App';
@@ -12,17 +10,11 @@ import Right from '@mui/icons-material/KeyboardArrowRight';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ShoppingCartIcon2 from '@mui/icons-material/ShoppingCart';
 
-
-
 const Header = () => {
   let params = useLocation();
-
   const param = params.pathname
-
-
   const history = useNavigate()
   const {    setHeaderActive, headerActive, activeTabCart, cart} = useContext(TestContext);
-
   const handleHeader =  () => {
  console.log(param)
     if(headerActive === true){
@@ -31,17 +23,6 @@ const Header = () => {
 
   }
 
-  const handleLogOut = async () => {
-    
-    try {
-      await logOut();
-    }catch(err) {
-        console.log(err.message)
-    }
-  }
-  let { user, logOut } =  useUserAuth();
-// console.log(user);
-  
   return (
 
       <>

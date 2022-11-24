@@ -17,18 +17,11 @@ import Signup from './login/signup';
 
 function Pages() {
   const location = useLocation();
-  // const setCart = props.setCart
-
-// console.log(user)  
-  // const addToCart = props.addToCart;
-  // const cart = props.cart;
-
 
   return (
     // <AnimatePresence exitBeforeEnter>
     
         <Routes location={location} key={location.pathname}>
-          
        <Route path="/" element={<Home />}/>
        <Route path="/category/:name" element={<Category  />} />
        <Route path="/searched/:search" element={<Searched />} />
@@ -43,12 +36,7 @@ function Pages() {
        <Route path="/orders/" element={  <OrdersPage /> }/>
        <Route path="/profile/" element={  <Profile /> }/>
 
-  
-     
-
-
-
-        </Routes>  
+       </Routes>  
       
         // </AnimatePresence>
   );

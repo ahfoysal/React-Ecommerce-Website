@@ -28,26 +28,21 @@ const TestDb = () => {
 
   const getData = async () => {
     const data = await getDocs(ordersCollection)
-    const newData= data.docs?.map((doc) => ({...doc.data(), id: doc.id}))
-    const emails = newData?.map((email) => email.email)
-    // console.log(emails)
+    const newData= data.docs.map((doc) => ({...doc.data(), id: doc.id}))
+    const emails = newData.map((email) => email.email)
+    console.log(emails)
     // console.log(newData)
-    const param = user?.email
-    const cartItems = newData?.map((cart) => cart ).filter((val)=> {
-      return val.email === param
-      });
-      setOrder(cartItems)
-      // console.log(cartItems)
-     
-          setLoading(true)
-    
-      
-    
+    const param = user.email
+
+      setOrder((newData.map((cart) => cart ).filter((val)=> {
+        return val.email === user.email
+        })))
+      // console.log(cartItems)  
+          setLoading(true)      
 }
 const getData2 =  () => {
-  
-   
-  axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/orders/?${process.env.REACT_APP_KEY}`)
+
+  axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/orders/?${process.env.REACT_APP_KEY}&per_page=100`)
   .then(data2 => { const data = data2
   
     setDetails(data.data);
@@ -55,19 +50,20 @@ const getData2 =  () => {
     console.log(data.data);
   
   })
-  
+
     
   
 }
-
-
+  useEffect( () => {
+    getData()    
+    getData2()  
   
-  
+      // const timeout = setTimeout(() => {
+      //   console.log('This will be called after 2 seconds');
+      //   window.location.reload();
 
-
-
-  useEffect(() => {
-
+      // }, 10000);
+      
     setActiveTabCart(false)
     setActiveTabOrder(true)
     setActiveTabHome(false)
@@ -76,30 +72,21 @@ const getData2 =  () => {
         if(!user){
           setLoading(false)
         }
-
-
-getData2()
-getData()
-
-  
-
-    
+      
 }, [])
 
   return (
     <div className='cart-page'>
+      {!user && 'okay'}
             <p className='top-line'>Your Orders </p>
-        
-    {
-         loading ?   <div className='orders__inner' >
-          
-        {user &&         order?.map((name) => {
+         {  loading ?   <div className='orders__inner' >      
+        {user &&   order.map((name) => {
                      return  <div key={name.number} className='payment__summary pay_sum' > <Link to={`/order/${name.number}`}>
                       <h5>Order ID: 69420{name.number}</h5>
                       <p>Payment Method: {name.payment_method}</p>
                     <div className='order__list noScrollbar'>
                      
-                    {name.line_items?.map((pro) => {
+                    {name.line_items.map((pro) => {
                               return   <div className='order__item item_order'> 
                       <div className='order__image'><img src={pro.image.src} alt=""   /></div>
                       <span className='order__name'>{pro.name}</span>

@@ -1,28 +1,22 @@
 import {useState, useEffect, useContext} from 'react'
-import styled from 'styled-components'
 import {useParams} from 'react-router-dom';
 import React from 'react'
 import * as ReactBootstrap from 'react-bootstrap'
 import {Link} from  'react-router-dom'
-
 import axios from 'axios'
 import { TestContext } from '../App';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { FaStar } from 'react-icons/fa';
 
-function Recipe() {
-
+function SingleProduct() {
   const { allProducts, addToCart, test2, setTest2, setActiveTabCart, setActiveTabOrder,setActiveTabHome, setActiveTabUser, setHeaderActive} = useContext(TestContext);
-
-
-
-  let params = useParams();
   const [details , setDetails] = useState([]);
   const [loading , setLoading] = useState(false);
 
+  let params = useParams();
 
 useEffect(() => { 
-  setActiveTabCart(false)
+      setActiveTabCart(false)
       setActiveTabOrder(false)
       setActiveTabHome(false)
       setActiveTabUser(false)
@@ -35,17 +29,13 @@ useEffect(() => {
 
 
 const fetchDetails = () =>{
- 
   if(test2 === true){
-
     const param = params.name
     const cartItems = allProducts.map((cart) => cart ).filter((val)=> {
       return val.id === parseInt(param)
       });
     setDetails(cartItems[0])
-          setLoading(true)
-    
-  
+          setLoading(true) 
   }else{  
 
 
@@ -56,15 +46,8 @@ const fetchDetails = () =>{
       console.log(data.data);
       setLoading(true)
       setTest2(true)
-    
-
-      
-
-    })
-    
+    })  
   }
-
-
 
 }
 
@@ -96,26 +79,15 @@ const page = Math.random() * 10
 
 <p className='productSingle__price price'>৳{details.price} {details.sale_price && <span className=" del">৳{details.regular_price}</span>}</p>
 {/* <span dangerouslySetInnerHTML={{ __html: details.description }} ></span> */}
-<div className="buttons ">
-       <button className="buy-btn pp-btn" onClick={() => addToCart(details)}> <MdAddShoppingCart size={16} color="#FFF" /> 
-
-             
-
-<span>  Add To Cart</span></button>
-        </div>
-
+      <div className="buttons ">
+       <button className="buy-btn pp-btn" onClick={() => addToCart(details)}> <MdAddShoppingCart size={16} color="#FFF" />
+        <span>  Add To Cart</span></button>
+      </div>
+    </div>
   </div>
- 
+ </div> 
 
-
-
-
-</div> </div> 
 <div className='container simmmilar'> <p className='top-line'>You might also like  </p> 
-
-
-
-
 <div className="container-fluid bg-trasparent my-4 p-3"  style={{position: "relative"}}>
         <div className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
         { allProducts.slice((page-1) * 4, (page-1) * 4 + 4).map(product => (
@@ -180,11 +152,8 @@ const page = Math.random() * 10
 </div>
 
 :<div className="spinnerdiv"><ReactBootstrap.Spinner animation="border" /> </div>}
-    
-       </div>
-       
+        </div>     
   )
 }
 
-
-export default Recipe
+export default SingleProduct
