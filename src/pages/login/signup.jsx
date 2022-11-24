@@ -59,29 +59,42 @@ const Signup = () => {
   
     })
   return (
-    <div className='container margin-top'>
-    <Form onSubmit={handleSubmit}> 
+    <div className='signup'>
+    <form className='form' onSubmit={handleSubmit}> 
+    <h4>Create your Account</h4>
+    {error && <Alert variant='danger'>{error}</Alert>}
+      <div className="input-bx">
+            <input  type="text" required="required" onChange={(e) => setName(e.target.value)}/>
+            <span>Name</span>
+        </div>     <br />
+      <div className="input-bx">
+            <input  type="email" required="required" onChange={(e) => setEmail(e.target.value)}/>
+            <span>Email</span>
+        </div>     <br />
 
-    <Form.Group className="mb-3" controlId="formBasicName">
-        <Form.Label>Name</Form.Label>
-        <Form.Control type="text" placeholder="Enter Name" onChange={(e) => setName(e.target.value)}/>
-      </Form.Group>
-        {error && <Alert variant='danger'>{error}</Alert>}
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)}/>
-      </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+
+
+
+      {/* <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-      </Form.Group>
+      </Form.Group> */}
+
+
+
+      <div className="input-bx">
+            <input  type="password" required="required" onChange={(e) => setPassword(e.target.value)}/>
+            <span>Password</span>
+        </div>     <br />
+
+
 
       <Button variant="primary" type="submit">
         Submit
       </Button>
      
-    </Form>
+    </form>
     
     </div>
   )

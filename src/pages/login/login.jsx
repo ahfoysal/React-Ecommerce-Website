@@ -82,29 +82,22 @@ const location= useLocation()
     <div className='login'>
     <form className='form' onSubmit={handleSubmit(onSubmit)}>
       <h4>Log In</h4>
-    {error && <Alert variant='danger'>{error}</Alert>}
+   
+    {error && <p className='error'>{error}</p>}
+
   
     <div className="input-bx">
             <input  type="text" required="required" {...register("email", { required: true }) }/>
             <span>Username</span>
             {errors.email && <span>This field is required</span>}
-        </div>
-        <br />
+        </div>     <br />
         <div className="input-bx">
             <input type="password" required="required"    {...register("password", { required: true })}/>
             <span>Password</span>
-        </div>
-        <br />
-
-    
+        </div>   <br />
 <div className="buttons form__element">
-      <Button  type="submit">
-        LOGIN
-      </Button>      
-      </div>
-
-
-<span className='form-span'>Need help logging in?</span>
+      <Button type="submit">  LOGIN</Button></div>
+      <span className='form-span'>Need help logging in?</span>
 <hr /> 
       <div className="buttons form__element">
 <GoogleButton onClick={ handleGoogleSignIn }  style={{width: "100%"}}/>
