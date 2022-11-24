@@ -43,7 +43,7 @@ const location= useLocation()
      try{
     await logIn(email, password);
     console.log(user)
-      <!-- navigate('/') -->
+      // navigate('/') 
       history.replace(from);
       
      }catch (err) {setError(err.message)}
