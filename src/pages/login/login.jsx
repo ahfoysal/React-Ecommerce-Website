@@ -7,25 +7,31 @@ import { useUserAuth } from '../../context/UserAuthContext';
 import { TestContext } from '../../App';
 import GoogleButton from 'react-google-button'
 import { useContextS } from '../../components/Function';
+import { useForm } from 'react-hook-form';
 
 
 
 
 
 const Login = () => {
-
- 
-
   const {    setActiveTabCart, setActiveTabOrder,setActiveTabHome, setActiveTabUser} = useContext(TestContext);
-
-  const [ email, setEmail ] = useState("");
-  const [ password, setPassword ]  = useState("");
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const { logIn, googleSignIn, user } = useUserAuth();
-
-  const { contextTest, setContextT} = useContextS();
 
 
   const [error, setError] = useState("");
+
+
+  const onSubmit = data => {
+  console.log(data)
+  handleSubmit2(data)
+  };
+    
+
+
+
+
+
   const navigate = useNavigate();
   // const history = useHistory()
   const history = useNavigate()
@@ -44,12 +50,12 @@ const location= useLocation()
             setError(err.message)
       }
   }
-  const handleSubmit = async (e) => {
-      e.preventDefault();
+  const handleSubmit2 = async (data) => {
+
       setError("");
      console.log(`login`)
      try{
-    await logIn(email, password);
+    await logIn(data.email, data.password);
     console.log(user)
       // navigate('/') 
       history.replace(from);
@@ -62,7 +68,7 @@ const location= useLocation()
 
 
     useEffect(() => {
-
+      // console.log(watch("example"))
 
       setActiveTabCart(false)
       setActiveTabOrder(false)
@@ -72,42 +78,47 @@ const location= useLocation()
   
     })
   return (
-    <div className='container margin-top'>
-    <Form  onSubmit={handleSubmit}>
-
-
-
-    <div className="input-bx">
+    <div className='login'>
+    <form className='form' onSubmit={handleSubmit(onSubmit)}>
+      <h4>Log In</h4>
     {error && <Alert variant='danger'>{error}</Alert>}
 
-            <input type="text" required="required"  onChange={(e) => setEmail(e.target.value)} />
+
+
+
+    
+
+    <div className="input-bx">
+            <input  type="text" required="required" {...register("email", { required: true }) }/>
             <span>Username</span>
+            {errors.email && <span>This field is required</span>}
+
         </div>
         <br />
         <div className="input-bx">
-            <input type="password" required="required"    onChange={(e) => setPassword(e.target.value)}/>
+            <input type="password" required="required"    {...register("password", { required: true })}/>
             <span>Password</span>
         </div>
 
-      {/* <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address </Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
     
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password"/>
-      </Form.Group> */}
-<div className="buttons">
+<div className="buttons form__element">
       <Button  type="submit">
         LOGIN
-      </Button></div>
-    </Form>
-    <GoogleButton onClick={ handleGoogleSignIn } />
+      </Button>
+      
+     
+      
+      </div>
+    </form>
+   
+<div className="buttons form__element">
+<GoogleButton onClick={ handleGoogleSignIn } />
 
-    <Link to={'/signup'}> <h3 > sign up </h3></Link>
+<Link to={'/signup'}>   <Button  type="submit">
+        Sign Up
+      </Button></Link>
 
+</div>
     
     </div>
   )
