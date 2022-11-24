@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { UserAuthContextProvider } from './context/UserAuthContext';
 import Header2 from "./components/Header2";
+import { ContextProviderS } from "./components/Function";
 
 
 
@@ -160,6 +161,8 @@ setCart(cartPd)
       
       <BrowserRouter>  
       <UserAuthContextProvider>
+        <ContextProviderS>
+
         <TestContext.Provider value={{ allProducts, setAllProducts, addToCart,
            test2, setTest2, updateDb, getDb, cart,
             clearTheCart, removeFromDb, getCart,
@@ -176,6 +179,7 @@ setCart(cartPd)
  
      <ToastContainer />
      </TestContext.Provider  >
+     </ContextProviderS>
      </UserAuthContextProvider>
       </BrowserRouter>
  
