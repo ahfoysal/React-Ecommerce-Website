@@ -2,25 +2,28 @@ import React, { useContext, useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import { Alert } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useUserAuth } from '../../context/UserAuthContext';
 import { TestContext } from '../../App';
 import GoogleButton from 'react-google-button'
-import { async } from '@firebase/util';
+import { useContextS } from '../../components/Function';
 
 
 
 
 
 const Login = () => {
+
+ 
+
   const {    setActiveTabCart, setActiveTabOrder,setActiveTabHome, setActiveTabUser} = useContext(TestContext);
 
   const [ email, setEmail ] = useState("");
   const [ password, setPassword ]  = useState("");
-  const { logIn, googleSignIn } = useUserAuth();
+  const { logIn, googleSignIn, user } = useUserAuth();
+  const { contextT} = useContextS();
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { user } = useUserAuth();
   const history = useHistory()
 const location= useLocation()
  
@@ -99,6 +102,9 @@ const location= useLocation()
     <GoogleButton onClick={ handleGoogleSignIn } />
 
     <Link to={'/signup'}> <h3 > sign up </h3></Link>
+
+    <button onClick={console.log(contextT)}></button>
+    <button></button>
     </div>
   )
 }
