@@ -13,12 +13,9 @@ const TestDb = () => {
   let { user } =  useUserAuth();
 
   const [order, setOrder] = useState([]);
-  const ordersCollection = collection(db, "order");
   const [details , setDetails] = useState([]);
-  const [details2 , setDetails2] = useState({});
 
   const [loading , setLoading] = useState(false);
-  const [loading2 , setLoading2] = useState(false);
 
 
   
@@ -26,67 +23,54 @@ const TestDb = () => {
 
    
 
-  const getData = async () => {
-    const data = await getDocs(ordersCollection)
-    const newData= data.docs.map((doc) => ({...doc.data(), id: doc.id}))
-    const emails = newData.map((email) => email.email)
-    console.log(emails)
-    // console.log(newData)
-    const param = user.email
 
-      setOrder((newData.map((cart) => cart ).filter((val)=> {
-        return val.email === user.email
-        })))
-      // console.log(cartItems)  
-          setLoading(true)      
-}
+// }
 const getData2 =  () => {
 
   axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/orders/?${process.env.REACT_APP_KEY}&per_page=100`)
-  .then(data2 => { const data = data2
-  
-    setDetails(data.data);
+  .then(data2 => { const data = data2.data
    
-    console.log(data.data);
-  
+    console.log(Number(user?.photoURL))
+    setLoading(true) 
+
+   const data3 = (data.map((cart) => cart ).filter((val)=> {
+    return val.customer_id === Number(user.photoURL)
+    }))
+
+    console.log(data3)
+      setOrder(data3) 
   })
 
-    
-  
 }
   useEffect( () => {
-    getData()    
-    getData2()  
-  
-      // const timeout = setTimeout(() => {
-      //   console.log('This will be called after 2 seconds');
-      //   window.location.reload();
 
-      // }, 10000);
-      
+    if(user?.email){
+      setLoading(false)
+    }
+
+    // getData()    
+    getData2()     
     setActiveTabCart(false)
     setActiveTabOrder(true)
     setActiveTabHome(false)
     setActiveTabUser(false)
 
-        if(!user){
-          setLoading(false)
-        }
+       
       
 }, [])
 
   return (
     <div className='cart-page'>
-      {!user && 'okay'}
+      {user && order.length < 1 && <p className="top-line">No Orders Found</p> }
             <p className='top-line'>Your Orders </p>
          {  loading ?   <div className='orders__inner' >      
-        {user &&   order.map((name) => {
+        {user && order.length >= 1 &&  order.map((name) => {
                      return  <div key={name.number} className='payment__summary pay_sum' > <Link to={`/order/${name.number}`}>
                       <h5>Order ID: 69420{name.number}</h5>
                       <p>Payment Method: {name.payment_method}</p>
                     <div className='order__list noScrollbar'>
                      
-                    {name.line_items.map((pro) => {
+                    {name.line_items?.map((pro) => {
                               return   <div className='order__item item_order'> 
                       <div className='order__image'><img src={pro.image.src} alt=""   /></div>
                       <span className='order__name'>{pro.name}</span>
@@ -101,10 +85,7 @@ const getData2 =  () => {
                         </div>
                         <div className="payment__item" style={{marginTop: "auto"}}>
                      <p className="payment__name">status  </p>
-                      {details.map((cart) => cart ).filter((val)=> {
-                    return val.id === Number(name.number)
-                    })?.map((cart) => 
-                   <span className='payment__status'> {cart.status} </span> )}
+                     <span className='payment__status'> {name.status} </span>
 
                           </div>
 
@@ -120,7 +101,7 @@ const getData2 =  () => {
                      {!user && <p>Please Login To Check Orders</p> }
                   
             </div>  : <div className="spinnerdiv"><ReactBootstrap.Spinner animation="border" /> </div> }
-          {user?.email &&  <button className='btn btn-primary' onClick={() => getData()}>refresh</button>
+          {user?.email &&  <button className='btn btn-primary' onClick={() => getData2()}>refresh</button>
 }            </div>
   )
 }

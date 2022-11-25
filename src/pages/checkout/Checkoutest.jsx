@@ -27,10 +27,12 @@ const Checkoutest = () => {
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
+  const [customerID, setCustomerID] = useState(0);
   const [method, setMethod] = useState("cod");
   const [trxid, setTrxid] = useState('');
   const [radio, setRadio] = useState(false);
   const [activeStep, setActiveStep] = React.useState(0);
+  
 
 
   const total = (cart.reduce((total, prd) => total + prd.price * prd.abc , 0).toFixed(2))
@@ -60,12 +62,13 @@ const Checkoutest = () => {
   const newItms = StringCart.replace (/"/g,'');
   const newCart = newItms.replace (/'/g,'"');
   setIsContainerActive(true);
+  const cID = `"customer_id":"${customerID}"  ,`
 
     var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
      
 
-   const body1 = `{"payment_method": "${method}","customer_note":"hello","transaction_id":"${trxid}","billing":{"first_name":"${name}","address_1":"${address}","phone":"${phone}","email":"test1@gmail.com"},"line_items":`
+   const body1 = `{"payment_method": "${method}","customer_note":"hello",${user.photoURL ? cID : ''}"transaction_id":"${trxid}","billing":{"first_name":"${name}","address_1":"${address}","phone":"${phone}"},"line_items":`
   const body2= `${newCart}}`
       const body3 = body1.concat(' ', body2);
   
@@ -185,6 +188,8 @@ const Checkoutest = () => {
   useEffect(() => {
    if (user){ 
     setName(user.displayName)}
+    setCustomerID(user.photoURL)
+    console.log(customerID)
     }, [])
 
 

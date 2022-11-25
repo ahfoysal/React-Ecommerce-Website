@@ -28,7 +28,9 @@ const Signup = () => {
        
        try{
       await signUp(email, password);
+      createCustomer()
         navigate('/')
+
         test()
         
        }catch (err) {setError(err.message)} 
@@ -36,12 +38,28 @@ const Signup = () => {
     function test() {
       updateProfile(auth.currentUser, {
         displayName: name,
-       phoneNumber: '+11234567890',
+
+ 
         
       })
-      updatePhoneNumber(123456)
+
      
     }
+
+
+    function test2(id) {
+      updateProfile(auth.currentUser, {
+   
+        photoURL: id,
+  
+        
+      })
+console.log(id)
+     
+    }
+
+
+
 
     const handleGoogleSignIn = async (e) => {
       e.preventDefault();
@@ -50,10 +68,57 @@ const Signup = () => {
           await googleSignIn()
           setError('Success Login')
           navigate(`/`)
+      
       }catch(err) {
             setError(err.message)
       }
   }
+
+
+
+
+
+  const createCustomer = () => {
+   
+
+    /////cart item find
+
+
+    var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+     
+
+   const body2 = `{
+    "email": "${email}",
+    "first_name": "${name}"
+    
+  }`
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: body2,
+        redirect: 'follow'
+      };
+      fetch(`https://shop.abusayeeed.xyz/wp/wp-json/wc/v3/customers?${process.env.REACT_APP_KEY}`, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          const rslt = result;
+          console.log(rslt.id)
+          test2(rslt.id)
+        
+          })
+        .catch(error => {
+          const rslt = error;
+          console.log('error', rslt)
+       
+        });
+        
+      console.log(body2)
+  }
+
+  
+
+
     useEffect(() => {
 
 
@@ -68,7 +133,7 @@ const Signup = () => {
     <div className='signup'>
     <form className='form' onSubmit={handleSubmit}> 
     <h4>Create your Account</h4>
-    {error && <Alert variant='danger'>{error}</Alert>}
+    {error && <p className='error'>{error}</p>}
       <div className="input-bx">
             <input  type="text" required="required" onChange={(e) => setName(e.target.value)}/>
             <span>Name</span>

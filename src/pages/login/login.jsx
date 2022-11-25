@@ -17,8 +17,6 @@ const Login = () => {
   const {    setActiveTabCart, setActiveTabOrder,setActiveTabHome, setActiveTabUser} = useContext(TestContext);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const { logIn, googleSignIn, user } = useUserAuth();
-
-
   const [error, setError] = useState("");
 
 
@@ -27,6 +25,14 @@ const Login = () => {
   handleSubmit2(data)
   };
     
+
+
+
+
+
+
+
+  
 
 
 
@@ -109,6 +115,7 @@ const location= useLocation()
 </div>
   
     </form>
+
    
   
     </div>
