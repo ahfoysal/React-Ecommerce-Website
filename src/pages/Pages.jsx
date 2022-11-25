@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Home from "./Home";
 import Category from "./Category";
 import Searched from "./Searched";
@@ -13,10 +13,17 @@ import Shop from '../components/Shop';
 import OrdersPage from '../components/OrdersPage/testDb';
 import Login from './login/login';
 import Signup from './login/signup';
+import { useContextS } from '../components/Function';
 
 
 function Pages() {
   const location = useLocation();
+       let {  getCart } =  useContextS();
+
+  useEffect(() => {
+    getCart();
+
+    }, [])
 
   return (
     // <AnimatePresence exitBeforeEnter>

@@ -8,14 +8,16 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { UserAuthContextProvider } from './context/UserAuthContext';
 import Header2 from "./components/Header2";
-import { ContextProviderS } from "./components/Function";
+import { ContextProviderS, useContextS } from "./components/Function";
 
 export const TestContext = createContext();
  
 function App() {
   //////////// Cart & All Items
-  const [cart , setCart] = useState([]);
+  // const [cart , setCart] = useState([]);
     const [allProducts, setAllProducts] = useState([]);
+    // let {  getCart } =  useContextS();
+
 //////////////////
 
   //////// Nav & Icon State
@@ -30,7 +32,7 @@ function App() {
    const [test2 , setTest2] = useState(false);
     ////////////////////
    useEffect(() => {
-    getCart();
+    // getCart();
     gteProducts();
     }, [])
    
@@ -54,83 +56,7 @@ const gteProducts = () =>{
       }
 }
 ///////cart Related Function////////////////////////////////////////////////////////////////////////////////////
-const addToCart = (id) =>{
-  const newCart = [...cart, id];
-  setCart(newCart);
-  toast.success('🛒 Added to cart', {
-    position: "top-right",
-    autoClose: 1000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    theme: "colored"
-    });
-    addToDb(id.id)
-    localStorage.setItem("cartItems", JSON.stringify(newCart))
-    getCart();
-}
-const getCart = () => {
-  const newCart = localStorage.getItem("cartItems" ) 
-setCart(JSON.parse(newCart))
-const nnnn = JSON.parse(newCart)
-const savedCart = getStoredCart();
-const savedId = Object.keys(savedCart);
-const cartPd = savedId.map( id => {
-  const product = nnnn.find( pd => pd.id.toString() === id)
-  product.abc = savedCart[id];
-  return product
-} );
 
-
-setCart(cartPd)
-
-
-}
-const addToDb = id => {
-  const exists = getDb();
-  let shopping_cart = {};
-  if (!exists) {
-    shopping_cart[id] = 1;
-  }
-  else {
-    shopping_cart = JSON.parse(exists);
-    if (shopping_cart[id]) {
-      const newCount = shopping_cart[id] + 1;
-      shopping_cart[id] = newCount;
-    }
-    else {
-      shopping_cart[id] = 1;
-    }
-  }
-  updateDb(shopping_cart);
-  console.log(shopping_cart);
-}
-const getDb = () => localStorage.getItem('shopping_cart');
-const updateDb = cart => {
-  localStorage.setItem('shopping_cart', JSON.stringify(cart));
-}
-const removeFromDb = id => {
-  const exists = getDb();
-  if (!exists) {
-  }
-  else {
-    const shopping_cart = JSON.parse(exists);
-    delete shopping_cart[id];
-    updateDb(shopping_cart);
-  }
-  getCart()
-}
-const getStoredCart = () => {
-  const exists = getDb();
-  return exists ? JSON.parse(exists) : {};
-}
-const clearTheCart = () => {
-  // localStorage.setItem('shopping_cart', []);
-  // localStorage.setItem('cartItems', []);
-  setCart([]) 
-  localStorage.removeItem('shopping_cart');
-  console.log(localStorage.getItem('shopping_cart'));
-}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   return (
@@ -141,17 +67,14 @@ const clearTheCart = () => {
         <ContextProviderS>
 
         <TestContext.Provider value={{ allProducts,
-         setAllProducts, addToCart,
-           test2, setTest2, updateDb, getDb, cart,
-            clearTheCart, removeFromDb, getCart,
-             getStoredCart, setCart,
+      
               activeTabCart ,setActiveTabCart,
                setActiveTabHome, setActiveTabOrder,
               setActiveTabUser,  activeTabUser,
               activeTabHome, activeTabOrder,
               headerActive, setHeaderActive
               }}>
-    <Header cart={cart} test2={test2}/>
+    <Header />
     <Header2  />
      <Pages  />
      <ToastContainer />

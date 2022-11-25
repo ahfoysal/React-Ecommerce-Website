@@ -9,11 +9,23 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import '@splidejs/react-splide/css';
 import { Pagination } from "@mui/material";
 import { MdAddShoppingCart } from "react-icons/md";
+import { useContextS } from "./Function";
 // import { darken } from 'polished';
 // import api from '../pages/api';
 
 function Producsts() {
-  const {context, allProducts, addToCart, setAllProducts, test2} = useContext(TestContext);
+  const { allProducts} = useContext(TestContext);
+
+  let {  addToCart , test2 } =  useContextS();
+
+
+
+
+
+
+
+
+  
   const [ctg , setCtg] = useState([]);
   const [pro , setPro] = useState([]);
   const [active , setActive] = useState('all');

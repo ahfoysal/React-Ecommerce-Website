@@ -4,12 +4,16 @@ import styled from 'styled-components';
 import {Link} from  'react-router-dom'
 import './shop.css'
 import { TestContext } from "../App";
+import { useContextS } from "./Function";
 // import { darken } from 'polished';
 // import api from '../pages/api';
 
 function Shop() {
-  const [ctg , setCtg] = useState({});
-  const {context, allProducts, addToCart} = useContext(TestContext);
+
+  const {allProducts} = useContext(TestContext);
+
+  let {  addToCart  } =  useContextS();
+
 
   useEffect(() => {
     

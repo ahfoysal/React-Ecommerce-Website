@@ -14,10 +14,17 @@ import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import { Link } from 'react-router-dom';
 import { TestContext } from '../App';
 import { useUserAuth } from '../context/UserAuthContext';
+import { useContextS } from './Function';
 
 const Header2 = () => {
 
-    const { cart, headerActive} = useContext(TestContext);
+    const {  headerActive} = useContext(TestContext);
+
+    let {  cart } =  useContextS();
+
+
+
+
     const { activeTabCart, activeTabHome, activeTabOrder,  activeTabUser} = useContext(TestContext);
     let { user } =  useUserAuth();
 

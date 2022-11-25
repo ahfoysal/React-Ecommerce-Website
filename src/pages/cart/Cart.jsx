@@ -5,13 +5,17 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../cart/Cart.css'
 import { TestContext } from '../../App';
 import Remove from '@mui/icons-material/RemoveShoppingCart';
+import { useContextS } from '../../components/Function';
 
 
 
 
 const Cart = () => {
   ////props
-  const {   updateDb, getDb, cart, clearTheCart, removeFromDb, getCart, setActiveTabCart, setActiveTabOrder,setActiveTabHome, setActiveTabUser, setHeaderActive} = useContext(TestContext);
+  const {   setActiveTabCart, setActiveTabOrder,setActiveTabHome, setActiveTabUser, setHeaderActive} = useContext(TestContext);
+     
+  let {  cart, updateDb, getDb, clearTheCart, removeFromDb, getCart } =  useContextS();
+
 
   const navigate = useNavigate();
 /////state

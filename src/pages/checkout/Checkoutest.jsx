@@ -16,9 +16,10 @@ import { useUserAuth } from '../../context/UserAuthContext';
 import { TestContext } from '../../App';
 import { addDoc, collection, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
+import { useContextS } from '../../components/Function';
 
 const Checkoutest = () => {
-  const { cart, setCart} = useContext(TestContext);
+  const { cart, setCart} = useContextS();
   const navigate = useNavigate();
   let { user } =  useUserAuth();
   const [isContainerActive, setIsContainerActive] = useState(false);
@@ -68,7 +69,7 @@ const Checkoutest = () => {
       myHeaders.append("Content-Type", "application/json");
      
 
-   const body1 = `{"payment_method": "${method}","customer_note":"hello",${user.photoURL ? cID : ''}"transaction_id":"${trxid}","billing":{"first_name":"${name}","address_1":"${address}","phone":"${phone}"},"line_items":`
+   const body1 = `{"payment_method": "${method}","customer_note":"hello",${user ? cID : ''}"transaction_id":"${trxid}","billing":{"first_name":"${name}","address_1":"${address}","phone":"${phone}"},"line_items":`
   const body2= `${newCart}}`
       const body3 = body1.concat(' ', body2);
   
@@ -187,8 +188,9 @@ const Checkoutest = () => {
   ];
   useEffect(() => {
    if (user){ 
-    setName(user.displayName)}
-    setCustomerID(user.photoURL)
+    setName(user?.displayName)
+    setCustomerID(user?.photoURL)}
+    
     console.log(customerID)
     }, [])
 

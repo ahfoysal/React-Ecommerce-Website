@@ -9,12 +9,17 @@ import Left from '@mui/icons-material/KeyboardArrowLeft';
 import Right from '@mui/icons-material/KeyboardArrowRight';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ShoppingCartIcon2 from '@mui/icons-material/ShoppingCart';
+import { useContextS } from './Function';
 
 const Header = () => {
   let params = useLocation();
   const param = params.pathname
   const history = useNavigate()
-  const {    setHeaderActive, headerActive, activeTabCart, cart} = useContext(TestContext);
+  const {    setHeaderActive, headerActive, activeTabCart} = useContext(TestContext);
+    let {  cart } =  useContextS();
+
+
+
   const handleHeader =  () => {
  console.log(param)
     if(headerActive === true){

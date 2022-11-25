@@ -5,11 +5,13 @@ import styled from 'styled-components';
 import {Link} from  'react-router-dom';
 import * as ReactBootstrap from 'react-bootstrap'
 import { TestContext } from '../App';
+import { useContextS } from '../components/Function';
 
 
 
 function Searched() {
-  const { allProducts, addToCart} = useContext(TestContext);
+  const { allProducts} = useContext(TestContext);
+  const { addToCart} = useContextS();
 
 
 
