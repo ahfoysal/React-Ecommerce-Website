@@ -7,9 +7,12 @@ import axios from 'axios'
 import { TestContext } from '../App';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { FaStar } from 'react-icons/fa';
+import { useContextS } from './cart/Function';
 
 function SingleProduct() {
-  const { allProducts, addToCart, test2, setTest2, setActiveTabCart, setActiveTabOrder,setActiveTabHome, setActiveTabUser, setHeaderActive} = useContext(TestContext);
+  const { allProducts, setActiveTabCart, setActiveTabOrder,setActiveTabHome, setActiveTabUser, setHeaderActive} = useContext(TestContext);
+   let {  addToCart , test2, setTest2} =  useContextS();
+
   const [details , setDetails] = useState([]);
   const [loading , setLoading] = useState(false);
 

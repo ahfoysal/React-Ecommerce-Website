@@ -13,12 +13,12 @@ import Shop from '../components/Shop';
 import OrdersPage from '../components/OrdersPage/testDb';
 import Login from './login/login';
 import Signup from './login/signup';
-import { useContextS } from '../components/Function';
+import { useContextS } from './cart/Function';
 
 
 function Pages() {
   const location = useLocation();
-       let {  getCart } =  useContextS();
+       let { getCart} =  useContextS();
 
   useEffect(() => {
     getCart();

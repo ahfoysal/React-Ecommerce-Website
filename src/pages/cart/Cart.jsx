@@ -5,7 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../cart/Cart.css'
 import { TestContext } from '../../App';
 import Remove from '@mui/icons-material/RemoveShoppingCart';
-import { useContextS } from '../../components/Function';
+import { useContextS } from './Function';
+
 
 
 

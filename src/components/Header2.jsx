@@ -14,7 +14,7 @@ import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import { Link } from 'react-router-dom';
 import { TestContext } from '../App';
 import { useUserAuth } from '../context/UserAuthContext';
-import { useContextS } from './Function';
+import { useContextS } from '../pages/cart/Function';
 
 const Header2 = () => {
 

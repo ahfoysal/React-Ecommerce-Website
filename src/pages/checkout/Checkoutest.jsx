@@ -16,7 +16,7 @@ import { useUserAuth } from '../../context/UserAuthContext';
 import { TestContext } from '../../App';
 import { addDoc, collection, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
-import { useContextS } from '../../components/Function';
+import { useContextS } from '../cart/Function';
 
 const Checkoutest = () => {
   const { cart, setCart} = useContextS();

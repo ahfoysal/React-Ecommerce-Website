@@ -3,13 +3,12 @@ import {Container, Navbar} from 'react-bootstrap'
 import {Link, useNavigate, useLocation} from 'react-router-dom';
 import Search from "./Search";
 import './header.css'
-import { useUserAuth } from '../context/UserAuthContext';
 import { TestContext } from '../App';
 import Left from '@mui/icons-material/KeyboardArrowLeft';
 import Right from '@mui/icons-material/KeyboardArrowRight';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ShoppingCartIcon2 from '@mui/icons-material/ShoppingCart';
-import { useContextS } from './Function';
+import { useContextS } from '../pages/cart/Function';
 
 const Header = () => {
   let params = useLocation();

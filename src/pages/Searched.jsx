@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import {Link} from  'react-router-dom';
 import * as ReactBootstrap from 'react-bootstrap'
 import { TestContext } from '../App';
-import { useContextS } from '../components/Function';
+import { useContextS } from './cart/Function';
 
 
 

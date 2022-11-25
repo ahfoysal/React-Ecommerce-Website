@@ -9,7 +9,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import '@splidejs/react-splide/css';
 import { Pagination } from "@mui/material";
 import { MdAddShoppingCart } from "react-icons/md";
-import { useContextS } from "./Function";
+import { useContextS } from "../pages/cart/Function";
 // import { darken } from 'polished';
 // import api from '../pages/api';
 
@@ -217,85 +217,7 @@ console.log(id)
    </div>
   )
   }
-  const ProductList = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
-  list-style: none;
-  @media screen and (max-width: 800px) {
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 10px;
-
-  }
-
-  li {
-    display: flex;
-    flex-direction: column;
-    background: #fff;
-    border-radius: 4px;
-    padding: 20px;
-
-    img {
-      align-self: center;
-      max-width: 250px;
-    }
-
-    > strong {
-      font-size: 16px;
-      line-height: 20px;
-      color: #333;
-      margin-top: 5px;
-    }
-
-    > p {
-      font-size: 21px;
-      font-weight: bold;
-      margin: 5px 0 20px;
-    }
-
-    button {
-      background: #f90;
-      color: #fff;
-      border: 0;
-      border-radius: 4px;
-      overflow: hidden;
-      margin-top: auto;
-      margin: 0px 8%;
-      display: flex;
-      align-items: center;
-      transition: background 0.2s;
-
-      &:hover {
-        background: black;
-      }
-
-      div{
-        display: flex;
-        align-items: center;
-        padding: 12px;
-        background: rgba(0, 0, 0, 0.1);
-
-        svg {
-          margin-right: 5px;
-        }
-      }
-
-      span {
-        flex: 1;
-        border: none;
-        color: #fff;
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-        font-weight: 700;
-        transition: all .2s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-    }
-  }
-
-`;
+  
 
   
   

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {Link} from  'react-router-dom'
 import './shop.css'
 import { TestContext } from "../App";
-import { useContextS } from "./Function";
+import { useContextS } from "../pages/cart/Function";
 // import { darken } from 'polished';
 // import api from '../pages/api';
 

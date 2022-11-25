@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { UserAuthContextProvider } from './context/UserAuthContext';
 import Header2 from "./components/Header2";
-import { ContextProviderS, useContextS } from "./components/Function";
+import { useContextS, ContextProviderS } from "./pages/cart/Function";
 
 export const TestContext = createContext();
  
@@ -16,7 +16,6 @@ function App() {
   //////////// Cart & All Items
   // const [cart , setCart] = useState([]);
     const [allProducts, setAllProducts] = useState([]);
-    // let {  getCart } =  useContextS();
 
 //////////////////
 
@@ -32,7 +31,7 @@ function App() {
    const [test2 , setTest2] = useState(false);
     ////////////////////
    useEffect(() => {
-    // getCart();
+
     gteProducts();
     }, [])
    

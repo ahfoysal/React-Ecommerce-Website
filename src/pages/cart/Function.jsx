@@ -9,7 +9,6 @@ export function ContextProviderS({ children }) {
     const [test2 , setTest2] = useState(false);
     const [cart , setCart] = useState([]);
 
-    const [contextT, setContextT] = useState(true);
     
     function addToCart(id) {
 
