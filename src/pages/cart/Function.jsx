@@ -26,6 +26,7 @@ export function ContextProviderS({ children }) {
             addToDb(id.id)
             localStorage.setItem("cartItems", JSON.stringify(newCart))
             getCart();
+            console.log(id)
 
 
         };

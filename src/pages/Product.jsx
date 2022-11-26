@@ -1,8 +1,8 @@
 import {useState, useEffect, useContext} from 'react'
-import {useParams} from 'react-router-dom';
+
+import {useParams, useNavigate, Link} from 'react-router-dom';
 import React from 'react'
 import * as ReactBootstrap from 'react-bootstrap'
-import {Link} from  'react-router-dom'
 import axios from 'axios'
 import { TestContext } from '../App';
 import { MdAddShoppingCart } from 'react-icons/md';
@@ -11,15 +11,22 @@ import { useContextS } from './cart/Function';
 import { orderBy } from 'firebase/firestore';
 
 function SingleProduct() {
+  const navigate = useNavigate();
+
   const { allProducts, setActiveTabCart, setActiveTabOrder,setActiveTabHome, setActiveTabUser, setHeaderActive} = useContext(TestContext);
    let {  addToCart , test2, setTest2} =  useContextS();
 
   const [details , setDetails] = useState([]);
+  const [details2 , setDetails2] = useState([]);
+
   const [loading , setLoading] = useState(false);
+  const [loading2 , setLoading2] = useState(true);
+
 
   let params = useParams();
 
 useEffect(() => { 
+
       setActiveTabCart(false)
       setActiveTabOrder(false)
       setActiveTabHome(false)
@@ -27,18 +34,30 @@ useEffect(() => {
       setHeaderActive(false)
 
   fetchDetails()
+  
+
+
+ 
  
 },[])
 
 
 
 const fetchDetails = () =>{
+ 
   if(test2 === true){
     const param = params.name
     const cartItems = allProducts.map((cart) => cart ).filter((val)=> {
       return val.id === parseInt(param)
       });
+      if(cartItems[0] === undefined){
+        window.location.reload()
+      }
     setDetails(cartItems[0])
+    setDetails2(cartItems[0])
+
+    console.log(details)
+  console.log(cartItems[0])
           setLoading(true) 
   }else{  
 
@@ -47,11 +66,35 @@ const fetchDetails = () =>{
     .then(data2 => { const data = data2
       sessionStorage.setItem(`${params.name}`,JSON.stringify(data.data))
       setDetails(data.data);
+      setDetails2(data.data);
+
       console.log(data.data);
       setLoading(true)
+      console.log(data.data.parent_id)
+      if(data.data.parent_id > 1){
+        console.log('hi')
+        navigate(`/product/${data.data?.parent_id}`)
+      }
       setTest2(true)
     })  
   }
+
+
+  
+
+}
+const size = (id) =>{
+  setLoading2(false)
+  axios(`${process.env.REACT_APP_SHOP_LINK}wp-json/wc/v3/products/${id}?${process.env.REACT_APP_KEY}`)
+  .then(data2 => { const data = data2
+    sessionStorage.setItem(`${params.name}`,JSON.stringify(data.data))
+    setDetails2(data.data);
+    console.log(data.data);
+    setLoading2(true)
+    console.log(details)
+
+  })  
+
 
 }
 
@@ -71,19 +114,24 @@ const page = Math.random() * 10
 
     <div className='productSingle__image'>
   
-      <img src={details.images[0].src} alt={details.name} />
-      {details.sale_price && <div> <p className="tag">Sale</p></div>}
+      <img src={details?.images[0].src} alt={details?.name} />
+      {details?.sale_price && <div> <p className="tag">Sale</p></div>}
     </div > 
 <div className='productSingle__details '> 
-<p className='productSingle__name'>{details.name}</p>
-{details.stock_quantity && <small> Stock : {details?.stock_quantity} </small>}
+<p className='productSingle__name'>{details2?.name}</p>
+{details2?.stock_quantity && <small> Stock : {details2?.stock_quantity} </small>}
 
 {/*    attributes*/}
-{details.attributes.length > 1 && <div>
+{details?.variations?.length >= 1 && <p >{details?.variations.map((att) => {
+    return <div><span onClick={() => size(att)}>{att}
+    </span>
+    </div>
+  })}</p> }
+{details?.attributes.length >= 1 && <div>
   {details?.attributes.map((att) => {
-    return <div><p>{att.name} : 
-      {att.options?.map((opt) => {
-                              return  <span className='pro-span'>{opt}</span>
+    return <div><p>{att.name} : {att?.option}
+      {att.options?.map((opt, index) => {
+                              return  <span className='pro-span' onClick={() => size(details.variations[0+index] )}>{opt} </span>
                       }
                     )}
     
@@ -94,17 +142,17 @@ const page = Math.random() * 10
 
   
   </div> }
-<span dangerouslySetInnerHTML={{ __html: details.short_description }} className='productSingle__features ' ></span>
+<span dangerouslySetInnerHTML={{ __html: details?.short_description }} className='productSingle__features ' ></span>
 
   
       <div className='productSingle__footer'>    
 
-<p className='productSingle__price price'>৳{details.price} {details.sale_price && <span className=" del">৳{details.regular_price}</span>}</p>
+<p className='productSingle__price price'>৳{details2?.price} {details?.sale_price && <span className=" del">৳{details?.regular_price}</span>}</p>
 {/* <span dangerouslySetInnerHTML={{ __html: details.description }} ></span> */}
       <div className="buttons ">
-      {details.stock_status === "instock" && <button className="buy-btn pp-btn" onClick={() => addToCart(details)}> <MdAddShoppingCart size={16} color="#FFF" />
-        <span>  Add To Cart</span></button>}
-        {details.stock_quantity < 1 && details.stock_quantity != null && <p>Stock Out</p>}
+    {loading2 ? <>{<>  {details2?.stock_status === "instock" && <button className="buy-btn pp-btn" onClick={() => addToCart(details2)}> <MdAddShoppingCart size={16} color="#FFF" />
+        <span>  Add To Cart</span></button>}</> }</> : <>  <div className="spinnerdiv"><ReactBootstrap.Spinner animation="border" /> </div></>}
+        {details2?.stock_quantity < 1 && details2?.stock_quantity != null && <p>Stock Out</p>}
       </div>
     </div>
   </div>

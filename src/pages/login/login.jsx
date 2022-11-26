@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import { Alert } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import { Link, useLocation, useNavigate, useHistory } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useUserAuth } from '../../context/UserAuthContext';
 import { TestContext } from '../../App';
 import GoogleButton from 'react-google-button'
