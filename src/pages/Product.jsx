@@ -8,6 +8,7 @@ import { TestContext } from '../App';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { FaStar } from 'react-icons/fa';
 import { useContextS } from './cart/Function';
+import { orderBy } from 'firebase/firestore';
 
 function SingleProduct() {
   const { allProducts, setActiveTabCart, setActiveTabOrder,setActiveTabHome, setActiveTabUser, setHeaderActive} = useContext(TestContext);
@@ -72,9 +73,27 @@ const page = Math.random() * 10
   
       <img src={details.images[0].src} alt={details.name} />
       {details.sale_price && <div> <p className="tag">Sale</p></div>}
-    </div >
+    </div > 
 <div className='productSingle__details '> 
 <p className='productSingle__name'>{details.name}</p>
+{details.stock_quantity && <small> Stock : {details?.stock_quantity} </small>}
+
+{/*    attributes*/}
+{details.attributes.length > 1 && <div>
+  {details?.attributes.map((att) => {
+    return <div><p>{att.name} : 
+      {att.options?.map((opt) => {
+                              return  <span className='pro-span'>{opt}</span>
+                      }
+                    )}
+    
+    
+    </p>
+    </div>
+  })}
+
+  
+  </div> }
 <span dangerouslySetInnerHTML={{ __html: details.short_description }} className='productSingle__features ' ></span>
 
   
@@ -83,8 +102,9 @@ const page = Math.random() * 10
 <p className='productSingle__price price'>৳{details.price} {details.sale_price && <span className=" del">৳{details.regular_price}</span>}</p>
 {/* <span dangerouslySetInnerHTML={{ __html: details.description }} ></span> */}
       <div className="buttons ">
-       <button className="buy-btn pp-btn" onClick={() => addToCart(details)}> <MdAddShoppingCart size={16} color="#FFF" />
-        <span>  Add To Cart</span></button>
+      {details.stock_status === "instock" && <button className="buy-btn pp-btn" onClick={() => addToCart(details)}> <MdAddShoppingCart size={16} color="#FFF" />
+        <span>  Add To Cart</span></button>}
+        {details.stock_quantity < 1 && details.stock_quantity != null && <p>Stock Out</p>}
       </div>
     </div>
   </div>

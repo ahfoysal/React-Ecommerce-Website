@@ -182,14 +182,11 @@ console.log(id)
         
           </></Link>
           <div className="add-to-cart">
-          <button  onClick={() => addToCart(product) } className='addtocart-btn buy-btn pp-btn' >
-           
-                <MdAddShoppingCart size={16} color="#FFF" /> 
-
-             
-
-              <span>Add To Cart</span>
-            </button></div>
+          
+          {product.stock_status === "instock" && <button className="buy-btn pp-btn" onClick={() => addToCart(product)}> <MdAddShoppingCart size={16} color="#FFF" />
+        <span>  Add To Cart</span></button>}
+        {product.stock_quantity < 1 && product.stock_quantity != null && <p>Stock Out</p>}
+          </div>
           
           <div className="clearfix mb-1">
 
