@@ -122,11 +122,11 @@ const page = Math.random() * 10
 {details2?.stock_quantity && <small> Stock : {details2?.stock_quantity} </small>}
 
 {/*    attributes*/}
-{details?.variations?.length >= 1 && <p >{details?.variations.map((att) => {
+{/* {details?.variations?.length >= 1 && <p >{details?.variations.map((att) => {
     return <div><span onClick={() => size(att)}>{att}
     </span>
     </div>
-  })}</p> }
+  })}</p> } */}
 {details?.attributes.length >= 1 && <div>
   {details?.attributes.map((att) => {
     return <div><p>{att.name} : {att?.option}
