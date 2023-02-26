@@ -69,7 +69,7 @@ const Checkoutest = () => {
       myHeaders.append("Content-Type", "application/json");
      
 
-   const body1 = `{"payment_method": "${method}","customer_note":"hello",${user ? cID : ''}"transaction_id":"${trxid}","billing":{"first_name":"${name}","address_1":"${address}","phone":"${phone}"},"line_items":`
+   const body1 = `{"payment_method": "${method}","customer_note":"hello",${user ? cID : ''}"transaction_id":"${trxid}","billing":{"first_name":"${name}","email": "test@example.com","address_1":"${address}","phone":"${phone}"},"line_items":`
   const body2= `${newCart}}`
       const body3 = body1.concat(' ', body2);
   
@@ -146,7 +146,7 @@ const Checkoutest = () => {
    
     },
     {
-      label: 'Choose a payment method',
+      label: 'Choose a Payment Method',
       description: 
       <div>
     <div className="form-check ">
