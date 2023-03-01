@@ -88,12 +88,12 @@ console.log(id)
 
     const param = id
 
-    const cartItems = allProducts.map((cart)=> {
-      return cart.categories.map(cat => (cart)).filter((val)=> {
-        return val.categories[0].name === id
-            });
-     
-      });
+      const cartItems = allProducts.map((cart)=> {
+        return cart.categories.map(cat => (cart)).filter((val)=> {
+          return val.categories[0].name === id
+              });
+      
+        });
     // console.log(cartItems);
     const merged = [].concat.apply([], cartItems);
     let uniqueChars = [...new Set(merged)];
@@ -158,7 +158,7 @@ console.log(id)
       <div className="card h-100 shadow-sm">
   
             <div>  <Link to={'/product/'+product.id}> <>
-          <img src={product.images[0].src} className="card-img-top" alt="product.title" />
+          <img src={product?.images[0]?.src} className="card-img-top" alt="product.title" />
       
 
        

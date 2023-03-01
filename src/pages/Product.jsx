@@ -116,7 +116,7 @@ const page = Math.random() * 10
   
       <img src={details?.images[0].src} alt={details?.name} />
       {details?.sale_price && <div> <p className="tag">Sale</p></div>}
-    </div > 
+    </div> 
 <div className='productSingle__details '> 
 <p className='productSingle__name'>{details2?.name}</p>
 {details2?.stock_quantity && <small> Stock : {details2?.stock_quantity} </small>}
