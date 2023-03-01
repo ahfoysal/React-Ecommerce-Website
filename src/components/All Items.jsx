@@ -152,7 +152,7 @@ console.log(id)
         <div className="container-fluid bg-trasparent my-4 p-3"  style={{position: "relative"}}>
         <div className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
         { pro.slice((page-1) * 12, (page-1) * 12 + 12).map(product => (
-        <>
+       <>{product?.status === 'publish' && <>
         
         <div className="col hp" key={product.id}>
       <div className="card h-100 shadow-sm">
@@ -201,7 +201,7 @@ console.log(id)
       </div>
     </div>
 
-        </>
+        </>}</>
         )) }
         </div>    </div>
           
