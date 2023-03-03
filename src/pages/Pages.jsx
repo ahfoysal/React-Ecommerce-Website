@@ -14,6 +14,7 @@ import OrdersPage from '../components/OrdersPage/testDb';
 import Login from './login/login';
 import Signup from './login/signup';
 import { useContextS } from './cart/Function';
+import PaymentSuccess from './app-backend/Payment-success';
 
 
 function Pages() {
@@ -42,6 +43,7 @@ function Pages() {
        <Route path="/signup/" element={<Signup />} />
        <Route path="/orders/" element={  <OrdersPage /> }/>
        <Route path="/profile/" element={  <Profile /> }/>
+       <Route path="/Success/:id" element={<PaymentSuccess />} />
 
        </Routes>  
       

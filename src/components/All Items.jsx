@@ -107,6 +107,7 @@ console.log(id)
     return cart2.categories.map(cat => (cart2))
    
         });
+        
        
         // console.log(cartItems2);
   

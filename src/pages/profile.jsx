@@ -20,6 +20,9 @@ const Profile = () => {
 
 
   useEffect(() => {
+    fetch('http://localhost:8080/redirect')
+  .then(response => response.json())
+  .then(data => console.log(data));
 
 console.log(user)
     setActiveTabCart(false)
@@ -30,12 +33,21 @@ console.log(user)
 
   })
   
+  const handles = () => {
+    console.log('ok')
+  //   const requestOptions = {
+  //     method: 'GET',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({ title: 'React POST Request Example' })
+  // };
+  
+  }
   return (
     <div className='cart-page profile'>
       <div className="profile__header">
       <img src="https://i.pravatar.cc/150?u=dfgsad@da.c" alt="" className="profile__avatar" />
       <span className="profile__header_span">
-        <h3>Hi, {user?.displayName}</h3>
+        <h3 onClick={handles}>Hi, {user?.displayName}</h3>
         <p className="profile-stats">This is your profile page. Here, you can view and customize your profile details. Double check your details before check out.</p>
       </span>
       <div className="buttons" style={{marginLeft: "auto"}}>
