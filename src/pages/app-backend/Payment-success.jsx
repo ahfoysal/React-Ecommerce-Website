@@ -32,7 +32,7 @@ const PaymentSuccess = () => {
         // const encryptedData = 'U2FsdGVkX1/9eMYb8nmg3rU6ekwFnPhn5U6M8mzvB7M='
         // const testKey = 'U2FsdGVkX19HJ34mNYLt9b2hztCEp1L2u3SnSp1L2u3Stqoq3UrQ8Tke1Q2u3A4l'
         const ciphertext = key.replace(/p1L2u3S/g, '+' ).replace(/s1L2a3S4h/g, '/').replace(/e1Q2u3A4l/g, '=');
-        console.log(ciphertext)
+        // console.log(ciphertext)
 
         
         const bytes = AES.decrypt(ciphertext, secretKey);
