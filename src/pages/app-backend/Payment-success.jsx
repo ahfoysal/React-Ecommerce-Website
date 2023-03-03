@@ -41,7 +41,7 @@ const PaymentSuccess = () => {
         // console.log( decryptedData);
         navigate(`/order/${decryptedData}`) 
       
-    }, [params])
+    }, [])
   return (
     <div>
         <p  style={{color: "Green", margin: 300}}>Payment-success</p>
