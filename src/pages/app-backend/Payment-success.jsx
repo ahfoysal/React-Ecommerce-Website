@@ -3,20 +3,21 @@
 
 import React from 'react'
 import { useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import  CryptoJS , { AES, enc, SHA256  } from 'crypto-js';
 
 
 
 
 const PaymentSuccess = () => {
+    const navigate = useNavigate();
     const useQuery = () => {
         return new URLSearchParams (useLocation().search)
       }
       let query = useQuery()
         const key = query.get('key')
 
-    let params = useParams();
+ 
     
   
 
@@ -36,7 +37,8 @@ const PaymentSuccess = () => {
         const bytes = AES.decrypt(ciphertext, secretKey);
         const decryptedData = bytes.toString(CryptoJS.enc.Utf8);
         
-        console.log( decryptedData);
+        // console.log( decryptedData);
+        navigate(`/order/${decryptedData}`) 
       
     }, [params])
   return (
