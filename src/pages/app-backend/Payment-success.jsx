@@ -25,7 +25,7 @@ const PaymentSuccess = () => {
     const secretKey = process.env.REACT_APP_PAYMENT_PIN
     const  PaymentProcess = (id) => {
       const  key='consumer_key=ck_7d700d7c05bea9f024076feb890944ad286703f2&consumer_secret=cs_59a8c6db54711f8a9fc314b95e0ad782a946c191'
-    const    bodys = `{"status": "completed"}`
+    const    bodys = `{"status": "processing", "payment_method": "SSLCOMMERZ"}`
 
 
 
