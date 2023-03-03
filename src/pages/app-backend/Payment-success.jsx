@@ -10,6 +10,7 @@ import  CryptoJS , { AES, enc, SHA256  } from 'crypto-js';
 
 
 const PaymentSuccess = () => {
+    
     const navigate = useNavigate();
     const useQuery = () => {
         return new URLSearchParams (useLocation().search)
